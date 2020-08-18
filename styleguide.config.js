@@ -1,16 +1,22 @@
 const { VueLoaderPlugin } = require("vue-loader");
 const path = require("path");
+const fs = require("fs");
+
+const componentDir = path.resolve("./docs/components");
+const components = fs.readdirSync(componentDir).map(p => ({
+  name: path.basename(p, ".md"),
+  content: path.resolve(componentDir, p)
+}));
 
 const sections = [
   {
+    name: "Guide",
+    content: path.resolve("./docs/guide.md")
+  },
+  {
     name: "Components",
-    sections: [
-      {
-        name: "hello m-ui",
-        sectionDepth: 2,
-        content: path.resolve("./docs/hello-mui.md")
-      }
-    ]
+    sectionDepth: 2,
+    sections: components
   }
 ];
 
