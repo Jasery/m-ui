@@ -1,11 +1,9 @@
-export const HelloMUi = {
-  render(h) {
-    return h("h1", "hello m-ui");
-  }
-};
+import MSelect from "./m-select/MSelect.vue";
+
+export { MSelect };
 
 export default {
   install(Vue) {
-    Vue.component("hello-mui", HelloMUi);
+    Vue.component(MSelect.name, MSelect);
   }
 };
