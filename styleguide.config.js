@@ -2,11 +2,14 @@ const { VueLoaderPlugin } = require("vue-loader");
 const path = require("path");
 const fs = require("fs");
 
-const componentDir = path.resolve("./docs/components");
-const components = fs.readdirSync(componentDir).map(p => ({
-  name: path.basename(p, ".md"),
-  content: path.resolve(componentDir, p)
-}));
+const getDocs = dir =>
+  fs.readdirSync(dir).map(p => ({
+    name: path.basename(p, ".md"),
+    content: path.resolve(dir, p)
+  }));
+
+const components = getDocs(path.resolve("./docs/components"));
+const tools = getDocs(path.resolve("./docs/tools"));
 
 const sections = [
   {
@@ -17,15 +20,17 @@ const sections = [
     name: "Components",
     sectionDepth: 2,
     sections: components
+  },
+  {
+    name: "Tools",
+    sectionDepth: 2,
+    sections: tools
   }
 ];
 
 module.exports = {
   styleguideDir: "docs",
   pagePerSection: true,
-  ribbon: {
-    url: "https://gitlab.mingchao.com/zhangguoyun/m-ui"
-  },
   sections,
   require: ["./styleguide"],
   webpackConfig: {
