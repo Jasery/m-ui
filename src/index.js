@@ -3,6 +3,7 @@ import MDatePicker from "./m-date-picker/MDatePicker.vue";
 import Auth, { routerAuth, AuthObserver } from "./auth";
 import MCheckboxGroup from "./m-checkbox-group/MCheckboxGroup.vue";
 import BaseEnum from "./base-enum";
+import MUtils from "./utils";
 
 export {
   MSelect,
@@ -11,7 +12,8 @@ export {
   AuthObserver,
   routerAuth,
   MCheckboxGroup,
-  BaseEnum
+  BaseEnum,
+  MUtils
 };
 
 export default {
