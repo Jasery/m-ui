@@ -29,7 +29,7 @@ const sections = [
 ];
 
 module.exports = {
-  styleguideDir: "docs",
+  styleguideDir: "site",
   pagePerSection: true,
   sections,
   require: ["./styleguide"],
