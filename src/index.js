@@ -2,8 +2,17 @@ import MSelect from "./m-select/MSelect.vue";
 import MDatePicker from "./m-date-picker/MDatePicker.vue";
 import Auth, { routerAuth, AuthObserver } from "./auth";
 import MCheckboxGroup from "./m-checkbox-group/MCheckboxGroup.vue";
+import BaseEnum from "./base-enum";
 
-export { MSelect, MDatePicker, Auth, AuthObserver, routerAuth, MCheckboxGroup };
+export {
+  MSelect,
+  MDatePicker,
+  Auth,
+  AuthObserver,
+  routerAuth,
+  MCheckboxGroup,
+  BaseEnum
+};
 
 export default {
   install(Vue, options) {
