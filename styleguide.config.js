@@ -50,7 +50,7 @@ module.exports = {
           loaders: ["style-loader", "css-loader"]
         },
         {
-          test: /\.sass$/,
+          test: /\.scss$/,
           loaders: ["vue-style-loader", "css-loader", "sass-loader"]
         },
         {

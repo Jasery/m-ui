@@ -9,10 +9,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -23,6 +20,7 @@
     "babel-eslint": "^10.1.0",
     "chai": "^4.1.2",
     "commitizen": "^4.1.2",
+    "core-js": "^3.6.5",
     "cz-conventional-changelog": "^3.2.0",
     "element-ui": "^2.13.2",
     "eslint": "^6.7.2",
@@ -31,7 +29,10 @@
     "lint-staged": "^9.5.0",
     "m-ui": "file:./",
     "prettier": "^1.19.1",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
     "standard-version": "^9.0.0",
+    "vue": "^2.6.11",
     "vue-styleguidist": "^4.31.0",
     "vue-template-compiler": "^2.6.11"
   },
