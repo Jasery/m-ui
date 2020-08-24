@@ -4,6 +4,7 @@ import Auth, { routerAuth, AuthObserver } from "./auth";
 import MCheckboxGroup from "./m-checkbox-group/MCheckboxGroup.vue";
 import BaseEnum from "./base-enum";
 import MUtils from "./utils";
+import MPagination from "./m-pagination/MPagination.vue";
 
 export {
   MSelect,
@@ -13,7 +14,8 @@ export {
   routerAuth,
   MCheckboxGroup,
   BaseEnum,
-  MUtils
+  MUtils,
+  MPagination
 };
 
 export default {
@@ -22,5 +24,6 @@ export default {
     Vue.component(MDatePicker.name, MDatePicker);
     Vue.component(MCheckboxGroup.name, MCheckboxGroup);
     Vue.use(Auth, options?.auth);
+    Vue.component(MPagination.name, MPagination);
   }
 };
