@@ -5,6 +5,7 @@ import MCheckboxGroup from "./m-checkbox-group/MCheckboxGroup.vue";
 import BaseEnum from "./base-enum";
 import MUtils from "./utils";
 import MPagination from "./m-pagination/MPagination.vue";
+import fixBottom from "./fix-bottom/fix-bottom";
 
 export {
   MSelect,
@@ -25,5 +26,7 @@ export default {
     Vue.component(MCheckboxGroup.name, MCheckboxGroup);
     Vue.use(Auth, options?.auth);
     Vue.component(MPagination.name, MPagination);
+
+    Vue.directive("fix-bottom", fixBottom);
   }
 };

@@ -10,6 +10,7 @@ const getDocs = dir =>
 
 const components = getDocs(path.resolve("./docs/components"));
 const tools = getDocs(path.resolve("./docs/tools"));
+const directives = getDocs(path.resolve("./docs/directives"));
 
 const sections = [
   {
@@ -20,6 +21,11 @@ const sections = [
     name: "Components",
     sectionDepth: 2,
     sections: components
+  },
+  {
+    name: "Directives",
+    sectionDepth: 2,
+    sections: directives
   },
   {
     name: "Tools",
