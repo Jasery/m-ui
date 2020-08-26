@@ -6,6 +6,7 @@ import BaseEnum from "./base-enum";
 import MUtils from "./utils";
 import MPagination from "./m-pagination/MPagination.vue";
 import fixBottom from "./fix-bottom/fix-bottom";
+import chainWebpack from "./config/chain-webpack";
 
 export {
   MSelect,
@@ -16,7 +17,8 @@ export {
   MCheckboxGroup,
   BaseEnum,
   MUtils,
-  MPagination
+  MPagination,
+  chainWebpack
 };
 
 export default {
