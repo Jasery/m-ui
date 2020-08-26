@@ -1,4 +1,4 @@
-export default function(config) {
+module.exports = function(config) {
   let jsRule = config.module.rule("js");
   let values = jsRule.exclude.values();
   jsRule.exclude.clear().add(filepath => {
@@ -10,4 +10,4 @@ export default function(config) {
       .some(exclude => exclude(filepath));
   });
   values.filter(ex => typeof ex !== "function").forEach(jsRule.exclude.add);
-}
+};
