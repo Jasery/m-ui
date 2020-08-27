@@ -21,6 +21,19 @@ export default class BaseEnum {
   }
 
   /**
+   * 获取指定key的prop
+   * @param {string|Number} value 枚举值
+   * @param {string} key prop key
+   */
+  static getProp(value, key) {
+    let props = this.getProps(value);
+    if (props) {
+      return props[key];
+    }
+    return null;
+  }
+
+  /**
    * 获取枚举列表
    * @return {{value: *, key: string, label: string props: *}[]} 枚举列表
    */
