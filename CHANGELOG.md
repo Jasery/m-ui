@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.2...v0.0.3) (2020-08-27)
+
+
+### Features
+
+* **base-enum:** 添加getProp方法 ([4ce908d](https://git.mingchao.com/zhangguoyun/m-ui/commit/4ce908de2f7c8708578de984e485a70887cdc44d))
+
 ### 0.0.2 (2020-08-26)
 
 
