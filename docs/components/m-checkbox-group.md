@@ -74,13 +74,13 @@ export default {
 兼容`el-checkbox-group`，新增以下prop
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
-| :---- | :---- | :---- | : ---- | 
+| :---- | :---- | :---- | :---- | :---- | 
 | options | 选项列表 | Array | --- | --- |
 | labelKey | options的元素作为label显示的key | string | --- | label |
 | valueKey | options的元素作为value的key | string | --- | value |
 | disabledKey |  options的元素禁用的key | string | --- | disabled |
 | single | 是否是单选 | boolean |  | false |
-| buttonStyle | 是否是按钮样式 | boolean | | false |
+| buttonStyle | 是否是按钮样式 | boolean | --- | false |
 
 调整以下默认值
 

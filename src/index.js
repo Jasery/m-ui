@@ -5,7 +5,8 @@ import MCheckboxGroup from "./m-checkbox-group/MCheckboxGroup.vue";
 import BaseEnum from "./base-enum";
 import MUtils from "./utils";
 import MPagination from "./m-pagination/MPagination.vue";
-import directives from "./directives";
+import MDirectives from "./directives";
+import MTable from "./m-table/MTable.vue";
 
 export {
   MSelect,
@@ -16,7 +17,9 @@ export {
   MCheckboxGroup,
   BaseEnum,
   MUtils,
-  MPagination
+  MPagination,
+  MDirectives,
+  MTable
 };
 
 export default {
@@ -26,7 +29,8 @@ export default {
     Vue.component(MCheckboxGroup.name, MCheckboxGroup);
     Vue.use(Auth, options?.auth);
     Vue.component(MPagination.name, MPagination);
+    Vue.component(MTable.name, MTable);
 
-    Vue.use(directives);
+    Vue.use(MDirectives);
   }
 };

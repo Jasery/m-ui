@@ -9,7 +9,9 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {},
+  "dependencies": {
+    "el-table-infinite-scroll": "^1.0.10"
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -29,6 +31,7 @@
     "lint-staged": "^9.5.0",
     "lodash": "^4.17.20",
     "m-ui": "file:./",
+    "mockjs": "^1.1.0",
     "prettier": "^1.19.1",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
