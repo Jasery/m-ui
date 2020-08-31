@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.3...v0.0.4) (2020-08-31)
+
+
+### Features
+
+* 添加m-table组件 ([6268a23](https://git.mingchao.com/zhangguoyun/m-ui/commit/6268a2358a10d4c76d2fabbd4e1d3cd7650b1afe))
+* 添加margin&padding指令 ([e93cce5](https://git.mingchao.com/zhangguoyun/m-ui/commit/e93cce5e223758775072707529438f468a903371))
+
 ### [0.0.3](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.2...v0.0.3) (2020-08-27)
 
 
