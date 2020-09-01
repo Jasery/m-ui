@@ -36,5 +36,21 @@ export default {
     }
     arr.splice(index, 1);
     return item;
+  },
+
+  setLocalStore(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+  },
+
+  getLocalStore(key) {
+    let store = localStorage.getItem(key);
+    if (store === null || store === undefined) {
+      return store;
+    }
+    return JSON.parse(store);
+  },
+
+  remoteLocalStore(key) {
+    localStorage.removeItem(key);
   }
 };
