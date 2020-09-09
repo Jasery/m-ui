@@ -7,6 +7,7 @@ import MUtils from "./utils";
 import MPagination from "./m-pagination/MPagination.vue";
 import MDirectives from "./directives";
 import MTable from "./m-table/MTable.vue";
+import Clipboard from "./clipboard";
 
 export {
   MSelect,
@@ -32,5 +33,6 @@ export default {
     Vue.component(MTable.name, MTable);
 
     Vue.use(MDirectives);
+    Vue.use(Clipboard);
   }
 };
