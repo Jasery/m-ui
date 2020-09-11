@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.5...v0.0.6) (2020-09-11)
+
+
+### Features
+
+* **clipboard:** 添加$copyText支持配置 ([3b2646d](https://git.mingchao.com/zhangguoyun/m-ui/commit/3b2646ddad435f4e3df71687c2d0630c9fffb595))
+
 ### [0.0.5](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.4...v0.0.5) (2020-09-11)
 
 
