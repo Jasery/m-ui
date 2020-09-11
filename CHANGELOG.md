@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.4...v0.0.5) (2020-09-11)
+
+
+### Features
+
+* 添加clipboard组件 ([8e0df90](https://git.mingchao.com/zhangguoyun/m-ui/commit/8e0df90b03eb71b47ada95ea5b42fe16a78e396d))
+* **utils:** 添加localStore相关方法 ([68792f9](https://git.mingchao.com/zhangguoyun/m-ui/commit/68792f9300ce2827c02a639c17b029cdee85d443))
+
 ### [0.0.4](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.3...v0.0.4) (2020-08-31)
 
 
