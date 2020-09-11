@@ -3,10 +3,12 @@ import Clipboard from "clipboard";
 function initClipboard(el, options) {
   let clipboard = new Clipboard(el, options);
   clipboard.on("success", function(e) {
+    e.clearSelection();
     let callback = el._vClipboard_success;
     callback && callback(e);
   });
   clipboard.on("error", function(e) {
+    e.clearSelection();
     let callback = el._vClipboard_error;
     callback && callback(e);
   });

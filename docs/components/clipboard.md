@@ -77,8 +77,13 @@ export default {
     <el-button 
       type="primary"
       size="small"
-      @click="onClick"
-    >点击复制</el-button>
+      @click="onClick1"
+    >点击复制文本</el-button>
+    <el-button 
+      type="primary"
+      size="small"
+      @click="onClick2"
+    >点击复制节点</el-button>
   </div>
 </template>
 <script>
@@ -87,9 +92,17 @@ export default {
     return {}
   },
   methods: {
-    onClick() {
-      this.$copyText('这是要复制的文本').then(() => {
-        this.$message.success('复制成功');
+    onClick1() {
+      this.$copyText("这是复制的文本")
+        .then(() => {
+          this.$message.success("复制文本成功");
+        })
+    },
+    onClick2() {
+      this.$copyText({
+        target: '#test-element'
+      }).then((e) => {
+        this.$message.success('复制节点成功');
       })
     }
   }

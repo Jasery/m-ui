@@ -1,3 +1,4 @@
+let gid = 0;
 export default {
   /**
    * 十位时间戳转Date对象
@@ -52,5 +53,25 @@ export default {
 
   remoteLocalStore(key) {
     localStorage.removeItem(key);
+  },
+
+  isString(arg) {
+    return typeof arg === "string";
+  },
+
+  isNumber(arg) {
+    return Number.isFinite(arg);
+  },
+
+  isUndefined(arg) {
+    return typeof arg === "undefined";
+  },
+
+  gid(prefix) {
+    gid++;
+    if (typeof prefix === "undefined") {
+      return gid;
+    }
+    return prefix.toString() + gid;
   }
 };
