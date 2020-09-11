@@ -7,7 +7,10 @@
     "dev": "vue-styleguidist server",
     "doc": "vue-styleguidist build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "gh-pages": "gh-pages -d ./site",
+    "version": "standard-version",
+    "release": "npm run version  && git push --follow-tags && npm run doc && npm run gh-pages"
   },
   "dependencies": {
     "clipboard": "^2.0.6",
@@ -29,6 +32,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
+    "gh-pages": "^3.1.0",
     "lint-staged": "^9.5.0",
     "lodash": "^4.17.20",
     "m-ui": "file:./",
