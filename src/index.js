@@ -3,7 +3,7 @@ import MDatePicker from "./m-date-picker/MDatePicker.vue";
 import Auth, { routerAuth, AuthObserver } from "./auth";
 import MCheckboxGroup from "./m-checkbox-group/MCheckboxGroup.vue";
 import BaseEnum from "./base-enum";
-import MUtils from "./utils";
+import * as MUtils from "./utils";
 import MPagination from "./m-pagination/MPagination.vue";
 import MDirectives from "./directives";
 import MTable from "./m-table/MTable.vue";
