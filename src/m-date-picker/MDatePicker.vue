@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Util from "../utils";
+import { dateToUnix, unixToDate } from "../utils";
 
 export default {
   name: "MDatePicker",
@@ -59,19 +59,19 @@ export default {
     },
     dateToVal(dateVal) {
       if (Array.isArray(dateVal)) {
-        return dateVal.map(Util.dateToUnix);
+        return dateVal.map(dateToUnix);
       }
       if (dateVal instanceof Date) {
-        return Util.dateToUnix(dateVal);
+        return dateToUnix(dateVal);
       }
       return dateVal;
     },
     valToDate(val) {
       if (Array.isArray(val)) {
-        return val.map(Util.unixToDate);
+        return val.map(unixToDate);
       }
       if (typeof val === "number") {
-        return Util.unixToDate(this.value);
+        return unixToDate(this.value);
       }
       return val;
     },
