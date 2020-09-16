@@ -1,5 +1,5 @@
 ### 描述
-针对clipboard.js做封装
+针对clipboard.js做封装，解决vue-clipboard2不能指定target问题
 
 ### 基本用法
 ```vue
@@ -118,11 +118,19 @@ export default {
 | :---- | :---- | :---- | :---- | :---- | 
 | text | 需要复制的文本 | string | --- | --- |
 | target | 需要复制的元素，填入选择器即可 | string | --- | --- |
-| action | 复制或剪切 | string | copy/cut | copy |
 | success |  成功的回调 | function | --- | --- |
 | error |  失败的回调 | function | --- | --- |
 
+
+### 指令修饰符
+
+| 修饰符 | 说明 |
+| :---- | :---- | 
+| cut | 剪切 |
+| copy | 复制（默认） |
+
+
 ### tips
-1. action必须在text或target前
-2. text或target可以省略，省略则先当做选择器查找元素，没有此元素则认为是text
+1. 指令参数可以省略，省略则先当做选择器查找元素，没有此元素则认为是text
+
 

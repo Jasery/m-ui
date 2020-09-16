@@ -1,6 +1,6 @@
 import directive from "./clipboard";
 import Clipboard from "clipboard";
-import Utils from "../utils";
+import { isString } from "../utils";
 
 export default {
   install(Vue) {
@@ -12,7 +12,7 @@ export default {
         let _options = {
           action: () => "copy"
         };
-        if (Utils.isString(options)) {
+        if (isString(options)) {
           _options.text = () => options;
         } else {
           if (options.action === "cut") {
@@ -26,6 +26,12 @@ export default {
               options.target instanceof HTMLElement
                 ? options.target
                 : document.querySelector(options.target);
+          }
+          if (options.container) {
+            _options.container =
+              options.container instanceof HTMLElement
+                ? options.container
+                : document.querySelector(options.container);
           }
         }
         const clipboard = new Clipboard(fakeElement, _options);

@@ -1,6 +1,13 @@
 import Clipboard from "clipboard";
+import { isString } from "../utils";
 
 function initClipboard(el, options) {
+  if (el._vClipboard_container) {
+    options = {
+      ...options,
+      container: document.querySelector(el._vClipboard_container)
+    };
+  }
   let clipboard = new Clipboard(el, options);
   clipboard.on("success", function(e) {
     e.clearSelection();
@@ -20,7 +27,8 @@ function getOptions({ action, target, text }) {
     action: getActionFunc(action)
   };
   if (target) {
-    options.target = () => document.querySelector(target);
+    options.target = () =>
+      target instanceof HTMLElement ? target : document.querySelector(target);
   }
   if (text) {
     options.text = () => text;
@@ -56,41 +64,42 @@ function updateClipboard(el, options) {
 
 export default {
   bind(el, binding) {
-    let { arg, value } = binding;
+    let { arg, value, modifiers } = binding;
+    let action = modifiers.cut ? "cut" : "copy";
     let options = null;
     switch (arg) {
-      case "action":
-        el._vClipboard_action = value;
-        break;
       case "success":
         el._vClipboard_success = binding.value;
         break;
       case "error":
         el._vClipboard_error = binding.value;
         break;
+      case "container":
+        el._vClipboard_container = value;
+        break;
       case "text":
         options = getOptions({
-          action: el._vClipboard_action,
+          action,
           text: value
         });
         initClipboard(el, options);
         break;
       case "target":
         options = getOptions({
-          action: el._vClipboard_action,
+          action,
           target: value
         });
         initClipboard(el, options);
         break;
       default:
-        if (document.querySelector(value)) {
+        if (isString(value) && document.querySelector(value)) {
           options = getOptions({
-            action: el._vClipboard_action,
+            action,
             target: value
           });
         } else {
           options = getOptions({
-            action: el._vClipboard_action,
+            action,
             text: value
           });
         }
@@ -104,8 +113,7 @@ export default {
       return;
     }
     if (!arg) {
-      let target = document.querySelector(target);
-      if (target) {
+      if (isString(value) && document.querySelector(value)) {
         arg = "target";
       } else {
         arg = "text";
