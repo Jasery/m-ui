@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.6...v0.0.7) (2020-09-18)
+
+
+### Features
+
+* **clipboard:** 添加clipboard的container支持，调整action为modifiers指定 ([79d39fc](https://git.mingchao.com/zhangguoyun/m-ui/commit/79d39fc5e1b67ee059a77b641adc59ec15ebcc3b))
+* **utils:** 修改utils导出方式 ([060c765](https://git.mingchao.com/zhangguoyun/m-ui/commit/060c76552f7cae40f463d5b4d479b30b1e04d436))
+
+
+### Bug Fixes
+
+* **mdatepicker:** 调整utils引用 ([e56ba3e](https://git.mingchao.com/zhangguoyun/m-ui/commit/e56ba3e44a749105722c34fc316f7de762e113ac))
+
 ### [0.0.6](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.5...v0.0.6) (2020-09-11)
 
 
