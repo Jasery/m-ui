@@ -73,3 +73,110 @@ export function gid(prefix) {
   }
   return prefix.toString() + _gid;
 }
+
+/**
+ * 判断是否为空对象或空数组
+ *
+ * @param {Object} obj 对象
+ * @return {Boolean}
+ */
+export function isEmpty(obj) {
+  for (const _ in obj) {
+    return false;
+  }
+  return true;
+}
+
+export function eachTree(
+  treeData,
+  callback,
+  childrenKey = "children",
+  parentNode
+) {
+  if (Array.isArray(treeData)) {
+    treeData.forEach((item, index) => {
+      callback(item, index, parentNode);
+      eachTree(item[childrenKey], callback, childrenKey, item);
+    });
+  } else if (Array.isArray(treeData[childrenKey])) {
+    eachTree(treeData[childrenKey], callback, childrenKey, treeData);
+  }
+}
+
+export function filterTree(
+  treeData = [],
+  callback,
+  childrenKey = "children",
+  parentNode = null
+) {
+  let filterTreeData = treeData;
+  if (Array.isArray(treeData)) {
+    filterTreeData = treeData.filter(item => {
+      try {
+        let res = callback(item, parentNode);
+        if (res && item[childrenKey]) {
+          item[childrenKey] = filterTree(
+            item[childrenKey],
+            callback,
+            childrenKey,
+            item
+          );
+        }
+        return res;
+      } catch (e) {
+        console.error("filter tree err", e);
+        return false;
+      }
+    });
+  } else if (Array.isArray(treeData[childrenKey])) {
+    filterTreeData = filterTree(
+      treeData[childrenKey],
+      callback,
+      childrenKey,
+      treeData
+    );
+  }
+  return filterTreeData;
+}
+
+/**
+ * 查找树型数据的某个节点
+ * @param treeData 树形数据
+ * @param callback 条件回调函数，返回true表示需要查找的节点接收当前节点跟当前父节点两个参数
+ * @param childrenKey 子节点的key
+ * @param parentNode 默认callback父节点，可不传
+ * @returns {any|null} 查找到的节点
+ */
+export function findTreeNode(
+  treeData,
+  callback,
+  childrenKey = "children",
+  parentNode = null
+) {
+  if (Array.isArray(treeData)) {
+    for (const item of treeData) {
+      try {
+        let hasFind = callback(item, parentNode);
+        if (hasFind) {
+          return item;
+        }
+        if (Array.isArray(item[childrenKey])) {
+          let targetItem = findTreeNode(
+            item[childrenKey],
+            callback,
+            childrenKey,
+            item
+          );
+          if (targetItem) {
+            return targetItem;
+          }
+        }
+      } catch (e) {
+        console.error("error in findTreeNode callback", e);
+      }
+    }
+  } else if (Array.isArray(treeData[childrenKey])) {
+    return findTreeNode(treeData[childrenKey], callback, childrenKey, treeData);
+  }
+  return null;
+}
