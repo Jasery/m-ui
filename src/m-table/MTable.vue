@@ -3,6 +3,7 @@
     <el-table
       ref="table"
       v-el-table-infinite-scroll="load"
+      :height="tableHeight"
       :header-row-class-name="headerRowClass"
       :infinite-scroll-disabled="noMore"
       :infinite-scroll-distance="infiniteScrollDistance"
@@ -74,7 +75,7 @@ export default {
     },
     scrollLoading: Boolean,
     noMore: Boolean,
-    fixedBottom: Boolean,
+    fixedBottom: Number,
     height: {
       type: [Number, String],
       default: "auto"
