@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://git.mingchao.com///compare/v0.0.7...v0.0.8) (2020-09-23)
+
+
+### Features
+
+* **utils:** 添加常用工具方法 ([fafb3a6](https://git.mingchao.com///commit/fafb3a63ec9417ec3b117e2c59e26039c3aa74f6))
+
+
+### Bug Fixes
+
+* **m-table:** 修复fixedBottom属性不生效问题 ([3dab430](https://git.mingchao.com///commit/3dab4307d649cd987b8cb336c83ba862c3a20b70))
+
 ### [0.0.7](https://git.mingchao.com/zhangguoyun/m-ui/compare/v0.0.6...v0.0.7) (2020-09-18)
 
 
