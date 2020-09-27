@@ -9,6 +9,8 @@ import MDirectives from "./directives";
 import MTable from "./m-table/MTable.vue";
 import Clipboard from "./clipboard";
 
+import "./style/util.scss";
+
 export {
   MSelect,
   MDatePicker,

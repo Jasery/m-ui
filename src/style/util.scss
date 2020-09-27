@@ -1,0 +1,142 @@
+/* 常用css工具封装 */
+
+// padding, margin
+$rangeStart: 0;
+$rangeEnd: 64;
+$step: 2;
+$fullSides: (t, b, l, r, v, h, f);
+$sides: (t, b, l, r);
+
+$current: $rangeStart;
+@while($current <= $rangeEnd) {
+  @each $side in $fullSides {
+    .mg-#{$side}-#{$current} {
+      @if $side == 't' { margin-top: #{$current}px !important; }
+      @if $side == 'b' { margin-bottom: #{$current}px !important; }
+      @if $side == 'l' { margin-left: #{$current}px !important; }
+      @if $side == 'r' { margin-right: #{$current}px !important; }
+      @if $side == 'v' { margin-bottom: #{$current}px !important; margin-top: #{$current}px !important; }
+      @if $side == 'h' { margin-left: #{$current}px !important; margin-right: #{$current}px !important; }
+      @if $side == 'f' { margin: #{$current}px !important; }
+    }
+    .mg-#{$side}-a {
+      @if $side == 't' { margin-top: auto; }
+      @if $side == 'b' { margin-bottom: auto; }
+      @if $side == 'l' { margin-left: auto; }
+      @if $side == 'r' { margin-right: auto; }
+      @if $side == 'v' { margin-bottom: auto; margin-top: auto; }
+      @if $side == 'h' { margin-left: auto; margin-right: auto; }
+      @if $side == 'f' { margin: auto; }
+    }
+    .pd-#{$side}-#{$current} {
+      @if $side == 't' { padding-top: #{$current}px !important; }
+      @if $side == 'b' { padding-bottom: #{$current}px !important; }
+      @if $side == 'l' { padding-left: #{$current}px !important; }
+      @if $side == 'r' { padding-right: #{$current}px !important; }
+      @if $side == 'v' { padding-bottom: #{$current}px !important; padding-top: #{$current}px !important; }
+      @if $side == 'h' { padding-left: #{$current}px !important; padding-right: #{$current}px !important; }
+      @if $side == 'f' { padding: #{$current}px !important; }
+    }
+  }
+  $current: $current + $step;
+}
+
+// align
+.ta-l {text-align: left !important;}
+.ta-r {text-align: right !important;}
+.ta-c {text-align: center !important;}
+
+// display
+.dp-i {display: inline;}
+.dp-b {display: block;}
+.dp-ib {display: inline-block;}
+.dp-n {display: none;}
+.dp-f {display: flex;}
+
+// float
+.f-l {float: left;}
+.f-r {float: right};
+
+// clear fix
+.c-f {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// cursor
+.cur-p {cursor: pointer;}
+.cur-h {cursor: help;}
+.cur-w {cursor: wait;}
+.cur-ch {cursor: crosshair;}
+.cur-na {cursor: not-allowed;}
+.cur-zi {cursor: zoom-in;}
+
+// font size
+$fontRangeStart: 12;
+$fontSizeStep: 2;
+$current: $fontRangeStart;
+@while($current <= $rangeEnd) {
+  .fs-#{$current} {font-size: #{$current}px;}
+  $current: $current + $fontSizeStep;
+}
+
+// flex
+.flex-column  { flex-direction: column; }
+.flex-wrap    { flex-wrap: wrap; }
+
+.items-start    { align-items: flex-start; }
+.items-end      { align-items: flex-end; }
+.items-center   { align-items: center; }
+.items-baseline { align-items: baseline; }
+.items-stretch  { align-items: stretch; }
+
+.self-start    { align-self: flex-start; }
+.self-end      { align-self: flex-end; }
+.self-center   { align-self: center; }
+.self-baseline { align-self: baseline; }
+.self-stretch  { align-self: stretch; }
+
+.justify-start   { justify-content: flex-start; }
+.justify-end     { justify-content: flex-end; }
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around  { justify-content: space-around; }
+.justify-evenly  { justify-content: space-evenly; }
+
+.content-start   { align-content: flex-start; }
+.content-end     { align-content: flex-end; }
+.content-center  { align-content: center; }
+.content-between { align-content: space-between; }
+.content-around  { align-content: space-around; }
+.content-stretch { align-content: stretch; }
+
+// overflow
+.of-h {overflow: hidden;}
+.of-s {overflow: scroll;}
+.of-a {overflow: auto;}
+.of-x-s {overflow-x: scroll;}
+.of-y-s {overflow-y: scroll;}
+
+// position
+.p-r {position: relative;}
+.p-a {position: absolute;}
+.p-f {position: fixed;}
+
+$positionRangeStart: 0;
+$positionStep: 2;
+$current: $positionRangeStart;
+@while($current <= $rangeEnd) {
+  @each $side in $sides {
+    .#{$side}-#{$current} {
+      @if $side == 't' { top: #{$current}px; }
+      @if $side == 'b' { bottom: #{$current}px; }
+      @if $side == 'l' { left: #{$current}px; }
+      @if $side == 'r' { right: #{$current}px; }
+    }
+  }
+  $current: $current + $positionStep;
+}
