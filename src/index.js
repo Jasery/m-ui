@@ -8,6 +8,7 @@ import MPagination from "./m-pagination/MPagination.vue";
 import MDirectives from "./directives";
 import MTable from "./m-table/MTable.vue";
 import Clipboard from "./clipboard";
+import MEditableText from "./m-editable-text/MEditableText.vue";
 
 import "./style/util.scss";
 
@@ -33,6 +34,7 @@ export default {
     Vue.use(Auth, options?.auth);
     Vue.component(MPagination.name, MPagination);
     Vue.component(MTable.name, MTable);
+    Vue.component(MEditableText.name, MEditableText);
 
     Vue.use(MDirectives);
     Vue.use(Clipboard);

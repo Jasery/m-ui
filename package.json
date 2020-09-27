@@ -13,6 +13,7 @@
     "release": "npm run version  && git push --follow-tags && npm run doc && npm run gh-pages"
   },
   "dependencies": {
+    "async-validator": "^3.4.0",
     "clipboard": "^2.0.6",
     "el-table-infinite-scroll": "^1.0.10"
   },

@@ -180,3 +180,19 @@ export function findTreeNode(
   }
   return null;
 }
+
+/**
+ * 样式数值转换为数字，不能转换成功则原样返回
+ * @param {*} val 需要转换的内容
+ */
+export function parseStyleNum(val) {
+  if (isNumber(val)) {
+    return val;
+  }
+  let num = Number.parseFloat(val);
+  return Number.isNaN(num) ? val : num;
+}
+
+export function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
