@@ -9,6 +9,7 @@ import MDirectives from "./directives";
 import MTable from "./m-table/MTable.vue";
 import Clipboard from "./clipboard";
 import MEditableText from "./m-editable-text/MEditableText.vue";
+import MQueryForm from "./m-query-form/MQueryForm.vue";
 
 import "./style/util.scss";
 
@@ -35,6 +36,7 @@ export default {
     Vue.component(MPagination.name, MPagination);
     Vue.component(MTable.name, MTable);
     Vue.component(MEditableText.name, MEditableText);
+    Vue.component(MQueryForm.name, MQueryForm);
 
     Vue.use(MDirectives);
     Vue.use(Clipboard);
