@@ -93,6 +93,9 @@ export function eachTree(
   childrenKey = "children",
   parentNode
 ) {
+  if (!treeData) {
+    return;
+  }
   if (Array.isArray(treeData)) {
     treeData.forEach((item, index) => {
       callback(item, index, parentNode);
@@ -153,6 +156,9 @@ export function findTreeNode(
   childrenKey = "children",
   parentNode = null
 ) {
+  if (!treeData) {
+    return null;
+  }
   if (Array.isArray(treeData)) {
     for (const item of treeData) {
       try {
