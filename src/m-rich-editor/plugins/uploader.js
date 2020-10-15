@@ -52,11 +52,16 @@ export default function uploader(files, editor) {
       if (xhr.status !== 200) {
         reject(xhr.responseText);
       } else {
-        let res = JSON.parse(xhr.responseText);
-        if (res && res.errno === 0) {
-          resolve(res.data);
-        } else {
-          reject("invalid JSON: " + xhr.responseText);
+        try {
+          let res = JSON.parse(xhr.responseText);
+          if (res && res.errno === 0) {
+            resolve(res.data);
+          } else {
+            let msg = res.msg || xhr.responseText;
+            reject(msg);
+          }
+        } catch (error) {
+          reject(xhr.responseText);
         }
       }
     };

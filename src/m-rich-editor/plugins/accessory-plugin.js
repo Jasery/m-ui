@@ -69,10 +69,20 @@ class AccessoryMenu extends BtnMenu {
       customAlert("禁止上传此类型文件");
       return;
     }
-    uploader([file], this.editor).then(urls => {
-      let tag = `<br ><a href="${urls[0]}" target="_blank">附件：${file.name}</a>`;
-      this.editor.cmd.do("insertHTML", tag);
-    });
+    let editor = this.editor;
+    editor.config.showLoading && editor.config.showLoading();
+    uploader([file], editor)
+      .then(urls => {
+        let tag = `<br ><a href="${urls[0]}" target="_blank">附件：${file.name}</a>`;
+        editor.cmd.do("insertHTML", tag);
+      })
+      .catch(msg => {
+        let customAlert = editor.config.customAlert || alert;
+        customAlert(msg);
+      })
+      .finally(() => {
+        editor.config.hideLoading && editor.config.hideLoading();
+      });
   }
 }
 

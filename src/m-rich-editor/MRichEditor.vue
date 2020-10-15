@@ -1,5 +1,13 @@
 <template>
-  <div :id="id"></div>
+  <div class="m-rich-editor">
+    <div class="editor" :id="id"></div>
+    <div
+      class="loading"
+      v-show="loading"
+      v-loading="loading"
+      ref="loading"
+    ></div>
+  </div>
 </template>
 
 <script>
@@ -62,7 +70,7 @@ export default {
   data() {
     return {
       id: "",
-      init: {}
+      loading: false
     };
   },
   watch: {
@@ -100,7 +108,8 @@ export default {
       editor.config.uploadImgServer = this.uploadUrl;
       editor.config.customAlert = this.$message.error || alert;
       editor.config.menus = this.memus;
-
+      editor.config.showLoading = this.showLoading.bind(this);
+      editor.config.hideLoading = this.hideLoading.bind(this);
       if (this.editorOptions) {
         objEach(this.editorOptions, (key, value) => {
           this.editor.config[key] = value;
@@ -123,9 +132,31 @@ export default {
       if (this.editor) {
         this.editor.$textElem.attr("contenteditable", !this.disabled);
       }
+    },
+
+    showLoading() {
+      let editorContainer = this.$el.querySelector(".w-e-text-container");
+      let rect = editorContainer.getBoundingClientRect();
+      let loadingEl = this.$refs.loading;
+      loadingEl.style.top = rect.top + "px";
+      loadingEl.style.left = rect.left + "px";
+      loadingEl.style.width = rect.width + "px";
+      loadingEl.style.height = rect.height + "px";
+      this.loading = true;
+    },
+
+    hideLoading() {
+      this.loading = false;
     }
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.m-rich-editor {
+  .loading {
+    position: fixed;
+    z-index: 10086;
+  }
+}
+</style>

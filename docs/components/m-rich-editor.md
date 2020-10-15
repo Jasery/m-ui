@@ -9,7 +9,7 @@
   <div>
     <m-rich-editor 
       v-model="text"
-      upload-path="http://192.168.5.122:8088/upload"
+      upload-url="http://192.168.5.122:8088/upload"
     ></m-rich-editor>
   </div>
 </template>

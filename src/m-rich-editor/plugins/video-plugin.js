@@ -137,9 +137,19 @@ class VideoMenu extends PanelMenu {
   }
 
   uploadVideo(file) {
-    uploader([file], this.editor).then(urls => {
-      insertVideo(urls[0], this.editor);
-    });
+    let editor = this.editor;
+    editor.config.showLoading && editor.config.showLoading();
+    uploader([file], editor)
+      .then(urls => {
+        insertVideo(urls[0], editor);
+      })
+      .catch(msg => {
+        let customAlert = editor.config.customAlert || alert;
+        customAlert(msg);
+      })
+      .finally(() => {
+        editor.config.hideLoading && editor.config.hideLoading();
+      });
   }
 
   tryChangeActive() {}
