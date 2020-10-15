@@ -25,7 +25,10 @@ export {
   MUtils,
   MPagination,
   MDirectives,
-  MTable
+  MTable,
+  MEditableText,
+  MQueryForm,
+  MRichEditor
 };
 
 export default {
