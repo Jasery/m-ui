@@ -202,3 +202,14 @@ export function parseStyleNum(val) {
 export function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+export function objEach(obj, fn) {
+  for (let key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const result = fn(key, obj[key]);
+      if (result === false) {
+        break;
+      }
+    }
+  }
+}
