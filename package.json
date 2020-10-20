@@ -5,9 +5,10 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "vue-styleguidist server",
-    "doc": "vue-styleguidist build",
+    "doc": "vue-styleguidist build && vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
+    "serve": "vue-cli-service serve",
     "gh-pages": "gh-pages -d ./site",
     "version": "standard-version",
     "release": "npm run version  && git push --follow-tags && npm run doc && npm run gh-pages"
@@ -15,9 +16,10 @@
   "dependencies": {
     "async-validator": "^3.4.0",
     "clipboard": "^2.0.6",
+    "docx2html": "git+https://git.mingchao.com/git/mcwebfe-deps/docx2html.git#v1.3.4",
     "el-table-infinite-scroll": "^1.0.10",
-    "wangeditor": "^4.0.3",
-    "docx2html": "git+https://git.mingchao.com/git/mcwebfe-deps/docx2html.git#v1.3.4"
+    "vue-router": "^3.4.7",
+    "wangeditor": "^4.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
