@@ -3,10 +3,7 @@ const SCOPE_KEY = "__AUTH_SCOPE__";
 const hasScope = elNode => typeof elNode[SCOPE_KEY] === "string";
 
 function getAuthScope(el) {
-  if (hasScope(el)) {
-    return el[SCOPE_KEY];
-  }
-  let node = el.parentNode;
+  let node = el;
   while (node) {
     if (hasScope(node)) {
       return node[SCOPE_KEY];
