@@ -11,6 +11,7 @@ import Clipboard from "./clipboard";
 import MEditableText from "./m-editable-text/MEditableText.vue";
 import MQueryForm from "./m-query-form/MQueryForm.vue";
 import MRichEditor from "./m-rich-editor/MRichEditor.vue";
+import MLayout from "./m-layout/MLayout.vue";
 
 import "./style/util.scss";
 
@@ -42,6 +43,7 @@ export default {
     Vue.component(MEditableText.name, MEditableText);
     Vue.component(MQueryForm.name, MQueryForm);
     Vue.component(MRichEditor.name, MRichEditor);
+    Vue.component(MLayout.name, MLayout);
 
     Vue.use(MDirectives);
     Vue.use(Clipboard);
