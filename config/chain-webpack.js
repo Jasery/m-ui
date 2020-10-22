@@ -10,4 +10,5 @@ module.exports = function(config) {
       .some(exclude => exclude(filepath));
   });
   values.filter(ex => typeof ex !== "function").forEach(jsRule.exclude.add);
+  config.externals({ fs: "fs" });
 };
