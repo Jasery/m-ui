@@ -9,6 +9,10 @@
       :class="{ 'hide-header': !hasHeader }"
       :style="headerStyle"
     >
+      <div v-if="showLogo" class="logo-container">
+        <img class="logo-img" :src="logo" />
+        <h1 class="title">{{ appName }}</h1>
+      </div>
       <slot name="header"></slot>
     </header>
     <aside
@@ -79,6 +83,8 @@
 <script>
 import { isNumber } from "../utils";
 
+import defaultLogo from "./logo.png";
+
 export default {
   name: "MLayout",
   props: {
@@ -118,7 +124,19 @@ export default {
       type: Boolean,
       default: true
     },
-    showAsideToggleTag: Boolean
+    showAsideToggleTag: Boolean,
+    logo: {
+      type: String,
+      default: defaultLogo
+    },
+    appName: {
+      type: String,
+      default: "后台名称"
+    },
+    showLogo: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {};
@@ -178,6 +196,23 @@ $colorBrand: #409eff !default;
     right: 0;
     &.hide-header {
       top: -$headerHeight;
+    }
+    .logo-container {
+      width: $asideWidth;
+      display: flex;
+      height: 100%;
+      float: left;
+      justify-content: center;
+      align-items: center;
+      .logo-img {
+        width: 36px;
+        height: 36px;
+      }
+      .title {
+        font-size: 18px;
+        color: #fff;
+        margin: 0 0 0 10px;
+      }
     }
   }
   .aside-container {
