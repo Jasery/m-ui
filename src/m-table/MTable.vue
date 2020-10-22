@@ -32,7 +32,18 @@
         <div v-if="noMore" v-padding="20" style="text-align: center">
           没有更多了
         </div>
-        <div v-else v-loading="scrollLoading" style="height:50px"></div>
+        <div
+          v-else
+          v-show="scrollLoading"
+          v-loading="scrollLoading"
+          style="height:50px"
+        ></div>
+      </template>
+      <template #empty>
+        <div class="empty-container">
+          <img :src="emptySvg" alt="no data" />
+          <span>{{ $attrs["empty-text"] || "暂无数据" }}</span>
+        </div>
       </template>
     </el-table>
     <m-pagination
@@ -57,6 +68,8 @@ import _ from "lodash";
 import ElTableInfiniteScroll from "el-table-infinite-scroll";
 import MPagination from "../m-pagination/MPagination";
 import padding from "../directives/padding";
+
+import emptySvg from "./empty.svg";
 
 export default {
   name: "MTable",
@@ -94,7 +107,8 @@ export default {
   },
   data() {
     return {
-      tableHeight: this.height
+      tableHeight: this.height,
+      emptySvg
     };
   },
   computed: {
@@ -166,5 +180,9 @@ export default {
 <style lang="scss">
 .m-table-header th {
   background-color: #fafafa !important;
+}
+.empty-container {
+  display: flex;
+  flex-direction: column;
 }
 </style>

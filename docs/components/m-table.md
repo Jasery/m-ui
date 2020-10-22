@@ -62,6 +62,7 @@ export default {
       :page-size.sync="pageSize"
       :total="total"
       :table-loading="loading"
+      :height="400"
       @page-change="fetch"
     ></m-table>
   </div>
