@@ -202,6 +202,7 @@ export default {
 | 事件名称 | 说明 | 参数 |
 | :---- | :---- | :---- |
 | submit | 提交事件 | model |
+| collapse | 折叠事件 | collapse |
 
 ---
 

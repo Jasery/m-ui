@@ -90,6 +90,7 @@ export default {
   methods: {
     onCollapse() {
       this.collapse = !this.collapse;
+      this.$emit("collapse", this.collapse);
     },
     filterFormItems() {
       let formItems = (this.$slots.default || []).filter(item => item.tag);
