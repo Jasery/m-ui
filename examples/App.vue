@@ -1,12 +1,14 @@
 <template>
-  <div v->
-    this is m-ui example page
-    <el-button type="primary">btn</el-button>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+body {
+  padding: 0;
+  margin: 0;
+}
+</style>
