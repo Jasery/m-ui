@@ -110,7 +110,9 @@ export default {
     },
     "$attrs.data": function() {
       this.$nextTick(() => {
-        this.setTableHeight();
+        if (this.fixedBottom) {
+          this.setTableHeight();
+        }
       });
     }
   },

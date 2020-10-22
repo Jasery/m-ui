@@ -64,7 +64,7 @@ module.exports = {
           loaders: ["vue-style-loader", "css-loader", "sass-loader"]
         },
         {
-          test: /\.(woff2?|eot|[ot]tf)(\?.*)?$/,
+          test: /\.(woff2?|eot|[ot]tf|png|jpg)(\?.*)?$/,
           loader: "file-loader"
         }
       ]
