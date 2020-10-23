@@ -12,6 +12,7 @@ import MEditableText from "./m-editable-text/MEditableText.vue";
 import MQueryForm from "./m-query-form/MQueryForm.vue";
 import MRichEditor from "./m-rich-editor/MRichEditor.vue";
 import MLayout from "./m-layout/MLayout.vue";
+import MProTable from "./m-pro-table/MProTable.vue";
 
 import "./style/util.scss";
 
@@ -29,7 +30,9 @@ export {
   MTable,
   MEditableText,
   MQueryForm,
-  MRichEditor
+  MRichEditor,
+  MLayout,
+  MProTable
 };
 
 export default {
@@ -44,6 +47,7 @@ export default {
     Vue.component(MQueryForm.name, MQueryForm);
     Vue.component(MRichEditor.name, MRichEditor);
     Vue.component(MLayout.name, MLayout);
+    Vue.component(MProTable.name, MProTable);
 
     Vue.use(MDirectives);
     Vue.use(Clipboard);

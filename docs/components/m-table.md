@@ -265,3 +265,4 @@ columns 里面的元素数据格式兼容`el-table-column`的props，并新增�
 | 方法名 | 说明 | 参数 |
 | :---- | :---- | :---- |
 | getElTable | 获取el-table组件实例，以调用其方法 | --- |
+| setTableHeight | 对应设置的fixBottom的，可以调用此方法更新表格高度 | --- |

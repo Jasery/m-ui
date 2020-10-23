@@ -12,6 +12,7 @@
       v-on="$listeners"
       v-loading="tableLoading"
     >
+      <slot></slot>
       <el-table-column
         v-for="(col, index) in columns"
         :key="index"
@@ -27,7 +28,6 @@
           <compnent :is="col.component" v-bind="scope"></compnent>
         </template>
       </el-table-column>
-      <slot></slot>
       <template #append>
         <div v-if="noMore" v-padding="20" style="text-align: center">
           没有更多了
@@ -124,9 +124,7 @@ export default {
     },
     "$attrs.data": function() {
       this.$nextTick(() => {
-        if (this.fixedBottom) {
-          this.setTableHeight();
-        }
+        this.setTableHeight();
       });
     }
   },
@@ -169,6 +167,9 @@ export default {
     },
 
     setTableHeight() {
+      if (!this.fixedBottom) {
+        return;
+      }
       let { top } = this.$refs.table.$el.getBoundingClientRect();
       this.tableHeight =
         window.innerHeight - top - this.fixedBottom + Math.random();
