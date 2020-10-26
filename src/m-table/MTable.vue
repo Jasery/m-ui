@@ -68,6 +68,7 @@ import _ from "lodash";
 import ElTableInfiniteScroll from "el-table-infinite-scroll";
 import MPagination from "../m-pagination/MPagination";
 import padding from "../directives/padding";
+import { isNumber } from "../utils";
 
 import emptySvg from "./empty.svg";
 
@@ -114,6 +115,9 @@ export default {
   computed: {
     headerRowClass() {
       return this.headerRowClassName + " m-table-header";
+    },
+    isFixedBottom() {
+      return isNumber(this.fixedBottom);
     }
   },
   watch: {
@@ -129,7 +133,7 @@ export default {
     }
   },
   mounted() {
-    if (this.fixedBottom) {
+    if (this.isFixedBottom) {
       let onResize = _.throttle(this.setTableHeight.bind(this));
       window.addEventListener("resize", onResize);
       this.$once("hook:beforeDestroy", () => {
@@ -167,7 +171,7 @@ export default {
     },
 
     setTableHeight() {
-      if (!this.fixedBottom) {
+      if (!this.isFixedBottom) {
         return;
       }
       let { top } = this.$refs.table.$el.getBoundingClientRect();

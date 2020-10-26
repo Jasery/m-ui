@@ -61,5 +61,6 @@ export default {
 <style lang="scss" scoped>
 .m-pagination {
   text-align: right;
+  padding: 10px;
 }
 </style>
