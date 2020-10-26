@@ -22,7 +22,7 @@
         :infinite-scroll="isScroll"
         :scroll-loading="scrollLoading"
         :noMore="noMore"
-        :fixed-bottom="fixBottom"
+        :fixed-bottom="tableFixedBottom"
         :height="height"
         :columns="columns"
         :page-size="pageSize"
@@ -49,7 +49,7 @@
 <script>
 import MTable from "../m-table/MTable";
 import MQueryForm from "../m-query-form/MQueryForm";
-import { isUndefined } from "../utils";
+import { isUndefined, isNumber } from "../utils";
 
 export default {
   name: "MProTable",
@@ -70,7 +70,7 @@ export default {
       }
     },
     height: [Number, String],
-    fixBottom: Number,
+    fixedBottom: Number,
     showSelection: {
       type: Boolean,
       default: true
@@ -106,6 +106,12 @@ export default {
         }
         return acc;
       }, []);
+    },
+    tableFixedBottom() {
+      if (isNumber(this.fixedBottom)) {
+        return this.isPagination ? this.fixedBottom + 50 : this.fixedBottom;
+      }
+      return null;
     }
   },
   mounted() {
@@ -203,6 +209,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       h1 {
+        font-size: 16px;
         margin: 20px 0;
       }
     }
