@@ -9,7 +9,7 @@
       :class="{ 'hide-header': !hasHeader }"
       :style="headerStyle"
     >
-      <div v-if="showLogo" class="logo-container">
+      <div v-if="showLogo" class="logo-container" @click="onLogoClick">
         <img class="logo-img" :src="logo" />
         <h1 class="title">{{ appName }}</h1>
       </div>
@@ -31,6 +31,9 @@
           :default-active="menuDefaultActive"
           :collapse="collapse"
           :collapse-transition="animate"
+          backgroundColor="#42485c"
+          text-color="#fff"
+          active-text-color="#fff"
           v-bind="menuConfig"
           @select="(index, indexPath) => $emit('menu-select', index, indexPath)"
         >
@@ -163,12 +166,18 @@ export default {
   methods: {
     getNumStyle(val) {
       return isNumber(val) ? val + "px" : val;
+    },
+
+    onLogoClick() {
+      if (this.$router) {
+        this.$router.push("/");
+      }
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $asideWidth: 256px !default;
 $asideCollapseWidth: 64px !default;
 $headerHeight: 64px !default;
@@ -204,14 +213,11 @@ $colorBrand: #409eff !default;
       float: left;
       justify-content: center;
       align-items: center;
-      .logo-img {
-        width: 36px;
-        height: 36px;
-      }
+      cursor: pointer;
       .title {
         font-size: 18px;
         color: #fff;
-        margin: 0 0 0 10px;
+        margin: 0 0 0 20px;
       }
     }
   }
@@ -246,6 +252,10 @@ $colorBrand: #409eff !default;
       .el-menu:not(.el-menu--collapse) {
         width: $asideWidth;
         box-sizing: border-box;
+      }
+      .el-menu-item:hover,
+      .el-menu-item.is-active {
+        background-color: #1890ff !important;
       }
     }
     .collapse-icon {
