@@ -4,7 +4,6 @@
     :menu-config="menuConfig"
     :menu-default-active="menuDefaultActive"
     :collapse.sync="asideCollapse"
-    :show-logo="false"
   >
     <template #header>
       header
