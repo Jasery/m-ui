@@ -5,6 +5,7 @@
         :model="queryModel"
         :submitLoading="loading"
         @submit="fetchData"
+        @collapse="onQueryFormCollapse"
       >
         <slot name="query"></slot>
       </m-query-form>
@@ -17,6 +18,7 @@
         </div>
       </div>
       <m-table
+        ref="mTable"
         :data="tableData"
         :pagination="isPagination"
         :infinite-scroll="isScroll"
@@ -189,6 +191,11 @@ export default {
 
     getSelection() {
       return this.selection;
+    },
+
+    async onQueryFormCollapse() {
+      await this.$nextTick();
+      this.$refs.mTable.setTableHeight();
     }
   }
 };
