@@ -13,6 +13,7 @@
         v-for="(item, index) in filterFormItems()"
         :key="index"
         :span="colSpan"
+        v-show="isFormItemShow(index)"
       >
         <v-node :content="item"></v-node>
       </el-col>
@@ -73,7 +74,9 @@ export default {
       return 24 / this.col;
     },
     btnContainerOffset() {
-      let colCount = this.filterFormItems().length;
+      let colCount = this.collapse
+        ? this.col - 1
+        : this.filterFormItems().length;
       return this.col - (colCount % this.col) - 1;
     }
   },
@@ -92,22 +95,29 @@ export default {
       this.collapse = !this.collapse;
       this.$emit("collapse", this.collapse);
     },
+
+    // computed not work
     filterFormItems() {
-      let formItems = (this.$slots.default || []).filter(item => item.tag);
-      if (this.collapse) {
-        return formItems.slice(0, 2);
+      return (this.$slots.default || []).filter(item => item.tag);
+    },
+
+    isFormItemShow(index) {
+      if (index < this.col - 1) {
+        return true;
       }
-      return formItems;
+      return !this.collapse;
     },
 
     onFormResize() {
       let { width } = this.$refs.form.$el.getBoundingClientRect();
       if (width < 500) {
         this.col = 1;
-      } else if (width < 750) {
+      } else if (width < 950) {
         this.col = 2;
-      } else {
+      } else if (width < 1500) {
         this.col = 3;
+      } else {
+        this.col = 4;
       }
     },
 
@@ -126,6 +136,11 @@ export default {
   width: 100%;
   .el-form-item__content {
     width: calc(100% - 100px);
+    & > .el-input,
+    & > .el-date-editor,
+    & > .el-select {
+      width: 100%;
+    }
   }
   &.btn {
     .el-form-item__content {
