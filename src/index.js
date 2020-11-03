@@ -13,6 +13,7 @@ import MQueryForm from "./m-query-form/MQueryForm.vue";
 import MRichEditor from "./m-rich-editor/MRichEditor.vue";
 import MLayout from "./m-layout/MLayout.vue";
 import MProTable from "./m-pro-table/MProTable.vue";
+import request from "./request";
 
 import "./style/util.scss";
 
@@ -32,7 +33,8 @@ export {
   MQueryForm,
   MRichEditor,
   MLayout,
-  MProTable
+  MProTable,
+  request
 };
 
 export default {
