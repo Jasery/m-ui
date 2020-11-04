@@ -66,6 +66,10 @@ export function isUndefined(arg) {
   return typeof arg === "undefined";
 }
 
+export function isFunction(arg) {
+  return typeof arg === "function";
+}
+
 export function gid(prefix) {
   _gid++;
   if (isUndefined(prefix)) {

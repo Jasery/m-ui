@@ -16,10 +16,23 @@
       <el-table-column
         v-for="(col, index) in columns"
         :key="index"
-        v-bind="col"
+        v-bind="getColumnProps(col)"
       >
-        <template v-if="col.headerSlotName" v-slot:header="scope">
-          <slot :name="col.headerSlotName" v-bind="scope"></slot>
+        <template
+          v-if="col.headerSlotName || col.headerTips"
+          v-slot:header="scope"
+        >
+          <slot
+            v-if="col.headerSlotName"
+            :name="col.headerSlotName"
+            v-bind="scope"
+          ></slot>
+          <span v-if="col.headerTips">
+            {{ col.label }}
+            <el-tooltip :content="col.headerTips" placement="top">
+              <i class="el-icon-info cur-p"></i>
+            </el-tooltip>
+          </span>
         </template>
         <template v-if="col.slotName" v-slot:default="scope">
           <slot :name="col.slotName" v-bind="scope"></slot>
@@ -68,7 +81,7 @@ import _ from "lodash";
 import ElTableInfiniteScroll from "el-table-infinite-scroll";
 import MPagination from "../m-pagination/MPagination";
 import padding from "../directives/padding";
-import { isNumber } from "../utils";
+import { isNumber, isFunction } from "../utils";
 
 import emptySvg from "./empty.svg";
 
@@ -177,6 +190,30 @@ export default {
       let { top } = this.$refs.table.$el.getBoundingClientRect();
       this.tableHeight =
         window.innerHeight - top - this.fixedBottom + Math.random();
+    },
+
+    getColumnProps(col) {
+      let formatter = col.formatter;
+      if (
+        !col.slotName &&
+        !col.component &&
+        col.prop &&
+        col.formatEmpty !== false
+      ) {
+        // 设置空值占位符
+        formatter = (row, column, cellValue, index) => {
+          if (cellValue === undefined || cellValue === null) {
+            return col.emptyText || "---";
+          }
+          return isFunction(col.formatter)
+            ? col.formatter(row, column, cellValue, index)
+            : cellValue;
+        };
+      }
+      return {
+        ...col,
+        formatter
+      };
     }
   }
 };
@@ -185,6 +222,7 @@ export default {
 <style lang="scss">
 .m-table-header th {
   background-color: #fafafa !important;
+  color: #000;
 }
 .empty-container {
   display: flex;

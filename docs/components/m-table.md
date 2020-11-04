@@ -242,6 +242,8 @@ columns 里面的元素数据格式兼容`el-table-column`的props，并新增�
 | headerSlotName | 用作这一列的header slot的名字 | string | --- | --- |
 | slotName | 用作这一列的默认 slot的名字 | string | --- | --- |
 | compnent | 用于此列的组件，会把相应的属性传递 | string \| object | --- | --- |
+| emptyText | 空值占位符，没有slotName，component,并且指定prop时才生效 | string  | --- | --- |
+| formatEmpty | 是否启用空值占位符 | boolean  | --- | true |
 
 ---
 
