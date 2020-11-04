@@ -15,6 +15,7 @@ import MLayout from "./m-layout/MLayout.vue";
 import MProTable from "./m-pro-table/MProTable.vue";
 import request from "./request";
 import MEllipsis from "./m-ellipsis/MEllipsis.vue";
+import MDialog from "./m-dialog/MDialog.vue";
 
 import "./style/util.scss";
 
@@ -36,7 +37,8 @@ export {
   MLayout,
   MProTable,
   request,
-  MEllipsis
+  MEllipsis,
+  MDialog
 };
 
 export default {
@@ -53,6 +55,7 @@ export default {
     Vue.component(MLayout.name, MLayout);
     Vue.component(MProTable.name, MProTable);
     Vue.component(MEllipsis.name, MEllipsis);
+    Vue.component(MDialog.name, MDialog);
 
     Vue.use(MDirectives);
     Vue.use(Clipboard);
