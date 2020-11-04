@@ -14,6 +14,7 @@ import MRichEditor from "./m-rich-editor/MRichEditor.vue";
 import MLayout from "./m-layout/MLayout.vue";
 import MProTable from "./m-pro-table/MProTable.vue";
 import request from "./request";
+import MEllipsis from "./m-ellipsis/MEllipsis.vue";
 
 import "./style/util.scss";
 
@@ -34,7 +35,8 @@ export {
   MRichEditor,
   MLayout,
   MProTable,
-  request
+  request,
+  MEllipsis
 };
 
 export default {
@@ -50,6 +52,7 @@ export default {
     Vue.component(MRichEditor.name, MRichEditor);
     Vue.component(MLayout.name, MLayout);
     Vue.component(MProTable.name, MProTable);
+    Vue.component(MEllipsis.name, MEllipsis);
 
     Vue.use(MDirectives);
     Vue.use(Clipboard);
