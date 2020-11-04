@@ -2,7 +2,7 @@ import E from "wangeditor";
 import uploader from "./uploader";
 import { gid } from "../../utils";
 
-const { PanelMenu, Panel } = E.menuConstructors;
+const { PanelMenu, Panel } = E;
 
 function insertVideo(src, editor) {
   let video = `<video src="${src}" controls></video>`;
