@@ -31,14 +31,16 @@
         </el-form-item>
       </template>
       <template v-slot:tools>
-        <el-button size="small" type="primary" @click="onCreate">新增</el-button>
-        <el-button size="small" type="danger" @click="onDelete">删除</el-button>
+        <el-button size="mini" type="primary" @click="onCreate">新增</el-button>
+        <el-button size="mini" type="danger" @click="onDelete">删除</el-button>
       </template>
       <template v-slot:gender="{row}">
         <span :class="row.gender">{{row.gender}}</span>
       </template>
       <template v-slot:opreation="{row}">
-        <el-button size="small" type="primary" @click="onClick(row)">点击</el-button>
+        <el-button size="small" type="text" @click="onClick(row)">访问</el-button>
+        <el-button size="small" type="text" @click="onClick(row)">编辑</el-button>
+        <el-button size="small" class="c-danger" type="text" @click="onClick(row)">删除</el-button>
       </template>
     </m-pro-table>
   </div>
@@ -60,7 +62,8 @@ export default {
         formatter: (row) => row.age + "岁"
       }, {
         label: "出生日期",
-        prop: 'born'
+        prop: 'born',
+        headerTips: '十位时间戳'
       }, {
         label: '操作',
         slotName: 'opreation'
@@ -102,7 +105,7 @@ export default {
       })
     }, 
     onClick(row) {
-      this.$message.success('查看详情-' + row.name)
+      this.$message.success('点击：' + row.name)
     },
     onCreate() {
       this.$message.success("to create form")

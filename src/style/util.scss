@@ -140,3 +140,10 @@ $current: $positionRangeStart;
   }
   $current: $current + $positionStep;
 }
+
+// element color
+.c-brand {color: #409EFF !important;}
+.c-success {color: #67C23A !important;}
+.c-warning {color: #E6A23C !important;}
+.c-danger {color: #F56C6C !important;}
+.c-info {color: #909399 !important;}

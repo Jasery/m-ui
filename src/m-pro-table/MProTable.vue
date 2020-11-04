@@ -210,14 +210,19 @@ export default {
   .table-wrapper {
     background-color: #fff;
     margin-top: 20px;
-    padding: 0 16px;
+    .m-table {
+      padding: 0 16px;
+      margin-top: 10px;
+    }
     .table-title-conatiner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      padding: 16px;
       h1 {
         font-size: 16px;
-        margin: 20px 0;
+        margin: 0;
       }
     }
   }
