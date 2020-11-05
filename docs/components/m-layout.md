@@ -9,6 +9,7 @@
     :show-aside.sync="asideShow"
     :collapse.sync="collapse"
     :menus="menus"
+    :account-info="accountInfo"
   >
     <template #header>
       <div class="header"> header content </div>
@@ -44,7 +45,10 @@ export default {
       headerShow: true,
       asideShow: true,
       collapse: false,
-      menus
+      menus,
+      accountInfo: {
+        account: 'myName'
+      }
     }
   },
   mounted() {
@@ -90,6 +94,7 @@ export default {
 | menuConfig | el-menu的props | Object | --- | --- |
 | showCollapseIcon | 是否显示侧边栏折叠icon | boolean | --- | true |
 | showAsideToggleTag | 是否显示侧边栏拖拉icon | boolean | --- | false |
+| accountInfo | 账户信息，会显示在头部右上角 | Object | --- | --- |
 
 #### menus元素数据结构
 

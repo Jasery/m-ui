@@ -13,7 +13,15 @@
         <img class="logo-img" :src="logo" />
         <h1 class="title">{{ appName }}</h1>
       </div>
-      <slot name="header"></slot>
+      <div class="header">
+        <slot name="header"></slot>
+      </div>
+      <div v-if="accountInfo" class="account-container">
+        <span class="account-name">{{
+          accountInfo && accountInfo.account
+        }}</span>
+        <el-button type="text" @click="onLogout">退出</el-button>
+      </div>
     </header>
     <aside
       v-if="$slots.aside || menus"
@@ -139,6 +147,9 @@ export default {
     showLogo: {
       type: Boolean,
       default: true
+    },
+    accountInfo: {
+      type: Object
     }
   },
   data() {
@@ -172,6 +183,10 @@ export default {
       if (this.$router) {
         this.$router.push("/");
       }
+    },
+
+    onLogout() {
+      this.$emit("logout");
     }
   }
 };
@@ -203,6 +218,10 @@ $colorBrand: #409eff !default;
     height: $headerHeight;
     left: 0;
     right: 0;
+    display: flex;
+    .header {
+      flex-grow: 1;
+    }
     &.hide-header {
       top: -$headerHeight;
     }
@@ -218,6 +237,19 @@ $colorBrand: #409eff !default;
         font-size: 18px;
         color: #fff;
         margin: 0 0 0 20px;
+      }
+    }
+    .account-container {
+      display: flex;
+      height: 100%;
+      float: left;
+      justify-content: flex-end;
+      align-items: center;
+      width: 150px;
+      padding-right: 20px;
+      .account-name {
+        margin-right: 10px;
+        color: white;
       }
     }
   }
