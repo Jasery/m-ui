@@ -50,7 +50,7 @@ export function getLocalStore(key, defaultVal) {
   return JSON.parse(store);
 }
 
-export function remoteLocalStore(key) {
+export function removeLocalStore(key) {
   localStorage.removeItem(key);
 }
 
