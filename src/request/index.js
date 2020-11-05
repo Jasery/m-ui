@@ -22,18 +22,6 @@ const commonRequestInterceptor = [
   }
 ];
 
-const commonResponseInterceptor = [
-  response => {
-    return Promise.resolve(response.data);
-  },
-  err => {
-    if (err.response) {
-      return Promise.reject(err.response.data);
-    }
-    return Promise.reject(err);
-  }
-];
-
 let instance;
 let globalHeaders;
 let requestInterceptorId;
@@ -42,7 +30,6 @@ function setConfig(config = {}) {
   let cfg = Object.assign({}, defaultConfig, config);
   instance = axios.create(cfg);
   requestInterceptorId = addRequestInterceptor(...commonRequestInterceptor);
-  addResponseInterceptor(...commonResponseInterceptor);
 }
 setConfig();
 
