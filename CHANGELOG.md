@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.11...v0.0.12) (2020-11-05)
+
+
+### Features
+
+* **m-rich-editor:** 升级wangEditor版本 ([732b643](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/732b643b725c407b4697d608081fbf32f8b93b6e))
+* 添加m-dialog组件 ([e9a5834](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e9a5834d9b28d484e69b4da593faaccad362609a))
+* **examples:** 添加基础示例 ([bfaab1d](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/bfaab1d276923710dc49376c123e87a6ac152986))
+* **examples:** 添加表格示例 ([116cb39](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/116cb3970c1a751f3188da5a18d1cb9069f8822d))
+* **m-layout:** 添加头部logo展示 ([05b0e13](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/05b0e13c9f5b4666a4b065639cc7c340aa3671ee))
+* **m-layout:** 调整菜单样式 ([bf3f9d7](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/bf3f9d73291af0cec008239879e7bfb68c4ca1c8))
+* **m-pro-table:** 调整样式，优化示例 ([19b5216](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/19b5216aba837bde7352e24d780b71ba8ffd5e3b))
+* **m-query-form:** 优化布局样式 ([1199082](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/1199082afd268afef285fa2777a1346599540194))
+* **m-table:** 添加字段空值占位符及字段提示 ([2b7b52a](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/2b7b52ac17fbb681e904c415628b20c4b813b65b))
+* 添加m-ellipsis组件 ([cae162d](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/cae162d2b3bfc80283dbd46acba3cf0ceaa34446))
+* 添加m-pro-table组件 ([f3631de](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/f3631deb4b01eb696435af510809c6baed08a326))
+* 添加request封装 ([b0267ac](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/b0267acafb16ace79b004470c61d73c0f27e0242))
+* **m-pro-table:** 添加表格高度更新 ([d05c488](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/d05c48841b6077a51331da5c7781b8ec5d45b00d))
+* **m-query-form:** 优化布局样式 ([e49aae3](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e49aae3edec8f72eafaa8737fac07bfbf1ccc8e7))
+* **m-query-form:** 添加collapse事件 ([65be53d](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/65be53d2df9ad50aa56e83153535be6ead98ffd5))
+* **m-table:** 添加无数据时的占位图 ([0c60318](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/0c603187dc53eba9bbd5f1cdd4c683fbc9b244c7))
+
+
+### Bug Fixes
+
+* **chain-webpack:** 修复webpack配置错误 ([82fec50](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/82fec50fffc43993805fd17fc00d4d48d5fecb76))
+* **m-pro-table:** 修复fixedBottom细节问题 ([e6f1877](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e6f187768cd0a8989fe96082d722c1e754294076))
+* **m-pro-table:** 修复fixedBottom细节问题 ([6618c01](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/6618c01b398ba515c3065ca0b2b4f6617b597834))
+* **m-table:** 修复滚动加载无效问题 ([0a075cb](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/0a075cbcb913d39a230cb4212c59bf24d907fb24))
+
 ### [0.0.11](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.10...v0.0.11) (2020-10-22)
 
 
