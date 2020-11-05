@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.12...v0.0.13) (2020-11-05)
+
+
+### Bug Fixes
+
+* **request:** 移除通用响应拦截 ([221a386](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/221a3863283c8b89362ac8fa35534fccb3e7a6d5))
+* **utils:** 修复拼写错误 ([2d17e22](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/2d17e222f3cd6074d107ec7860a651b2727fa6c8))
+
 ### [0.0.12](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.11...v0.0.12) (2020-11-05)
 
 
