@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.13...v0.0.14) (2020-11-05)
+
+
+### Features
+
+* **m-dialog:** 添加width设置 ([211edfd](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/211edfd67e5471277a86166b93620cbc5cd4567b))
+* **m-layout:** 添加头部账户信息展示 ([9e83436](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/9e83436a02f946cb304ac02f1b3b7eadbb8d149a))
+
 ### [0.0.13](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.12...v0.0.13) (2020-11-05)
 
 
