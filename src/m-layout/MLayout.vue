@@ -4,7 +4,7 @@
     :style="{ height: getNumStyle(height) }"
   >
     <header
-      v-if="$slots.header"
+      v-if="$slots.header || accountInfo"
       class="header-container"
       :class="{ 'hide-header': !hasHeader }"
       :style="headerStyle"

@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { isNumber } from "../utils";
 export default {
   name: "MDialog",
   props: {
@@ -58,6 +59,9 @@ export default {
     easyClose: {
       type: Boolean,
       default: true
+    },
+    width: {
+      type: [String, Number]
     }
   },
   data() {
@@ -65,6 +69,9 @@ export default {
   },
   computed: {
     dialogWidth() {
+      if (this.width) {
+        return isNumber(this.width) ? this.width + "px" : this.width;
+      }
       let sizes = {
         // TODO:
         large: "1080px",
