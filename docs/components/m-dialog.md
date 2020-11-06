@@ -4,15 +4,26 @@
 ### 基本用法
 ```vue
 <template>
-  <div>  
-    <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+  <div>
+    <m-checkbox-group
+      v-model="size"
+      :options="sizes"
+      single
+      button-style
+    ></m-checkbox-group>
+    <el-button type="text" @click="dialogVisible = true">
+      点击打开 Dialog
+    </el-button>
     <m-dialog
       title="提示"
       :visible.sync="dialogVisible"
       :confirm-loading="loading"
+      :size="size"
       @confirm="onConfirm"
     >
-      <span>这是一段信息</span>
+      <span>
+        何时使用：需要用户处理事务，又不希望跳转页面以致打断龚总流程时，可以使用modal在当前页面正中打开一个浮层，承载相应操作。
+      </span>
     </m-dialog>
   </div>
 </template>
@@ -21,7 +32,13 @@ export default {
   data() {
     return {
       dialogVisible: false,
-      loading: false
+      loading: false,
+      size: "middle",
+      sizes: [
+        {label: 'Large', value:'large'},
+        {label: 'Middle', value:'middle'},
+        {label: 'Small', value:'small'},
+      ]
     }
   },
   methods: {

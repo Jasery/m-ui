@@ -94,6 +94,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::v-deep .el-dialog__header {
+  border-bottom: 1px solid #eee;
+}
+::v-deep .el-dialog__footer {
+  border-top: 1px solid #eee;
+}
 ::v-deep .el-dialog__body {
   padding: 20px;
 }
