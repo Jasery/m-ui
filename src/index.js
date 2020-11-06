@@ -16,6 +16,7 @@ import MProTable from "./m-pro-table/MProTable.vue";
 import request from "./request";
 import MEllipsis from "./m-ellipsis/MEllipsis.vue";
 import MDialog from "./m-dialog/MDialog.vue";
+import MException from "./m-exception/MException.vue";
 
 import "./style/util.scss";
 
@@ -38,7 +39,8 @@ export {
   MProTable,
   request,
   MEllipsis,
-  MDialog
+  MDialog,
+  MException
 };
 
 export default {
@@ -56,6 +58,7 @@ export default {
     Vue.component(MProTable.name, MProTable);
     Vue.component(MEllipsis.name, MEllipsis);
     Vue.component(MDialog.name, MDialog);
+    Vue.component(MException.name, MException);
 
     Vue.use(MDirectives);
     Vue.use(Clipboard);

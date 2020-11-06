@@ -4,6 +4,7 @@
     :menu-config="menuConfig"
     :menu-default-active="menuDefaultActive"
     :collapse.sync="asideCollapse"
+    :account-info="accountInfo"
   >
     <template #header>
       header
@@ -38,7 +39,10 @@ export default {
       menuConfig: {
         router: true
       },
-      asideCollapse: false
+      asideCollapse: false,
+      accountInfo: {
+        account: "root"
+      }
     };
   },
 

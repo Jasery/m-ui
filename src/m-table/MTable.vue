@@ -83,7 +83,7 @@ import MPagination from "../m-pagination/MPagination";
 import padding from "../directives/padding";
 import { isNumber, isFunction } from "../utils";
 
-import emptySvg from "./empty.svg";
+import emptySvg from "../assets/image/empty.svg";
 
 export default {
   name: "MTable",

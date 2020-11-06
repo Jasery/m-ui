@@ -147,3 +147,10 @@ $current: $positionRangeStart;
 .c-warning {color: #E6A23C !important;}
 .c-danger {color: #F56C6C !important;}
 .c-info {color: #909399 !important;}
+
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
