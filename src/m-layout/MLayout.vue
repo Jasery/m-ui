@@ -40,7 +40,7 @@
           :collapse="collapse"
           :collapse-transition="animate"
           backgroundColor="#42485c"
-          text-color="#fff"
+          text-color="#ccc"
           active-text-color="#fff"
           v-bind="menuConfig"
           @select="(index, indexPath) => $emit('menu-select', index, indexPath)"
@@ -285,9 +285,12 @@ $colorBrand: #409eff !default;
         width: $asideWidth;
         box-sizing: border-box;
       }
-      .el-menu-item:hover,
+      .el-menu-item:hover {
+        color: #fff !important;
+      }
       .el-menu-item.is-active {
         background-color: #1890ff !important;
+        border-right: 2px solid #fff;
       }
     }
     .collapse-icon {

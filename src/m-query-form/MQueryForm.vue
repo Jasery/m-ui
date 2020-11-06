@@ -4,7 +4,6 @@
     v-bind="$attrs"
     inline
     size="small"
-    label-width="100px"
     :model="model"
     ref="form"
   >
@@ -19,10 +18,6 @@
       </el-col>
       <el-col :span="colSpan" :offset="colSpan * btnContainerOffset">
         <el-form-item label="" class="btn ta-r">
-          <el-button @click="onReset">重置</el-button>
-          <el-button :loading="submitLoading" type="primary" @click="onSumit"
-            >查询</el-button
-          >
           <el-button v-if="collapseable" type="text" @click="onCollapse">
             {{ collapse ? "展开" : "收起" }}
             <i
@@ -32,6 +27,10 @@
               }"
             ></i>
           </el-button>
+          <el-button @click="onReset">重置</el-button>
+          <el-button :loading="submitLoading" type="primary" @click="onSumit"
+            >查询</el-button
+          >
         </el-form-item>
       </el-col>
     </el-row>
@@ -134,8 +133,12 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .el-form-item {
   width: 100%;
+  display: flex;
+  .el-form-item__label {
+    min-width: 100px;
+  }
   .el-form-item__content {
-    width: calc(100% - 100px);
+    flex-grow: 1;
     & > .el-input,
     & > .el-date-editor,
     & > .el-select {
