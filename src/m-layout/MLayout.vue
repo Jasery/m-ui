@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['m-layout', { animate }]"
+    :class="['m-layout', { animate, dark: isDarkMode, light: !isDarkMode }]"
     :style="{ height: getNumStyle(height) }"
   >
     <header
@@ -39,9 +39,9 @@
           :default-active="menuDefaultActive"
           :collapse="collapse"
           :collapse-transition="animate"
-          backgroundColor="#42485c"
-          text-color="#ccc"
-          active-text-color="#fff"
+          :background-color="menuBgColor"
+          :text-color="menuTextColor"
+          :active-text-color="menuActiveTextColor"
           v-bind="menuConfig"
           @select="(index, indexPath) => $emit('menu-select', index, indexPath)"
         >
@@ -116,9 +116,12 @@ export default {
       type: Boolean,
       default: true
     },
-    themeColor: {
+    theme: {
       type: String,
-      default: "#373d41"
+      default: "dark",
+      validate(val) {
+        return ["dark", "light"].includes(val);
+      }
     },
     menus: Array,
     menuDefaultActive: String,
@@ -162,15 +165,30 @@ export default {
     hasAside() {
       return this.showAside && !!(this.$slots.aside || this.menus);
     },
+    themeColor() {
+      return "#373d41";
+    },
+    isDarkMode() {
+      return this.theme === "dark";
+    },
     asideStyle() {
       return {
-        backgroundColor: this.themeColor
+        backgroundColor: this.isDarkMode ? "#373d41" : "#fff"
       };
     },
     headerStyle() {
       return {
-        backgroundColor: this.themeColor
+        backgroundColor: "#373d41"
       };
+    },
+    menuBgColor() {
+      return this.isDarkMode ? "#42485c" : "#fff";
+    },
+    menuTextColor() {
+      return this.isDarkMode ? "#ccc" : "#555";
+    },
+    menuActiveTextColor() {
+      return this.isDarkMode ? "#fff" : "#1890FF";
     }
   },
   mounted() {},
@@ -285,13 +303,6 @@ $colorBrand: #409eff !default;
         width: $asideWidth;
         box-sizing: border-box;
       }
-      .el-menu-item:hover {
-        color: #fff !important;
-      }
-      .el-menu-item.is-active {
-        background-color: #1890ff !important;
-        border-right: 2px solid #fff;
-      }
     }
     .collapse-icon {
       position: absolute;
@@ -301,9 +312,6 @@ $colorBrand: #409eff !default;
       font-size: 18px;
       transition: all 0.3s;
       cursor: pointer;
-      &:hover {
-        color: #fff;
-      }
       &.collapse {
         transform: rotate(180deg);
       }
@@ -358,6 +366,38 @@ $colorBrand: #409eff !default;
     }
     &.hide-aside {
       left: 0;
+    }
+  }
+  &.dark {
+    .aside-container {
+      .menu-wrapper {
+        .el-menu-item:hover {
+          color: #fff !important;
+        }
+        .el-menu-item.is-active {
+          background-color: #1890ff !important;
+          border-right: 2px solid #fff;
+        }
+      }
+      .collapse-icon:hover {
+        color: #fff;
+      }
+    }
+  }
+  &.light {
+    .aside-container {
+      .menu-wrapper {
+        .el-menu-item:hover {
+          background-color: #e6f7ff !important;
+        }
+        .el-menu-item.is-active {
+          background-color: #e6f7ff !important;
+          border-right: 2px solid #1890ff;
+        }
+      }
+      .collapse-icon:hover {
+        color: #1890ff;
+      }
     }
   }
 }

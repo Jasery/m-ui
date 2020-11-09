@@ -88,7 +88,7 @@ export default {
 | showAside | 是否显示侧边栏，可用 .sync | boolean | --- | true |
 | showHeader | 是否显示头部 | boolean | --- | true |
 | animate | 是否动画 | boolean | --- | true |
-| themeColor | 主题颜色，header和aside的背景颜色 | string | --- | #373d41 |
+| theme | 主题 | string | dark/light | dark |
 | menus | 菜单，元素格式参考下表 | array | --- | --- |
 | menuDefaultActive | el-menu的default-active | string | --- | --- |
 | menuConfig | el-menu的props | Object | --- | --- |
