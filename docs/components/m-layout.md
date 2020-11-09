@@ -118,11 +118,13 @@ export default {
 ---
 
 ### Slots
-| 名称 | 说明 |
+| 名称 | 说明 | 
 | :---- | :---- |
 | header | 头部 | 
 | aside | 侧边栏 | 
 | default | 内容 |
+| menu-item | 菜单项slot，会把相应的menuItemConfig作为prop传入 |
+
 
 ---
 

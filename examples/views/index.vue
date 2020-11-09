@@ -9,6 +9,10 @@
     <template #header>
       header
     </template>
+    <template v-slot:menu-item="menu">
+      <i :class="menu.icon"></i>
+      {{ menu.title }}
+    </template>
     <router-view></router-view>
   </m-layout>
 </template>

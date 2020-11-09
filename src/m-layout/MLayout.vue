@@ -56,13 +56,23 @@
                 :key="submenu.index"
                 v-bind="submenu"
               >
-                <i v-if="submenu.icon" :class="submenu.icon"></i>
-                <span slot="title">{{ submenu.title }}</span>
+                <template v-if="hasMemuItemSlot">
+                  <slot name="menu-item" v-bind="submenu"></slot>
+                </template>
+                <template v-else>
+                  <i v-if="submenu.icon" :class="submenu.icon"></i>
+                  <span slot="title">{{ submenu.title }}</span>
+                </template>
               </el-menu-item>
             </el-submenu>
             <el-menu-item v-else :key="menu.index" v-bind="menu">
-              <i v-if="menu.icon" :class="menu.icon"></i>
-              <span slot="title">{{ menu.title }}</span>
+              <template v-if="hasMemuItemSlot">
+                <slot name="menu-item" v-bind="menu"></slot>
+              </template>
+              <template v-else>
+                <i v-if="menu.icon" :class="menu.icon"></i>
+                <span slot="title">{{ menu.title }}</span>
+              </template>
             </el-menu-item>
           </template>
         </el-menu>
@@ -116,6 +126,10 @@ export default {
       type: Boolean,
       default: true
     },
+    themeColor: {
+      type: String,
+      default: "#373d41"
+    },
     theme: {
       type: String,
       default: "dark",
@@ -165,30 +179,30 @@ export default {
     hasAside() {
       return this.showAside && !!(this.$slots.aside || this.menus);
     },
-    themeColor() {
-      return "#373d41";
-    },
     isDarkMode() {
       return this.theme === "dark";
     },
     asideStyle() {
       return {
-        backgroundColor: this.isDarkMode ? "#373d41" : "#fff"
+        backgroundColor: this.isDarkMode ? this.themeColor : "#fff"
       };
     },
     headerStyle() {
       return {
-        backgroundColor: "#373d41"
+        backgroundColor: this.themeColor
       };
     },
     menuBgColor() {
-      return this.isDarkMode ? "#42485c" : "#fff";
+      return this.isDarkMode ? this.themeColor : "#fff";
     },
     menuTextColor() {
       return this.isDarkMode ? "#ccc" : "#555";
     },
     menuActiveTextColor() {
       return this.isDarkMode ? "#fff" : "#1890FF";
+    },
+    hasMemuItemSlot() {
+      return !!this.$slots["menu-item"];
     }
   },
   mounted() {},
