@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.15...v0.0.16) (2020-11-09)
+
+
+### Features
+
+* **m-layout:** 添加menu-item slot ([846733f](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/846733f8150c7435998a8ca291f7d977b6439fad))
+
 ### [0.0.15](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.14...v0.0.15) (2020-11-09)
 
 
