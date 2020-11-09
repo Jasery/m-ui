@@ -56,23 +56,17 @@
                 :key="submenu.index"
                 v-bind="submenu"
               >
-                <template v-if="hasMemuItemSlot">
-                  <slot name="menu-item" v-bind="submenu"></slot>
-                </template>
-                <template v-else>
+                <slot name="menu-item" v-bind="submenu">
                   <i v-if="submenu.icon" :class="submenu.icon"></i>
                   <span slot="title">{{ submenu.title }}</span>
-                </template>
+                </slot>
               </el-menu-item>
             </el-submenu>
             <el-menu-item v-else :key="menu.index" v-bind="menu">
-              <template v-if="hasMemuItemSlot">
-                <slot name="menu-item" v-bind="menu"></slot>
-              </template>
-              <template v-else>
+              <slot name="menu-item" v-bind="menu">
                 <i v-if="menu.icon" :class="menu.icon"></i>
                 <span slot="title">{{ menu.title }}</span>
-              </template>
+              </slot>
             </el-menu-item>
           </template>
         </el-menu>
@@ -200,9 +194,6 @@ export default {
     },
     menuActiveTextColor() {
       return this.isDarkMode ? "#fff" : "#1890FF";
-    },
-    hasMemuItemSlot() {
-      return !!this.$slots["menu-item"];
     }
   },
   mounted() {},
