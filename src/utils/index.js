@@ -217,3 +217,13 @@ export function objEach(obj, fn) {
     }
   }
 }
+
+export function log(...args) {
+  if (!args.length) {
+    return;
+  }
+  args = args.map(arg =>
+    isString(arg) ? arg : JSON.stringify(arg, null, "  ")
+  );
+  console.log(...args);
+}
