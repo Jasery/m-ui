@@ -202,12 +202,13 @@ export default {
       ) {
         // 设置空值占位符
         formatter = (row, column, cellValue, index) => {
+          if (isFunction(col.formatter)) {
+            return col.formatter(row, column, cellValue, index);
+          }
           if (cellValue === undefined || cellValue === null) {
             return col.emptyText || "---";
           }
-          return isFunction(col.formatter)
-            ? col.formatter(row, column, cellValue, index)
-            : cellValue;
+          return cellValue;
         };
       }
       return {

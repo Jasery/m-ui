@@ -123,18 +123,20 @@ export default {
     fetchData(resetPage) {
       this.loading = true;
       this.noMore = false;
+      let pageNum = this.pageNum;
       if (resetPage) {
-        this.pageNum = 1;
+        pageNum = 1;
       }
       return this.getData({
         ...this.queryModel,
-        pageNum: this.pageNum,
+        pageNum: pageNum,
         pageSize: this.pageSize
       })
         .then(data => {
           this.total = data.total;
           this.tableData = data.data;
           this.selection = [];
+          this.pageNum = pageNum;
         })
         .finally(() => {
           this.loading = false;
@@ -154,7 +156,9 @@ export default {
           return res.data;
         })
         .catch(err => {
+          let msg = err.message || err;
           this.$message.error(err.message || err);
+          return Promise.reject(msg);
         });
     },
 

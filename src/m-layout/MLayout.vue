@@ -268,8 +268,7 @@ $colorBrand: #409eff !default;
       float: left;
       justify-content: flex-end;
       align-items: center;
-      width: 150px;
-      padding-right: 20px;
+      padding: 0 20px;
       .account-name {
         margin-right: 10px;
         color: white;

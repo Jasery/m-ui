@@ -18,7 +18,7 @@
       </el-col>
       <el-col :span="colSpan" :offset="colSpan * btnContainerOffset">
         <el-form-item label="" class="btn ta-r">
-          <el-button v-if="collapseable" type="text" @click="onCollapse">
+          <el-button v-show="collapseVisible" type="text" @click="onCollapse">
             {{ collapse ? "展开" : "收起" }}
             <i
               :class="{
@@ -41,6 +41,7 @@ import {
   addResizeListener,
   removeResizeListener
 } from "element-ui/lib/utils/resize-event";
+import _ from "lodash";
 
 export default {
   name: "MQueryForm",
@@ -73,10 +74,18 @@ export default {
       return 24 / this.col;
     },
     btnContainerOffset() {
-      let colCount = this.collapse
-        ? this.col - 1
-        : this.filterFormItems().length;
-      return this.col - (colCount % this.col) - 1;
+      let formItemCount = this.filterFormItems().length;
+      let colCount = this.collapse ? this.col - 1 : formItemCount;
+      colCount = _.min([colCount, formItemCount]);
+      let offset = this.col - (colCount % this.col) - 1;
+      return offset;
+    },
+    collapseVisible() {
+      let formItemCount = this.filterFormItems().length;
+      if (formItemCount < this.col - 1) {
+        return false;
+      }
+      return this.collapseable;
     }
   },
   mounted() {
