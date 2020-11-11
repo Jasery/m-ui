@@ -34,6 +34,7 @@
         @page-change="onPageChange"
         @scroll-load="onScrollLoad"
         @selection-change="onSelectionChange"
+        @sort-change="onSortChange"
         v-bind="tableProps"
       >
         <template v-if="showSelection">
@@ -88,7 +89,9 @@ export default {
       scrollLoading: false,
       noMore: false,
       total: 0,
-      selection: []
+      selection: [],
+      orderBy: undefined,
+      order: undefined
     };
   },
   computed: {
@@ -130,7 +133,9 @@ export default {
       return this.getData({
         ...this.queryModel,
         pageNum: pageNum,
-        pageSize: this.pageSize
+        pageSize: this.pageSize,
+        order: this.order,
+        orderBy: this.orderBy
       })
         .then(data => {
           this.total = data.total;
@@ -200,6 +205,17 @@ export default {
     async onQueryFormCollapse() {
       await this.$nextTick();
       this.$refs.mTable.setTableHeight();
+    },
+
+    onSortChange({ prop, order }) {
+      if (!order) {
+        this.order = undefined;
+        this.orderBy = undefined;
+      } else {
+        this.orderBy = prop;
+        this.order = order;
+      }
+      this.fetchData();
     }
   }
 };
@@ -210,10 +226,10 @@ export default {
   .query-form-wrapper {
     padding: 16px;
     background-color: #fff;
+    margin-bottom: 20px;
   }
   .table-wrapper {
     background-color: #fff;
-    margin-top: 20px;
     .m-table {
       padding: 0 16px;
       margin-top: 10px;

@@ -37,8 +37,8 @@
         <template v-if="col.slotName" v-slot:default="scope">
           <slot :name="col.slotName" v-bind="scope"></slot>
         </template>
-        <template v-else-if="col.compnent" v-slot:default="scope">
-          <compnent :is="col.component" v-bind="scope"></compnent>
+        <template v-else-if="col.component" v-slot:default="scope">
+          <component :is="col.component" v-bind="scope"></component>
         </template>
       </el-table-column>
       <template #append>

@@ -53,7 +53,8 @@ export default {
     return {
       columns: [{
         label: "姓名",
-        prop: "name"
+        prop: "name",
+        sortable: true
       }, {
         label: "性别",
         slotName: "gender"
@@ -156,7 +157,16 @@ export default {
 ---
 
 ### 一些约定
-- props里面的fetch方法，约定参数里面有pageSize及pageNum作为分页，其他字段则由fetchModel定义
+- props里面的fetch方法，约定公共参如下，其他字段则由fetchModel定义
+```json
+{
+  "pageNum": 1,
+  "pageSize": 30,
+  "orderBy": "name",
+  "order": "descending" // "ascending"
+}
+```
+
 - fetch返回的数据约定如下
 
 ```json
