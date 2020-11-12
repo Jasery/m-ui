@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.16...v0.0.17) (2020-11-12)
+
+
+### Features
+
+* **m-pro-table:** fetch方法添加排序参数 ([043fadb](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/043fadb89f0ce32a8d6bd13be8c77261ac547def))
+* **utils:** 添加log方法 ([de0af7a](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/de0af7aaf84029b50cdc0bf97ce6fced7b39b8fa))
+
+
+### Bug Fixes
+
+* **m-layout:** 修复menu-slot不生效bug ([51193aa](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/51193aa129c2654fcdf76b779dc0c85941428593))
+* **m-pro-table:** 修复细节问题 ([f174fec](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/f174fec6aeb8778baa5a03b6187e70f9e6236f9c))
+
 ### [0.0.16](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.15...v0.0.16) (2020-11-09)
 
 
