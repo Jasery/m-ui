@@ -17,6 +17,7 @@ import request from "./request";
 import MEllipsis from "./m-ellipsis/MEllipsis.vue";
 import MDialog from "./m-dialog/MDialog.vue";
 import MException from "./m-exception/MException.vue";
+import MForm from "./m-form/MForm.vue";
 
 import "./style/util.scss";
 
@@ -40,7 +41,8 @@ export {
   request,
   MEllipsis,
   MDialog,
-  MException
+  MException,
+  MForm
 };
 
 export default {
@@ -59,6 +61,7 @@ export default {
     Vue.component(MEllipsis.name, MEllipsis);
     Vue.component(MDialog.name, MDialog);
     Vue.component(MException.name, MException);
+    Vue.component(MForm.name, MForm);
 
     Vue.use(MDirectives);
     Vue.use(Clipboard);
