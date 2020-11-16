@@ -9,12 +9,26 @@
   >
     <el-row :gutter="10">
       <el-col
-        v-for="(item, index) in filterFormItems()"
+        v-for="(field, index) in filterFormItems()"
         :key="index"
         :span="colSpan"
         v-show="isFormItemShow(index)"
       >
-        <v-node :content="item"></v-node>
+        <v-node v-if="field.slot" :content="field.slot"></v-node>
+        <el-form-item v-else v-bind="getFormItemProps(field)">
+          <template v-if="field.labelSlotName" v-slot:label>
+            <slot :name="field.labelSlotName"></slot>
+          </template>
+          <template>
+            <slot v-if="field.slotName" :name="field.slotName"></slot>
+            <component
+              v-else-if="field.component"
+              :is="field.component"
+              v-bind="field.componentProps"
+              v-model="model[field.prop]"
+            ></component>
+          </template>
+        </el-form-item>
       </el-col>
       <el-col :span="colSpan" :offset="colSpan * btnContainerOffset">
         <el-form-item label="" class="btn ta-r">
@@ -42,6 +56,7 @@ import {
   removeResizeListener
 } from "element-ui/lib/utils/resize-event";
 import _ from "lodash";
+import { removeKeys } from "../utils";
 
 export default {
   name: "MQueryForm",
@@ -55,7 +70,13 @@ export default {
       type: Boolean,
       default: true
     },
-    submitLoading: Boolean
+    submitLoading: Boolean,
+    fields: {
+      type: Array,
+      default() {
+        return [];
+      }
+    }
   },
   components: {
     VNode: {
@@ -106,7 +127,20 @@ export default {
 
     // computed not work
     filterFormItems() {
-      return (this.$slots.default || []).filter(item => item.tag);
+      return this.fields.concat(
+        (this.$slots.default || [])
+          .filter(item => item.tag)
+          .map(slot => ({ slot }))
+      );
+    },
+
+    getFormItemProps(field) {
+      return removeKeys(field, [
+        "slotName",
+        "labelSlotName",
+        "component",
+        "componentProps"
+      ]);
     },
 
     isFormItemShow(index) {
