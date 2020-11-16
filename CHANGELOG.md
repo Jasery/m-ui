@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.17...v0.0.18) (2020-11-16)
+
+
+### Features
+
+* **m-query-form:** 添加fields属性 ([482ef9b](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/482ef9bdd72e15ea4e73356468c28142a791fbb7))
+* 添加m-form组件 ([373e0f5](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/373e0f5ae0f4f95f21554f0418a19967793b1f9d))
+
+
+### Bug Fixes
+
+* 细节修复 ([d02b00f](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/d02b00f3d4cbe9d06c3904ea4974a4d647068bb3))
+
 ### [0.0.17](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.16...v0.0.17) (2020-11-12)
 
 
