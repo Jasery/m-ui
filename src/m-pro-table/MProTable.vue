@@ -12,7 +12,11 @@
     </div>
     <div class="table-wrapper">
       <div class="table-title-conatiner">
-        <h1>{{ title }}</h1>
+        <div>
+          <slot name="title">
+            <h1>{{ title }}</h1>
+          </slot>
+        </div>
         <div class="tools">
           <slot name="tools"></slot>
         </div>

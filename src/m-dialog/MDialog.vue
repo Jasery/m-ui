@@ -5,6 +5,7 @@
     :width="dialogWidth"
     :close-on-click-modal="easyClose"
     :close-on-press-escape="easyClose"
+    :title="title"
     class="m-dialog"
   >
     <template #title>
@@ -62,7 +63,8 @@ export default {
     },
     width: {
       type: [String, Number]
-    }
+    },
+    title: String
   },
   data() {
     return {};
