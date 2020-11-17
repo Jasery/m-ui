@@ -174,6 +174,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+::v-deep.el-form--inline {
+  .el-form-item {
+    display: inline-flex;
+  }
+}
 ::v-deep .el-form-item {
   width: 100%;
   display: flex;
