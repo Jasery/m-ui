@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.19](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.18...v0.0.19) (2020-11-17)
+
+
+### Features
+
+* **m-pro-table:** 添加queryFields属性 ([34b7bcb](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/34b7bcbfc65e29d0504fdd542d2c29ab55c4f450))
+
 ### [0.0.18](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.17...v0.0.18) (2020-11-16)
 
 
