@@ -11,25 +11,9 @@
       :fetch="fetch"
       :height="400"
       :query-model="query"
+      :query-fields="queryFields"
       title="我的表格"
     >
-      <template v-slot:query>
-        <el-form-item label="name" prop="name">
-          <el-input v-model="query.name"></el-input>
-        </el-form-item>
-        <el-form-item label="gender" prop="gender">
-          <m-select v-model="query.gender"
-            :options="[
-              {label: 'male', value: 'male'}, 
-              {label: 'female', value: 'female'}
-            ]"
-          >
-          </m-select>
-        </el-form-item>
-        <el-form-item label="age" prop="age">
-          <el-input v-model="query.age" type="number"></el-input>
-        </el-form-item>
-      </template>
       <template v-slot:tools>
         <el-button size="mini" type="primary" @click="onCreate">新增</el-button>
         <el-button size="mini" type="danger" @click="onDelete">删除</el-button>
@@ -73,7 +57,29 @@ export default {
         name: '',
         gender: null,
         age: null
-      }
+      },
+      queryFields: [{
+        label: 'name',
+        prop: 'name',
+        component: 'el-input'
+      }, {
+        label: 'gender',
+        prop: 'gender',
+        component: 'm-select',
+        componentProps: {
+          options: [
+            {label: 'male', value: 'male'}, 
+            {label: 'female', value: 'female'}
+          ]
+        }
+      }, {
+        label: 'age',
+        prop: 'age',
+        component: 'el-input',
+        componentProps: {
+          type: "number"
+        }
+      }]
     }
   },
   methods: {
@@ -153,6 +159,7 @@ export default {
 | fixBottom | m-table的fixBottom | number | --- | --- |
 | showSelection | 表格是否显示勾选列 | boolean | --- | true |
 | tableProps | m-table的props透传 | Object | --- | --- |
+| queryFields | m-query-form的fields，参考[m-query-form](#/Components/m-query-form) | Array | --- | --- |
 
 ---
 

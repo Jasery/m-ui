@@ -1,9 +1,10 @@
 <template>
   <div class="m-pro-table">
-    <div v-if="$slots.query" class="query-form-wrapper">
+    <div v-if="$slots.query || queryFields" class="query-form-wrapper">
       <m-query-form
         :model="queryModel"
         :submitLoading="loading"
+        :fields="queryFields"
         @submit="fetchData"
         @collapse="onQueryFormCollapse"
       >
@@ -82,7 +83,8 @@ export default {
       type: Boolean,
       default: true
     },
-    tableProps: Object
+    tableProps: Object,
+    queryFields: Array
   },
   data() {
     return {
