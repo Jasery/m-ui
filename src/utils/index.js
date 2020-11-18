@@ -236,3 +236,29 @@ export function removeKeys(obj, keys) {
       return acc;
     }, {});
 }
+
+let microApp;
+export function initMicroApp(render, hooks) {
+  if (!window.__POWERED_BY_QIANKUN__) {
+    render();
+  }
+  return {
+    bootstrap: async () => {
+      // eslint-disable-next-line
+      __webpack_public_path__ =
+        window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__.replace(/\/$/, "") + "/web/";
+      return isFunction(hooks?.bootstrap) ? hooks?.bootstrap() : null;
+    },
+    mount: async props => {
+      microApp = render(props);
+      return isFunction(hooks?.mount) ? hooks?.mount(props) : null;
+    },
+    unmount: async props => {
+      microApp && microApp.$destroy();
+      return isFunction(hooks?.unmount) ? hooks?.unmount(props) : null;
+    },
+    update: async props => {
+      return isFunction(hooks?.update) ? hooks?.update(props) : null;
+    }
+  };
+}
