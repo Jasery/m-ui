@@ -168,7 +168,7 @@ export default {
   },
   computed: {
     hasHeader() {
-      return this.showHeader && !!this.$slots.header;
+      return (this.showHeader && !!this.$slots.header) || this.accountInfo;
     },
     hasAside() {
       return this.showAside && !!(this.$slots.aside || this.menus);
