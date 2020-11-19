@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.20](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.19...v0.0.20) (2020-11-19)
+
+
+### Features
+
+* **m-pro-table:** 添加约定字段配置 ([3e52b43](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/3e52b43e2ee400d8998f41039fe8f27f4cf37d99))
+* 添加微前端环境的资源路径适配 ([0321400](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/0321400941d26261cdfe25a96c9a122e917490a0))
+* **uitls:** 添加微应用初始化方法 ([d199ea3](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/d199ea375a02960af2be688c57f7be00d21547ea))
+
+
+### Bug Fixes
+
+* **m-layout:** 修复头部显示bug ([d73e568](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/d73e568e8f8200125ae674256a4072de448e91e9))
+* **m-query-form:** 修复样式问题 ([68e7038](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/68e70380c6c7ebd859752df546ecce5863dc7527))
+
 ### [0.0.19](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.18...v0.0.19) (2020-11-17)
 
 
