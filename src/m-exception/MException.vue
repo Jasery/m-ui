@@ -39,25 +39,26 @@ import chrome from "../assets/image/chrome.svg";
 import edge from "../assets/image/edge.svg";
 import safari from "../assets/image/safari.svg";
 import firefox from "../assets/image/firefox.svg";
+import { resolveResource } from "../utils";
 
 const config = {
   403: {
-    img: img403,
+    img: resolveResource(img403),
     title: "403",
     desc: "抱歉，你无权访问该页面"
   },
   404: {
-    img: img404,
+    img: resolveResource(img404),
     title: "404",
     desc: "抱歉，你访问的页面不存在"
   },
   500: {
-    img: img500,
+    img: resolveResource(img500),
     title: "500",
     desc: "抱歉，服务器出错了"
   },
   browser: {
-    img: browser,
+    img: resolveResource(browser),
     title: "浏览器版本不兼容",
     desc: "浏览器版本过低，为避免可能存在的安全隐患，推荐升级以下浏览器"
   }
@@ -65,22 +66,22 @@ const config = {
 const browsers = [
   {
     name: "Chrome",
-    icon: chrome,
+    icon: resolveResource(chrome),
     url: "https://www.google.com/intl/zh-CN/chrome/"
   },
   {
     name: "Edge",
-    icon: edge,
+    icon: resolveResource(edge),
     url: "https://www.microsoft.com/zh-cn/edge"
   },
   {
     name: "Firefox",
-    icon: firefox,
+    icon: resolveResource(firefox),
     url: "https://www.firefox.com.cn/"
   },
   {
     name: "Safari",
-    icon: safari,
+    icon: resolveResource(safari),
     url: "https://support.apple.com/zh_CN/downloads/safari"
   }
 ];

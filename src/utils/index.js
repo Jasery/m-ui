@@ -1,3 +1,5 @@
+import { getConfig } from "../utils/config";
+
 let _gid = 0;
 /**
  * 十位时间戳转Date对象
@@ -207,6 +209,11 @@ export function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+/**
+ * 遍历对象
+ * @param {Object} obj 目标对象
+ * @param {Function} fn 遍历方法
+ */
 export function objEach(obj, fn) {
   for (let key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -218,6 +225,10 @@ export function objEach(obj, fn) {
   }
 }
 
+/**
+ * 打印方法，可将对象展开，并只打印瞬时值
+ * @param  {...any} args args
+ */
 export function log(...args) {
   if (!args.length) {
     return;
@@ -228,6 +239,11 @@ export function log(...args) {
   console.log(...args);
 }
 
+/**
+ * 移除对象指定的key，返回浅拷贝对象
+ * @param {object}} obj 目标对象
+ * @param {Array} keys 需要移除的key数组
+ */
 export function removeKeys(obj, keys) {
   return Object.keys(obj)
     .filter(key => !keys.includes(key))
@@ -238,15 +254,27 @@ export function removeKeys(obj, keys) {
 }
 
 let microApp;
+function getPublicPath(publicPath = "/web/") {
+  return (
+    (window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ || "").replace(/\/$/, "") +
+    publicPath
+  );
+}
+
+/**
+ *
+ * @param {Function}} render 挂载方法，返回根实例
+ * @param {Object} hooks qiankun的生命周期钩子
+ */
 export function initMicroApp(render, hooks) {
   if (!window.__POWERED_BY_QIANKUN__) {
     render();
   }
   return {
     bootstrap: async () => {
+      let options = getConfig();
       // eslint-disable-next-line
-      __webpack_public_path__ =
-        window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__.replace(/\/$/, "") + "/web/";
+      __webpack_public_path__ = getPublicPath(options?.publicPath);
       return isFunction(hooks?.bootstrap) ? hooks?.bootstrap() : null;
     },
     mount: async props => {
@@ -261,4 +289,16 @@ export function initMicroApp(render, hooks) {
       return isFunction(hooks?.update) ? hooks?.update(props) : null;
     }
   };
+}
+
+/**
+ * 获取资源的路径，针对微前端环境
+ * @param {string} path 资源路径
+ */
+export function resolveResource(path) {
+  if (window.__POWERED_BY_QIANKUN__) {
+    const config = getConfig();
+    return getPublicPath(config?.publicPath) + path;
+  }
+  return path;
 }

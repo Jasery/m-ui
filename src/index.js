@@ -18,6 +18,7 @@ import MEllipsis from "./m-ellipsis/MEllipsis.vue";
 import MDialog from "./m-dialog/MDialog.vue";
 import MException from "./m-exception/MException.vue";
 import MForm from "./m-form/MForm.vue";
+import { setConfig } from "./utils/config";
 
 import "./style/util.scss";
 
@@ -47,10 +48,10 @@ export {
 
 export default {
   install(Vue, options) {
+    setConfig(options);
     Vue.component(MSelect.name, MSelect);
     Vue.component(MDatePicker.name, MDatePicker);
     Vue.component(MCheckboxGroup.name, MCheckboxGroup);
-    Vue.use(Auth, options?.auth);
     Vue.component(MPagination.name, MPagination);
     Vue.component(MTable.name, MTable);
     Vue.component(MEditableText.name, MEditableText);
@@ -63,6 +64,7 @@ export default {
     Vue.component(MException.name, MException);
     Vue.component(MForm.name, MForm);
 
+    Vue.use(Auth);
     Vue.use(MDirectives);
     Vue.use(Clipboard);
   }

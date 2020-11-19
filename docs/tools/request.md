@@ -8,6 +8,7 @@ import { request } from "m-ui";
 // 设置配置
 const config = {
   // axios config
+  timeout: 5000
 }
 request.setConfig(config)
 
@@ -33,7 +34,7 @@ request.addResponseInterceptor(function(response) {
   if(response.status === 400) {
     showLoginDialog();
   }
-  return response;
+  return response.data;
 });
 
 

@@ -96,9 +96,9 @@
 </template>
 
 <script>
-import { isNumber } from "../utils";
+import { isNumber, resolveResource } from "../utils";
 
-import defaultLogo from "./logo.png";
+import defaultLogo from "../assets/image/logo.png";
 
 export default {
   name: "MLayout",
@@ -149,7 +149,7 @@ export default {
     showAsideToggleTag: Boolean,
     logo: {
       type: String,
-      default: defaultLogo
+      default: resolveResource(defaultLogo)
     },
     appName: {
       type: String,
