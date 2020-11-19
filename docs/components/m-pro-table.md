@@ -13,6 +13,10 @@
       :query-model="query"
       :query-fields="queryFields"
       title="我的表格"
+      :field-config="{
+        pageNum: 'pageNum',
+        total: 'total',
+      }"
     >
       <template v-slot:tools>
         <el-button size="mini" type="primary" @click="onCreate">新增</el-button>
@@ -160,11 +164,12 @@ export default {
 | showSelection | 表格是否显示勾选列 | boolean | --- | true |
 | tableProps | m-table的props透传 | Object | --- | --- |
 | queryFields | m-query-form的fields，参考[m-query-form](#/Components/m-query-form) | Array | --- | --- |
+| fieldConfig | 约定的字段配置 | Object | --- | --- |
 
 ---
 
 ### 一些约定
-- props里面的fetch方法，约定公共参如下，其他字段则由fetchModel定义
+- props里面的fetch方法，约定公共参如下，其他字段则由fetchModel定义，约定字段可由`fieldConfig`配置
 ```json
 {
   "pageNum": 1,

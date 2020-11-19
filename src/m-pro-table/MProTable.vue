@@ -59,6 +59,15 @@ import MTable from "../m-table/MTable";
 import MQueryForm from "../m-query-form/MQueryForm";
 import { isUndefined, isNumber } from "../utils";
 
+const defaultFieldConfig = {
+  data: "data",
+  pageSize: "pageSize",
+  pageNum: "pageNum",
+  total: "total",
+  order: "order",
+  orderBy: "orderBy"
+};
+
 export default {
   name: "MProTable",
   components: {
@@ -84,7 +93,13 @@ export default {
       default: true
     },
     tableProps: Object,
-    queryFields: Array
+    queryFields: Array,
+    fieldConfig: {
+      type: Object,
+      default() {
+        return {};
+      }
+    }
   },
   data() {
     return {
@@ -97,7 +112,8 @@ export default {
       total: 0,
       selection: [],
       orderBy: undefined,
-      order: undefined
+      order: undefined,
+      fieldDic: Object.assign({}, defaultFieldConfig, this.fieldConfig)
     };
   },
   computed: {
@@ -136,16 +152,19 @@ export default {
       if (resetPage) {
         pageNum = 1;
       }
+
+      console.log("fieldDIc", this.fieldDic);
+
       return this.getData({
         ...this.queryModel,
-        pageNum: pageNum,
-        pageSize: this.pageSize,
-        order: this.order,
-        orderBy: this.orderBy
+        [this.fieldDic.pageNum]: pageNum,
+        [this.fieldDic.pageSize]: this.pageSize,
+        [this.fieldDic.order]: this.order,
+        [this.fieldDic.orderBy]: this.orderBy
       })
         .then(data => {
-          this.total = data.total;
-          this.tableData = data.data;
+          this.total = data[this.fieldDic.total];
+          this.tableData = data[this.fieldDic.data];
           this.selection = [];
           this.pageNum = pageNum;
         })
@@ -168,7 +187,7 @@ export default {
         })
         .catch(err => {
           let msg = err.message || err;
-          this.$message.error(err.message || err);
+          this.$message?.error(err.message || err);
           return Promise.reject(msg);
         });
     },
@@ -183,15 +202,18 @@ export default {
       this.scrollLoading = true;
       this.getData({
         ...this.queryModel,
-        pageSize: this.pageSize,
-        pageNum: this.pageNum + 1
+        [this.fieldDic.pageNum]: this.pageNum + 1,
+        [this.fieldDic.pageSize]: this.pageSize,
+        [this.fieldDic.order]: this.order,
+        [this.fieldDic.orderBy]: this.orderBy
       })
         .then(data => {
           this.pageNum++;
-          if (!data.data?.length) {
+          let scrollData = data[this.fieldDic.data];
+          if (!scrollData?.length) {
             this.noMore = true;
           } else {
-            this.tableData.push(...data.data);
+            this.tableData.push(...scrollData);
           }
         })
         .finally(() => {
@@ -221,7 +243,7 @@ export default {
         this.orderBy = prop;
         this.order = order;
       }
-      this.fetchData();
+      this.fetchData(this.isScroll);
     }
   }
 };
