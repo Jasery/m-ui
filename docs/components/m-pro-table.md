@@ -165,6 +165,7 @@ export default {
 | tableProps | m-table的props透传 | Object | --- | --- |
 | queryFields | m-query-form的fields，参考[m-query-form](#/Components/m-query-form) | Array | --- | --- |
 | fieldConfig | 约定的字段配置 | Object | --- | --- |
+| pageSize | 分页大小 | Number | --- | 30 |
 
 ---
 

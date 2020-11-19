@@ -99,13 +99,16 @@ export default {
       default() {
         return {};
       }
+    },
+    pageSize: {
+      type: Number,
+      default: 30
     }
   },
   data() {
     return {
       loading: false,
       tableData: [],
-      pageSize: 30,
       pageNum: 1,
       scrollLoading: false,
       noMore: false,
