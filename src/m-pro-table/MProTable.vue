@@ -156,8 +156,6 @@ export default {
         pageNum = 1;
       }
 
-      console.log("fieldDIc", this.fieldDic);
-
       return this.getData({
         ...this.queryModel,
         [this.fieldDic.pageNum]: pageNum,

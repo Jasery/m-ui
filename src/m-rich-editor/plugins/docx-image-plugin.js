@@ -17,7 +17,6 @@ function uploadImage(buffer, editor) {
     .map(item => item.toString(16))
     .join("")
     .toUpperCase();
-  console.log(headData, types[headData]);
   type = types[headData] || type;
 
   let fileName = "image." + type;
