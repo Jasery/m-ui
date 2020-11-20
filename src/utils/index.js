@@ -262,7 +262,7 @@ function getPublicPath(publicPath = "/web/") {
 }
 
 /**
- *
+ * 初始化微前端环境
  * @param {Function}} render 挂载方法，返回根实例
  * @param {Object} hooks qiankun的生命周期钩子
  */

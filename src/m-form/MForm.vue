@@ -23,6 +23,7 @@
           v-else-if="field.component"
           :is="field.component"
           v-bind="field.componentProps"
+          v-on="field.componentEvents"
           v-model="model[field.prop]"
         ></component>
       </template>
@@ -64,6 +65,7 @@ export default {
      *  labelSlotName: '',
      *  component: '',
      *  componentProps: {},
+     *  componentEvents: {}
      * }]
      */
     fields: {
