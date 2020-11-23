@@ -83,7 +83,8 @@ export default {
           "slotName",
           "labelSlotName",
           "component",
-          "componentProps"
+          "componentProps",
+          "componentEvents"
         ]);
       }
     };

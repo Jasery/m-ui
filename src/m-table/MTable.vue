@@ -85,7 +85,7 @@ import _ from "lodash";
 import ElTableInfiniteScroll from "el-table-infinite-scroll";
 import MPagination from "../m-pagination/MPagination";
 import padding from "../directives/padding";
-import { isNumber, isFunction } from "../utils";
+import { isNumber, isFunction, removeKeys } from "../utils";
 
 import emptySvg from "../assets/image/empty.svg";
 
@@ -216,7 +216,13 @@ export default {
         };
       }
       return {
-        ...col,
+        ...removeKeys(col, [
+          "slotName",
+          "headerSlotName",
+          "component",
+          "componentProps",
+          "componentEvents"
+        ]),
         formatter
       };
     }
