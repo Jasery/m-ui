@@ -1,6 +1,8 @@
 ### 描述
 对富文本编辑器wangeditor的封装
 
+> 由于组件体积过大，现在已拆分成独立的仓库，详情见[m-rich-editor](https://git.mingchao.com/mcwebfe-deps/m-rich-editor)
+
 
 ### 基本用法
 

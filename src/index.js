@@ -10,7 +10,6 @@ import MTable from "./m-table/MTable.vue";
 import Clipboard from "./clipboard";
 import MEditableText from "./m-editable-text/MEditableText.vue";
 import MQueryForm from "./m-query-form/MQueryForm.vue";
-import MRichEditor from "./m-rich-editor/MRichEditor.vue";
 import MLayout from "./m-layout/MLayout.vue";
 import MProTable from "./m-pro-table/MProTable.vue";
 import request from "./request";
@@ -36,7 +35,6 @@ export {
   MTable,
   MEditableText,
   MQueryForm,
-  MRichEditor,
   MLayout,
   MProTable,
   request,
@@ -56,7 +54,6 @@ export default {
     Vue.component(MTable.name, MTable);
     Vue.component(MEditableText.name, MEditableText);
     Vue.component(MQueryForm.name, MQueryForm);
-    Vue.component(MRichEditor.name, MRichEditor);
     Vue.component(MLayout.name, MLayout);
     Vue.component(MProTable.name, MProTable);
     Vue.component(MEllipsis.name, MEllipsis);
