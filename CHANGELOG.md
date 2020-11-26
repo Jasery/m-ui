@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.20...v0.1.0) (2020-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **m-rich-editor:** m-rich-editor需要单独安装
+
+### Features
+
+* **m-form:** 自定义组件添加componentEvents ([c929f1e](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/c929f1ee879873135d4613623d75d2175f657216))
+* **m-pro-table:** 添加pageSize属性 ([e47c3ee](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e47c3ee61deff0a731159927923b1d85b6cf6bc4))
+* **m-rich-editor:** 拆分到独立仓库 ([f1e4157](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/f1e4157a27a26703a108ec1697788a679a70fe8b))
+* **m-table:** column自定义组件添加componentProps和componentEvents配置 ([1ebc51e](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/1ebc51ee8f708a5260c367a56f9787927560abe2))
+
+
+### Bug Fixes
+
+* 修复细节问题 ([1632ff1](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/1632ff13761fdbe37d679640a7b1b52c679e6a0f))
+* 移除log ([80e3a0f](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/80e3a0fa2d1563f719bce7b41e2f62714fcecfa9))
+
 ### [0.0.20](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.0.19...v0.0.20) (2020-11-19)
 
 
