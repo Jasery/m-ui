@@ -17,9 +17,7 @@
     "async-validator": "^3.4.0",
     "axios": "^0.21.0",
     "clipboard": "^2.0.6",
-    "docx2html": "git+https://git.mingchao.com/git/mcwebfe-deps/docx2html.git#v1.3.4",
-    "el-table-infinite-scroll": "^1.0.10",
-    "wangeditor": "^4.2.1"
+    "el-table-infinite-scroll": "^1.0.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
