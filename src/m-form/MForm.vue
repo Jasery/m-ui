@@ -13,6 +13,7 @@
       v-for="field in fields"
       :key="field.prop"
       v-bind="getFormItemProps(field)"
+      :class="{ 'item-group': !!field.group }"
     >
       <template v-if="field.labelSlotName" v-slot:label>
         <slot :name="field.labelSlotName"></slot>
@@ -27,6 +28,25 @@
           v-model="model[field.prop]"
         ></component>
       </template>
+      <el-form-item
+        v-for="fieldItem in field.group"
+        :key="fieldItem.prop"
+        v-bind="getFormItemProps(fieldItem)"
+      >
+        <template v-if="fieldItem.labelSlotName" v-slot:label>
+          <slot :name="fieldItem.labelSlotName"></slot>
+        </template>
+        <template>
+          <slot v-if="fieldItem.slotName" :name="fieldItem.slotName"></slot>
+          <component
+            v-else-if="fieldItem.component"
+            :is="fieldItem.component"
+            v-bind="fieldItem.componentProps"
+            v-on="fieldItem.componentEvents"
+            v-model="model[fieldItem.prop]"
+          ></component>
+        </template>
+      </el-form-item>
     </el-form-item>
   </el-form>
 </template>
@@ -65,7 +85,8 @@ export default {
      *  labelSlotName: '',
      *  component: '',
      *  componentProps: {},
-     *  componentEvents: {}
+     *  componentEvents: {},
+     *  group: []
      * }]
      */
     fields: {
@@ -84,7 +105,8 @@ export default {
           "labelSlotName",
           "component",
           "componentProps",
-          "componentEvents"
+          "componentEvents",
+          "group"
         ]);
       }
     };
@@ -113,4 +135,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.item-group {
+  ::v-deep & > .el-form-item__content {
+    margin-left: 0 !important;
+    display: flex;
+    & > .el-form-item {
+      flex: auto;
+    }
+  }
+}
+</style>

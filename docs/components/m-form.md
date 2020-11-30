@@ -35,7 +35,9 @@ export default {
       model: {
         name: '',
         gender: null,
-        born: null
+        born: null,
+        group1: null,
+        group2: null
       },
       fields: [{
         label: "姓名",
@@ -55,6 +57,16 @@ export default {
         label: "出生日期",
         prop: "born",
         component: 'm-date-picker'
+      }, {
+        group: [{
+          label: 'group1',
+          prop: 'gropu1',
+          component: 'el-input'
+        }, {
+          label: 'group2',
+          prop: 'group2',
+          component: 'el-input'
+        }]
       }]
     }
   },
@@ -86,6 +98,8 @@ fields 里面的元素数据格式兼容`el-form-item`的props，并新增以下
 | slotName | 用对应el-form-item的默认 slot的名字 | string | --- | --- |
 | compnent | 表单组件，根据prop自动绑定值 | string \| object | --- | --- |
 | compnentProps | 表单组件的props | Object  | --- | --- |
+| group | 嵌套选项，字段相同，多个item并列布局 | Array  | --- | --- |
+
 ---
 
 ### Events
@@ -104,3 +118,4 @@ fields 里面的元素数据格式兼容`el-form-item`的props，并新增以下
 | 方法名 | 说明 | 参数 |
 | :---- | :---- | :---- |
 | getElForm | 获取el-form组件实例| --- |
+
