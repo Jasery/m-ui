@@ -7,7 +7,7 @@
     :model="model"
     ref="form"
   >
-    <el-row :gutter="10">
+    <el-row :gutter="10" class="query-form-content">
       <el-col
         v-for="(field, index) in filterFormItems()"
         :key="index"
@@ -176,6 +176,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.m-query-form {
+  .query-form-content {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+}
 ::v-deep.el-form--inline {
   .el-form-item {
     display: inline-flex;
@@ -184,6 +191,7 @@ export default {
 ::v-deep .el-form-item {
   width: 100%;
   display: flex;
+  margin-bottom: 0;
   .el-form-item__label {
     min-width: 100px;
   }

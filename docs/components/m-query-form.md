@@ -87,6 +87,7 @@ export default {
 <template>
   <div>
     <m-query-form
+      class="mg-b-12"
       :model="model"
       :default-collapse="false"
       :submit-loading="loading"
