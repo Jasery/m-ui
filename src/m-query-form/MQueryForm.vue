@@ -191,7 +191,7 @@ export default {
 ::v-deep .el-form-item {
   width: 100%;
   display: flex;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
   .el-form-item__label {
     min-width: 100px;
   }
