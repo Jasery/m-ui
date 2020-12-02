@@ -7,6 +7,9 @@
       :fixed-bottom="10"
       :query-model="query"
       :query-fields="queryFields"
+      show-refresh
+      column-setting
+      column-cache-key="table-columnn-key"
       title="我的表格"
     >
       <template v-slot:tools>
@@ -53,18 +56,22 @@ export default {
         },
         {
           label: "性别",
+          prop: "gender",
           slotName: "gender"
         },
         {
           label: "年龄",
+          prop: "age",
           formatter: row => row.age + "岁"
         },
         {
           label: "出生日期",
-          prop: "born"
+          prop: "born",
+          headerTips: "十位时间戳"
         },
         {
           label: "操作",
+          prop: "opreation",
           slotName: "opreation"
         }
       ],

@@ -13,6 +13,8 @@
       :query-model="query"
       :query-fields="queryFields"
       title="我的表格"
+      show-refresh
+      column-setting
       :field-config="{
         pageNum: 'pageNum',
         total: 'total',
@@ -45,9 +47,11 @@ export default {
         sortable: true
       }, {
         label: "性别",
+        prop: 'gender',
         slotName: "gender"
       }, {
         label: "年龄",
+        prop: 'age',
         formatter: (row) => row.age + "岁"
       }, {
         label: "出生日期",
@@ -55,6 +59,7 @@ export default {
         headerTips: '十位时间戳'
       }, {
         label: '操作',
+        prop: 'opreation',
         slotName: 'opreation'
       }],
       query: {
@@ -166,6 +171,9 @@ export default {
 | queryFields | m-query-form的fields，参考[m-query-form](#/Components/m-query-form) | Array | --- | --- |
 | fieldConfig | 约定的字段配置 | Object | --- | --- |
 | pageSize | 分页大小 | Number | --- | 30 |
+| showRefresh | 是否显示刷新按钮 | Boolean | --- | false |
+| columnSetting | 是否列设置 | Boolean | --- | false |
+| columnCacheKey | 列设置缓存key | String | --- | --- |
 
 ---
 

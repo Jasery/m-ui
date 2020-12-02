@@ -20,6 +20,18 @@
         </div>
         <div class="tools">
           <slot name="tools"></slot>
+          <el-tooltip v-if="showRefresh" content="刷新" placement="top">
+            <i
+              class="el-icon-refresh fs-22 mg-l-8 cur-p"
+              @click="fetchData"
+            ></i>
+          </el-tooltip>
+          <table-column-setting
+            v-if="columnSetting"
+            :columns="columns"
+            :cache-key="columnCacheKey"
+            @change="onColumnChange"
+          ></table-column-setting>
         </div>
       </div>
       <m-table
@@ -31,7 +43,7 @@
         :noMore="noMore"
         :fixed-bottom="tableFixedBottom"
         :height="height"
-        :columns="columns"
+        :columns="displayColumns"
         :page-size="pageSize"
         :current-page="pageNum"
         :table-loading="loading"
@@ -58,6 +70,7 @@
 import MTable from "../m-table/MTable";
 import MQueryForm from "../m-query-form/MQueryForm";
 import { isUndefined, isNumber } from "../utils";
+import TableColumnSetting from "m-ui/src/m-pro-table/TableColumnSetting.vue";
 
 const defaultFieldConfig = {
   data: "data",
@@ -72,12 +85,22 @@ export default {
   name: "MProTable",
   components: {
     MTable,
-    MQueryForm
+    MQueryForm,
+    TableColumnSetting
   },
   props: {
     fetch: Function,
     title: String,
-    columns: Array,
+    columns: {
+      type: Array,
+      validator(val) {
+        if (val.some(item => !item.prop)) {
+          console.error("column 必须包含prop字段");
+          return false;
+        }
+        return true;
+      }
+    },
     queryModel: Object,
     pageType: {
       type: String,
@@ -103,7 +126,10 @@ export default {
     pageSize: {
       type: Number,
       default: 30
-    }
+    },
+    showRefresh: Boolean,
+    columnSetting: Boolean,
+    columnCacheKey: String
   },
   data() {
     return {
@@ -116,7 +142,8 @@ export default {
       selection: [],
       orderBy: undefined,
       order: undefined,
-      fieldDic: Object.assign({}, defaultFieldConfig, this.fieldConfig)
+      fieldDic: Object.assign({}, defaultFieldConfig, this.fieldConfig),
+      displayColumns: this.columns
     };
   },
   computed: {
@@ -245,6 +272,10 @@ export default {
         this.order = order;
       }
       this.fetchData(this.isScroll);
+    },
+
+    onColumnChange(columns) {
+      this.displayColumns = columns;
     }
   }
 };
@@ -269,6 +300,10 @@ export default {
       align-items: center;
       border-bottom: 1px solid rgba(0, 0, 0, 0.15);
       padding: 16px;
+      .tools {
+        display: flex;
+        align-items: center;
+      }
       h1 {
         font-size: 16px;
         margin: 0;
