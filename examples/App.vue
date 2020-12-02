@@ -12,4 +12,7 @@ body {
   margin: 0;
   background-color: #eee;
 }
+.w-100 {
+  width: 100% !important;
+}
 </style>

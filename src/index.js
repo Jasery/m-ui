@@ -18,6 +18,7 @@ import MDialog from "./m-dialog/MDialog.vue";
 import MException from "./m-exception/MException.vue";
 import MForm from "./m-form/MForm.vue";
 import { setConfig } from "./utils/config";
+import MDialogForm from "./m-dialog-form/MDialogForm.vue";
 
 import "./style/util.scss";
 
@@ -41,7 +42,8 @@ export {
   MEllipsis,
   MDialog,
   MException,
-  MForm
+  MForm,
+  MDialogForm
 };
 
 export default {
@@ -60,6 +62,7 @@ export default {
     Vue.component(MDialog.name, MDialog);
     Vue.component(MException.name, MException);
     Vue.component(MForm.name, MForm);
+    Vue.component(MDialogForm.name, MDialogForm);
 
     Vue.use(Auth);
     Vue.use(MDirectives);

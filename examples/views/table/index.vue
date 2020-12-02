@@ -6,29 +6,9 @@
       :fetch="fetch"
       :fixed-bottom="10"
       :query-model="query"
+      :query-fields="queryFields"
       title="我的表格"
     >
-      <template v-slot:query>
-        <el-form-item label="name" prop="name">
-          <el-input v-model="query.name"></el-input>
-        </el-form-item>
-        <el-form-item label="gender" prop="gender">
-          <m-select
-            v-model="query.gender"
-            :options="[
-              { label: 'male', value: 'male' },
-              { label: 'female', value: 'female' }
-            ]"
-          >
-          </m-select>
-        </el-form-item>
-        <el-form-item label="age" prop="age">
-          <el-input v-model="query.age" type="number"></el-input>
-        </el-form-item>
-        <el-form-item label="born" prop="born">
-          <m-date-picker v-model="query.born" type="daterange"></m-date-picker>
-        </el-form-item>
-      </template>
       <template v-slot:tools>
         <el-button size="small" type="primary" @click="onCreate"
           >新增</el-button
@@ -39,16 +19,30 @@
         <span :class="row.gender">{{ row.gender }}</span>
       </template>
       <template v-slot:opreation="{ row }">
-        <el-button size="small" type="primary" @click="onClick(row)"
-          >点击</el-button
+        <el-button size="small" type="primary" @click="onEdit(row)"
+          >编辑</el-button
         >
       </template>
     </m-pro-table>
+    <m-dialog-form
+      :visible.sync="dialogVisible"
+      :fields="dialogFormFields"
+      :title="dialogTitle"
+      :default-model="defaultItem"
+      :model-value="editItem"
+      :create-fn="createItem"
+      :update-fn="updateItem"
+      size="small"
+      @saved="() => $refs.proTable.fetchData()"
+    >
+    </m-dialog-form>
   </div>
 </template>
 
 <script>
 import Mockjs from "mockjs";
+import { MUtils } from "m-ui";
+
 export default {
   data() {
     return {
@@ -79,8 +73,104 @@ export default {
         gender: null,
         age: null,
         born: []
+      },
+      queryFields: [
+        {
+          label: "姓名",
+          prop: "name",
+          component: "el-input"
+        },
+        {
+          label: "性别",
+          prop: "gender",
+          component: "m-select",
+          componentProps: {
+            options: [
+              {
+                label: "男",
+                value: 1
+              },
+              {
+                label: "女",
+                value: 2
+              }
+            ]
+          }
+        },
+        {
+          label: "年龄",
+          prop: "age",
+          component: "el-input",
+          componentProps: {
+            type: "number"
+          }
+        },
+        {
+          label: "出生",
+          prop: "born",
+          component: "m-date-picker",
+          componentProps: {
+            type: "daterange"
+          }
+        }
+      ],
+      dialogFormFields: [
+        {
+          label: "姓名",
+          prop: "name",
+          component: "el-input",
+          rules: [{ required: true, message: "请输入姓名" }]
+        },
+        {
+          label: "性别",
+          prop: "gender",
+          component: "m-select",
+          componentProps: {
+            class: "w-100",
+            options: [
+              {
+                label: "男",
+                value: 1
+              },
+              {
+                label: "女",
+                value: 2
+              }
+            ]
+          },
+          rules: [{ required: true, message: "请选择性别" }]
+        },
+        {
+          label: "年龄",
+          prop: "age",
+          component: "el-input",
+          componentProps: {
+            type: "number"
+          }
+        },
+        {
+          label: "出生",
+          prop: "born",
+          component: "m-date-picker",
+          componentProps: {
+            class: "w-100"
+          }
+        }
+      ],
+      dialogVisible: false,
+      editItem: null,
+      defaultItem: {
+        name: "",
+        gender: null,
+        age: null,
+        born: null
       }
     };
+  },
+  computed: {
+    dialogTitle() {
+      return this.editItem ? "编辑" : "新增";
+    }
   },
   methods: {
     fetch(query) {
@@ -113,11 +203,13 @@ export default {
         }, 3000 * Math.random());
       });
     },
-    onClick(row) {
-      this.$message.success("查看详情-" + row.name);
+    onEdit(row) {
+      this.editItem = row;
+      this.dialogVisible = true;
     },
     onCreate() {
-      this.$message.success("to create form");
+      this.editItem = null;
+      this.dialogVisible = true;
     },
     onDelete() {
       let selection = this.$refs.proTable.getSelection();
@@ -127,6 +219,13 @@ export default {
         this.$message.success("删除成功");
         this.$refs.proTable.fetchData();
       }
+    },
+    async createItem() {
+      await MUtils.delay(1000);
+      return Mockjs.mock("@integer");
+    },
+    async updateItem() {
+      await MUtils.delay(1000);
     }
   }
 };

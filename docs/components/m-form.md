@@ -108,7 +108,10 @@ fields 里面的元素数据格式兼容`el-form-item`的props，并新增以下
 ---
 
 ### Slots
-同`el-form`
+| 名称 | 说明 |
+| :---- | :---- |
+| deafult | 默认内容，在fields内容之前 |
+| append | 在fields内容之后 |
 
 ---
 

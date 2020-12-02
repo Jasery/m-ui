@@ -48,6 +48,7 @@
         </template>
       </el-form-item>
     </el-form-item>
+    <slot name="append"></slot>
   </el-form>
 </template>
 
