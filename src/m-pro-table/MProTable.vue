@@ -1,5 +1,5 @@
 <template>
-  <div class="m-pro-table">
+  <div :class="['m-pro-table', { fullscreen: isFullscreen }]">
     <div v-if="$slots.query || queryFields" class="query-form-wrapper">
       <m-query-form
         :model="queryModel"
@@ -32,6 +32,12 @@
             :cache-key="columnCacheKey"
             @change="onColumnChange"
           ></table-column-setting>
+          <el-tooltip v-if="showFullscreen" content="全屏" placement="top">
+            <i
+              class="el-icon-full-screen fs-22 mg-l-8 cur-p"
+              @click="onFullScreen"
+            ></i>
+          </el-tooltip>
         </div>
       </div>
       <m-table
@@ -129,7 +135,8 @@ export default {
     },
     showRefresh: Boolean,
     columnSetting: Boolean,
-    columnCacheKey: String
+    columnCacheKey: String,
+    showFullscreen: Boolean
   },
   data() {
     return {
@@ -143,7 +150,8 @@ export default {
       orderBy: undefined,
       order: undefined,
       fieldDic: Object.assign({}, defaultFieldConfig, this.fieldConfig),
-      displayColumns: this.columns
+      displayColumns: this.columns,
+      isFullscreen: false
     };
   },
   computed: {
@@ -165,14 +173,29 @@ export default {
       }, []);
     },
     tableFixedBottom() {
+      let paginationHeight = 50;
+      if (this.isFullscreen) {
+        return this.isPagination ? paginationHeight : 0;
+      }
       if (isNumber(this.fixedBottom)) {
-        return this.isPagination ? this.fixedBottom + 50 : this.fixedBottom;
+        return this.isPagination
+          ? this.fixedBottom + paginationHeight
+          : this.fixedBottom;
       }
       return null;
     }
   },
   mounted() {
     this.fetchData();
+    const fullscreenHandle = event => {
+      if (event.key === "Escape") {
+        this.isFullscreen = false;
+      }
+    };
+    document.addEventListener("keydown", fullscreenHandle);
+    this.$once("hook:beforeDestroy", () => {
+      document.removeEventListener("keydown", fullscreenHandle);
+    });
   },
   methods: {
     fetchData(resetPage) {
@@ -276,6 +299,13 @@ export default {
 
     onColumnChange(columns) {
       this.displayColumns = columns;
+    },
+
+    onFullScreen() {
+      this.isFullscreen = !this.isFullscreen;
+      if (this.isFullscreen) {
+        this.$message.info("按Esc即可退出全屏模式");
+      }
     }
   }
 };
@@ -283,6 +313,14 @@ export default {
 
 <style lang="scss" scoped>
 .m-pro-table {
+  &.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #eee;
+  }
   .query-form-wrapper {
     padding: 16px;
     background-color: #fff;

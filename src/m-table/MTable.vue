@@ -143,6 +143,11 @@ export default {
     height() {
       this.tableHeight = this.height;
     },
+    fixedBottom() {
+      this.$nextTick(() => {
+        this.setTableHeight();
+      });
+    },
     "$attrs.data": function() {
       this.$nextTick(() => {
         this.setTableHeight();
@@ -189,6 +194,7 @@ export default {
 
     setTableHeight() {
       if (!this.isFixedBottom) {
+        this.tableHeight = this.height;
         return;
       }
       let { top } = this.$refs.table.$el.getBoundingClientRect();

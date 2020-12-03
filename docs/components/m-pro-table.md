@@ -14,6 +14,7 @@
       :query-fields="queryFields"
       title="我的表格"
       show-refresh
+      show-fullscreen
       column-setting
       :field-config="{
         pageNum: 'pageNum',
@@ -174,6 +175,8 @@ export default {
 | showRefresh | 是否显示刷新按钮 | Boolean | --- | false |
 | columnSetting | 是否列设置 | Boolean | --- | false |
 | columnCacheKey | 列设置缓存key | String | --- | --- |
+| showFullscreen | 是否显示全屏按钮 | Boolean | --- | false |
+
 
 ---
 

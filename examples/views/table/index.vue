@@ -10,6 +10,7 @@
       show-refresh
       column-setting
       column-cache-key="table-columnn-key"
+      show-fullscreen
       title="我的表格"
     >
       <template v-slot:tools>
