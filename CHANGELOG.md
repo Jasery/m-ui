@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.2...v0.1.3) (2020-12-04)
+
+
+### Features
+
+* **m-pro-table:** 添加全屏功能 ([fc7af7d](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/fc7af7d616f06b1e8900d6907444997b749c58b0))
+* **m-pro-table:** 添加刷新及列设置 ([0a1c3c2](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/0a1c3c266c70ddf55c34ff84e1df38d6943578cc))
+* 添加m-dialog-form组件 ([35edd4c](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/35edd4c48805dd8d73330874246a75b08d9329c0))
+
+
+### Bug Fixes
+
+* **m-query-form:** 修复折叠按钮显示bug，重置时会触发submit事件 ([d55d13a](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/d55d13af05d850294827b126e1e28251e29c12ff))
+
 ### [0.1.2](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.1...v0.1.2) (2020-12-01)
 
 
