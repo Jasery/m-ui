@@ -6,7 +6,7 @@
 <template>
   <div>
     <m-table :data="data" :columns="columns">
-      <template v-slot:gender={row}>
+      <template v-slot:gender="{row}">
         <span :class="row.gender">{{row.gender}}</span>
       </template>
     </m-table>
