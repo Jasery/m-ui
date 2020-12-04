@@ -104,7 +104,7 @@ export default {
     },
     collapseVisible() {
       let formItemCount = this.filterFormItems().length;
-      if (formItemCount < this.col - 1) {
+      if (formItemCount < this.col) {
         return false;
       }
       return this.collapseable;
@@ -167,6 +167,7 @@ export default {
 
     onReset() {
       this.$refs.form.resetFields();
+      this.onSumit();
     },
 
     onSumit() {
