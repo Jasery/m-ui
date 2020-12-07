@@ -19,6 +19,7 @@ import MException from "./m-exception/MException.vue";
 import MForm from "./m-form/MForm.vue";
 import { setConfig } from "./utils/config";
 import MDialogForm from "./m-dialog-form/MDialogForm.vue";
+import { exportExcel, exportCsv } from "./data-export";
 
 import "./style/util.scss";
 
@@ -43,7 +44,9 @@ export {
   MDialog,
   MException,
   MForm,
-  MDialogForm
+  MDialogForm,
+  exportExcel,
+  exportCsv
 };
 
 export default {
