@@ -4,7 +4,7 @@
       ref="proTable"
       :columns="columns"
       :fetch="fetch"
-      :fixed-bottom="10"
+      :fixed-bottom="24"
       :query-model="query"
       :query-fields="queryFields"
       show-refresh
@@ -240,6 +240,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main {
-  padding: 10px;
+  padding: 24px;
 }
 </style>

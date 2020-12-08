@@ -322,9 +322,9 @@ export default {
     background-color: #eee;
   }
   .query-form-wrapper {
-    padding: 16px;
+    padding: 24px;
     background-color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   .table-wrapper {
     background-color: #fff;
@@ -337,7 +337,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-      padding: 16px;
+      padding: 24px;
       .tools {
         display: flex;
         align-items: center;
