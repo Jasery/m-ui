@@ -26,6 +26,7 @@
           v-bind="field.componentProps"
           v-on="field.componentEvents"
           v-model="model[field.prop]"
+          :ref="field.prop"
         ></component>
       </template>
       <el-form-item
@@ -44,6 +45,7 @@
             v-bind="fieldItem.componentProps"
             v-on="fieldItem.componentEvents"
             v-model="model[fieldItem.prop]"
+            :ref="fieldItem.prop"
           ></component>
         </template>
       </el-form-item>
@@ -53,7 +55,7 @@
 </template>
 
 <script>
-import { removeKeys } from "../utils";
+import { removeKeys, isFunction } from "../utils";
 
 export default {
   name: "MForm",
@@ -101,7 +103,7 @@ export default {
   data() {
     return {
       getFormItemProps(field) {
-        return removeKeys(field, [
+        let formItemProps = removeKeys(field, [
           "slotName",
           "labelSlotName",
           "component",
@@ -109,6 +111,23 @@ export default {
           "componentEvents",
           "group"
         ]);
+
+        if (!formItemProps.rules) {
+          const validator = (rule, value, callback) => {
+            let comp = this.$refs[formItemProps.prop];
+            if (Array.isArray(comp)) {
+              comp = comp[0];
+            }
+            if (comp && isFunction(comp.validator)) {
+              comp.validator(rule, value, callback);
+            } else {
+              callback();
+            }
+          };
+          formItemProps.rules = [{ validator }];
+        }
+
+        return formItemProps;
       }
     };
   },

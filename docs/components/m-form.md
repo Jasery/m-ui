@@ -61,7 +61,23 @@ export default {
         group: [{
           label: 'group1',
           prop: 'gropu1',
-          component: 'el-input'
+          component: {
+            methods: {
+              validator(rule, value, callback) {
+                if(value && value.length > 20) {
+                  callback()
+                } else {
+                  callback(new Error("长度必须大于20"))
+                }
+              }
+            },
+            render(h) {
+              return h('el-input', {
+                props: this.$attrs,
+                on: this.$listeners
+              })
+            }
+          }
         }, {
           label: 'group2',
           prop: 'group2',
