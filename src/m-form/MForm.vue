@@ -10,7 +10,7 @@
   >
     <slot></slot>
     <el-form-item
-      v-for="field in fields"
+      v-for="(field, index) in fields"
       :key="field.prop"
       v-bind="getFormItemProps(field)"
       :class="{ 'item-group': !!field.group }"
@@ -19,7 +19,13 @@
         <slot :name="field.labelSlotName"></slot>
       </template>
       <template>
-        <slot v-if="field.slotName" :name="field.slotName"></slot>
+        <slot
+          v-if="field.slotName"
+          :name="field.slotName"
+          :index="index"
+          :prop="field.prop"
+          :value="model[field.prop]"
+        ></slot>
         <component
           v-else-if="field.component"
           :is="field.component"
@@ -38,7 +44,13 @@
           <slot :name="fieldItem.labelSlotName"></slot>
         </template>
         <template>
-          <slot v-if="fieldItem.slotName" :name="fieldItem.slotName"></slot>
+          <slot
+            v-if="fieldItem.slotName"
+            :name="fieldItem.slotName"
+            :index="index"
+            :prop="field.prop"
+            :value="model[field.prop]"
+          ></slot>
           <component
             v-else-if="fieldItem.component"
             :is="fieldItem.component"

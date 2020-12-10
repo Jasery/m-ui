@@ -20,6 +20,7 @@ import MForm from "./m-form/MForm.vue";
 import { setConfig } from "./utils/config";
 import MDialogForm from "./m-dialog-form/MDialogForm.vue";
 import { exportExcel, exportCsv } from "./data-export";
+import MArrayForm from "./m-array-form/MArrayForm.vue";
 
 import "./style/util.scss";
 
@@ -46,7 +47,8 @@ export {
   MForm,
   MDialogForm,
   exportExcel,
-  exportCsv
+  exportCsv,
+  MArrayForm
 };
 
 export default {
@@ -66,6 +68,7 @@ export default {
     Vue.component(MException.name, MException);
     Vue.component(MForm.name, MForm);
     Vue.component(MDialogForm.name, MDialogForm);
+    Vue.component(MArrayForm.name, MArrayForm);
 
     Vue.use(Auth);
     Vue.use(MDirectives);
