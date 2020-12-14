@@ -7,7 +7,7 @@
     :model="model"
     ref="form"
   >
-    <el-row :gutter="10" class="query-form-content">
+    <el-row :gutter="20" class="query-form-content">
       <el-col
         v-for="(field, index) in filterFormItems()"
         :key="index"
