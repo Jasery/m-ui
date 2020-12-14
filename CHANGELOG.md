@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.4...v0.1.5) (2020-12-14)
+
+
+### Features
+
+* 添加m-array-form组件 ([5808aa9](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/5808aa9f1c84e06259a48e82918375856fc43643))
+* **m-form:** 添加表单组件内自定义校验 ([d20cbb5](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/d20cbb51aba3788775106ee53476a29206e616e6))
+
+
+### Bug Fixes
+
+* **m-query-form:** 调整样式 ([cb98e89](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/cb98e89683947d84740389154cd033d37cf0fa8d))
+
 ### [0.1.4](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.3...v0.1.4) (2020-12-08)
 
 
