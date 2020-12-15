@@ -21,6 +21,7 @@ import { setConfig } from "./utils/config";
 import MDialogForm from "./m-dialog-form/MDialogForm.vue";
 import { exportExcel, exportCsv } from "./data-export";
 import MArrayForm from "./m-array-form/MArrayForm.vue";
+import MDraggableDialog from "./m-draggable-dialog/MDraggableDialog.vue";
 
 import "./style/util.scss";
 
@@ -48,7 +49,8 @@ export {
   MDialogForm,
   exportExcel,
   exportCsv,
-  MArrayForm
+  MArrayForm,
+  MDraggableDialog
 };
 
 export default {
@@ -69,6 +71,7 @@ export default {
     Vue.component(MForm.name, MForm);
     Vue.component(MDialogForm.name, MDialogForm);
     Vue.component(MArrayForm.name, MArrayForm);
+    Vue.component(MDraggableDialog.name, MDraggableDialog);
 
     Vue.use(Auth);
     Vue.use(MDirectives);
