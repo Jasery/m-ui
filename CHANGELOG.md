@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.5...v0.1.6) (2020-12-15)
+
+
+### Features
+
+* 添加m-draggable-dialog组件 ([4380e51](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/4380e51c3ee452ae48429b9fe245373d3b1d8098))
+
+
+### Bug Fixes
+
+* **m-pro-table:** 修复table-props指定默认排序时，请求没带上排序参数bug ([19a08e7](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/19a08e7a2c2dcb0f8bba15208303dfd5b6954cd5))
+
 ### [0.1.5](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.4...v0.1.5) (2020-12-14)
 
 
