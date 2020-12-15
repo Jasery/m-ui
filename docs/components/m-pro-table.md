@@ -20,6 +20,7 @@
         pageNum: 'pageNum',
         total: 'total',
       }"
+      :table-props="{'default-sort': {prop: 'id', order: 'descending'}}"
     >
       <template v-slot:tools>
         <el-button size="mini" type="primary" @click="onCreate">新增</el-button>

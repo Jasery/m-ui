@@ -77,6 +77,7 @@ import MTable from "../m-table/MTable";
 import MQueryForm from "../m-query-form/MQueryForm";
 import { isUndefined, isNumber } from "../utils";
 import TableColumnSetting from "m-ui/src/m-pro-table/TableColumnSetting.vue";
+import _ from "lodash";
 
 const defaultFieldConfig = {
   data: "data",
@@ -147,8 +148,8 @@ export default {
       noMore: false,
       total: 0,
       selection: [],
-      orderBy: undefined,
-      order: undefined,
+      orderBy: _.get(this.tableProps, "default-sort.prop"),
+      order: _.get(this.tableProps, "default-sort.order"),
       fieldDic: Object.assign({}, defaultFieldConfig, this.fieldConfig),
       displayColumns: this.columns,
       isFullscreen: false
