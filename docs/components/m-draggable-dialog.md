@@ -6,6 +6,7 @@
 <template>
   <div>
     <el-button @click="dialogVisible = true">显示</el-button>
+    <el-button @click="$message('hello')">msg</el-button>
     <m-draggable-dialog
       :visible.sync="dialogVisible"
       title="draggable dialog"

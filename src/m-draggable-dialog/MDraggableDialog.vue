@@ -63,40 +63,31 @@ export default {
   },
   props: {
     title: String,
-
     minPos: {
       type: Object,
       default() {
-        return {
-          top: 100,
-          left: 100
-        };
+        return { top: 0, left: 0 };
       },
       validator(val = {}) {
         return isNumber(val.top) && isNumber(val.left);
       }
     },
-
     top: {
       type: [String, Number],
       default: "15vh"
     },
-
     maxable: {
       type: Boolean,
       default: true
     },
-
     minable: {
       type: Boolean,
       default: true
     },
-
     showClose: {
       type: Boolean,
       default: true
     },
-
     resizeable: {
       type: Boolean,
       default: true
@@ -118,14 +109,14 @@ export default {
   data() {
     return {
       dialogOriginPos: {},
-      mouseDownPos: {},
       dialogMouseDownPos: {},
       dialogStyle: {},
       contentHeight: 0,
       contentOriginHeight: 0,
       isMin: false,
       isMax: false,
-      moving: false
+      moving: false,
+      elStyle: {}
     };
   },
 
@@ -195,9 +186,6 @@ export default {
         return;
       }
       this.header.addEventListener("mousedown", this.onHeaderMouseDown);
-      this.$once("hook:beforeDestroy", () => {
-        this.header.removeEventListener("mousedown", this.onHeaderMouseDown);
-      });
       this.hasInitEvent = true;
     },
 
@@ -207,22 +195,24 @@ export default {
       this.dialogMouseDownPos = this.dialog.getBoundingClientRect();
       if (!this.isMin && !this.isMax) {
         this.dialogOriginPos = this.dialogMouseDownPos;
+      } else if (this.isMin) {
+        this.elRect = this.$el.getBoundingClientRect();
       }
       this.mouseDownPos = {
         x: e.pageX,
         y: e.pageY
       };
-      document.addEventListener("mousemove", this.documentMousemoveHandle);
+      document.addEventListener("mousemove", this.dragMouseMoveHandle);
       let onMouseup = () => {
         this.moving = false;
         document.body.style.cursor = "";
-        document.removeEventListener("mousemove", this.documentMousemoveHandle);
+        document.removeEventListener("mousemove", this.dragMouseMoveHandle);
         document.removeEventListener("mouseup", onMouseup);
       };
       document.addEventListener("mouseup", onMouseup);
     },
 
-    documentMousemoveHandle(e) {
+    dragMouseMoveHandle(e) {
       if (this.isMax) {
         return;
       }
@@ -230,11 +220,22 @@ export default {
         e.pageX - this.mouseDownPos.x + this.dialogMouseDownPos.left;
       let targetTop =
         e.pageY - this.mouseDownPos.y + this.dialogMouseDownPos.top;
+      let conatinerWidth = this.isMin
+        ? this.elRect.width
+        : this.dialogOriginPos.width;
+      let contaienrHeight = this.isMin
+        ? this.elRect.height
+        : this.dialogOriginPos.height;
 
-      let maxLeft = window.innerWidth - this.dialogOriginPos.width;
-      let maxTop = window.innerHeight - this.dialogOriginPos.height;
-      this.dialogStyle.left = _.clamp(targetLeft, 0, maxLeft);
-      this.dialogStyle.top = _.clamp(targetTop, 0, maxTop);
+      let maxLeft = window.innerWidth - conatinerWidth;
+      let maxTop = window.innerHeight - contaienrHeight;
+      if (this.isMin) {
+        this.$el.style.top = this.getStyleVal(_.clamp(targetTop, 0, maxTop));
+        this.$el.style.left = this.getStyleVal(_.clamp(targetLeft, 0, maxLeft));
+      } else {
+        this.dialogStyle.left = _.clamp(targetLeft, 0, maxLeft);
+        this.dialogStyle.top = _.clamp(targetTop, 0, maxTop);
+      }
     },
 
     getStyleVal(val) {
@@ -249,12 +250,19 @@ export default {
     },
     onMin() {
       this.dialogOriginPos = this.dialog.getBoundingClientRect();
-      this.dialogStyle.top = this.minPos.top;
-      this.dialogStyle.left = this.minPos.left;
       this.isMin = true;
       this.closeModal();
-      this.$emit("min");
-      this.$emit("resize");
+      this.$nextTick(() => {
+        let headerRect = this.header.getBoundingClientRect();
+        this.$el.style.top = this.getStyleVal(this.minPos.top);
+        this.$el.style.left = this.getStyleVal(this.minPos.left);
+        this.$el.style.width = this.getStyleVal(headerRect.width);
+        this.$el.style.height = this.getStyleVal(headerRect.height);
+        this.dialogStyle.top = 0;
+        this.dialogStyle.left = 0;
+        this.$emit("min");
+        this.$emit("resize");
+      });
     },
     onMax() {
       this.dialogOriginPos = this.dialog.getBoundingClientRect();
@@ -277,6 +285,8 @@ export default {
       if (this.isMax) {
         document.removeEventListener("keyup", this.escKeyupHandle);
       } else if (this.isMin && this.$attrs.visible) {
+        this.$el.style.top = this.$el.style.left = 0;
+        this.$el.style.width = this.$el.style.height = "";
         this.showModal();
       }
       this.isMax = false;
@@ -298,7 +308,7 @@ export default {
       let mousedownHandle = e => {
         document.body.style.cursor = "nw-resize";
         this.moving = true;
-        this.resizeMouseDownPos = {
+        this.mouseDownPos = {
           x: e.pageX,
           y: e.pageY
         };
@@ -316,18 +326,13 @@ export default {
         document.addEventListener("mouseup", mouseupHandle);
       };
       target.addEventListener("mousedown", mousedownHandle);
-      this.$once("hook:beforeDestroy", () => {
-        target.removeEventListener("mousedown", mousedownHandle);
-      });
     },
 
     resizeMouseMoveHandle(e) {
       let pageX = Math.min(e.pageX, window.innerWidth);
       let pageY = Math.min(e.pageY, window.innerHeight);
-      let targetWidth =
-        pageX - this.resizeMouseDownPos.x + this.dialogOriginWidth;
-      let targetHeight =
-        pageY - this.resizeMouseDownPos.y + this.contentOriginHeight;
+      let targetWidth = pageX - this.mouseDownPos.x + this.dialogOriginWidth;
+      let targetHeight = pageY - this.mouseDownPos.y + this.contentOriginHeight;
       this.contentHeight = Math.max(targetHeight, this.minimumSize.height);
       this.dialogStyle.width = Math.max(targetWidth, this.minimumSize.width);
       this.$emit("resize");
@@ -399,6 +404,9 @@ export default {
         display: none;
       }
       .el-dialog__footer {
+        display: none;
+      }
+      .resize-thumb {
         display: none;
       }
     }
