@@ -1,5 +1,5 @@
 ### 描述
-页面标签，示例见[examples](examples/examples.html)
+页面标签，示例见[examples](examples)
 
 ### 注意
 1. 此组件与业务耦合严重，必须按照约定编码才可正常运行
