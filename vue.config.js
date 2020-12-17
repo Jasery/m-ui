@@ -3,9 +3,9 @@ const path = require("path");
 module.exports = {
   lintOnSave: false,
   outputDir: path.resolve(__dirname, "site", "examples"),
-  publicPath: "/examples",
+  publicPath: "/mcwebfe-deps/m-ui/pages/examples",
   pages: {
-    examples: {
+    "mcwebfe-deps/m-ui/pages/examples": {
       entry: "examples/main.js"
     }
   }
