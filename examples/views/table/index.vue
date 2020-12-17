@@ -48,6 +48,7 @@ import Mockjs from "mockjs";
 import { MUtils } from "m-ui";
 
 export default {
+  name: "table",
   data() {
     return {
       columns: [

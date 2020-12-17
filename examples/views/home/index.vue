@@ -2,6 +2,8 @@
   <div>home</div>
 </template>
 <script>
-export default {};
+export default {
+  naem: "home"
+};
 </script>
 <style lang="scss" scoped></style>

@@ -6,14 +6,15 @@
     :collapse.sync="asideCollapse"
     :account-info="accountInfo"
   >
-    <template #header>
-      header
-    </template>
-    <template v-slot:menu-item="menu">
-      <i :class="menu.icon"></i>
-      {{ menu.title }}
-    </template>
-    <router-view></router-view>
+    <template #header> header </template>
+    <div>
+      <m-view-tags></m-view-tags>
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive :include="cacheViews">
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
+    </div>
   </m-layout>
 </template>
 
@@ -49,12 +50,20 @@ export default {
       }
     };
   },
+  computed: {
+    cacheViews() {
+      return this.$store.state.cacheViews.map(v => v.name);
+    }
+  },
 
   watch: {
     $route: {
       handler() {
-        const { path, meta } = this.$route;
+        const { path, meta, name } = this.$route;
         this.menuDefaultActive = meta?.activeMenu || path;
+        if (name) {
+          this.$store.commit("ADD_CACHE_VIEW", this.$route);
+        }
       },
       immediate: true
     }
@@ -62,4 +71,20 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>

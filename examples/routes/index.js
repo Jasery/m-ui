@@ -24,15 +24,27 @@ export default new VueRouter({
       children: [
         {
           path: "home",
-          component: home
+          component: home,
+          name: "home",
+          meta: {
+            title: "首页"
+          }
         },
         {
           path: "table",
-          component: table
+          component: table,
+          name: "table",
+          meta: {
+            title: "表格"
+          }
         },
         {
           path: "form",
-          component: form
+          component: form,
+          name: "form",
+          meta: {
+            title: "表单"
+          }
         }
       ]
     },
