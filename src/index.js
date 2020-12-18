@@ -23,6 +23,7 @@ import { exportExcel, exportCsv } from "./data-export";
 import MArrayForm from "./m-array-form/MArrayForm.vue";
 import MDraggableDialog from "./m-draggable-dialog/MDraggableDialog.vue";
 import MViewTags from "./m-view-tags/MViewTags.vue";
+import MConfirmButton from "./m-confirm-button/MConfirmButton.vue";
 
 import "./style/util.scss";
 
@@ -52,7 +53,8 @@ export {
   exportCsv,
   MArrayForm,
   MDraggableDialog,
-  MViewTags
+  MViewTags,
+  MConfirmButton
 };
 
 export default {
@@ -75,6 +77,7 @@ export default {
     Vue.component(MArrayForm.name, MArrayForm);
     Vue.component(MDraggableDialog.name, MDraggableDialog);
     Vue.component(MViewTags.name, MViewTags);
+    Vue.component(MConfirmButton.name, MConfirmButton);
 
     Vue.use(Auth);
     Vue.use(MDirectives);
