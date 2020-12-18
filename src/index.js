@@ -25,6 +25,7 @@ import MDraggableDialog from "./m-draggable-dialog/MDraggableDialog.vue";
 import MViewTags from "./m-view-tags/MViewTags.vue";
 import MConfirmButton from "./m-confirm-button/MConfirmButton.vue";
 import MStatus from "./m-status/MStatus.vue";
+import MTime from "./m-time/MTime.vue";
 
 import "./style/util.scss";
 
@@ -56,7 +57,8 @@ export {
   MDraggableDialog,
   MViewTags,
   MConfirmButton,
-  MStatus
+  MStatus,
+  MTime
 };
 
 export default {
@@ -81,6 +83,7 @@ export default {
     Vue.component(MViewTags.name, MViewTags);
     Vue.component(MConfirmButton.name, MConfirmButton);
     Vue.component(MStatus.name, MStatus);
+    Vue.component(MTime.name, MTime);
 
     Vue.use(Auth);
     Vue.use(MDirectives);
