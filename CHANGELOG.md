@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.6...v0.1.7) (2020-12-18)
+
+
+### Features
+
+* 添加m-confirm-button ([340c7f5](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/340c7f5362b695c33b17e7a66b9ace1d97f6729b))
+* 添加m-status组件 ([2479813](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/2479813d28902e538afded939e6380e38d2004ec))
+* 添加m-time组件 ([fa1626a](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/fa1626aa77465dd468be03b1a90bf797ac968921))
+* 添加m-view-tags组件 ([fb06a58](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/fb06a58a55f8c968689a0a9758cea0089052fecd))
+
+
+### Bug Fixes
+
+* **m-draggable-dialog:** 优化逻辑，修复细节问题 ([b089a55](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/b089a55fe1417e355a3e5911fd61051a05f74172))
+
 ### [0.1.6](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.5...v0.1.6) (2020-12-15)
 
 
