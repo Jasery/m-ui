@@ -39,6 +39,13 @@ export default {
 }
 </script>
 ```
+> 注意：relative会根据dayjs设置的语言进行显示，如需中文，请添加以下代码
+```ts
+import "dayjs/locale/zh-cn";
+dayjs.locale("zh-cn");
+```
+---
+
 ### Props
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
