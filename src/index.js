@@ -26,6 +26,7 @@ import MViewTags from "./m-view-tags/MViewTags.vue";
 import MConfirmButton from "./m-confirm-button/MConfirmButton.vue";
 import MStatus from "./m-status/MStatus.vue";
 import MTime from "./m-time/MTime.vue";
+import MLogin from "./m-login/MLogin.vue";
 
 import "./style/util.scss";
 
@@ -58,7 +59,8 @@ export {
   MViewTags,
   MConfirmButton,
   MStatus,
-  MTime
+  MTime,
+  MLogin
 };
 
 export default {
@@ -84,6 +86,7 @@ export default {
     Vue.component(MConfirmButton.name, MConfirmButton);
     Vue.component(MStatus.name, MStatus);
     Vue.component(MTime.name, MTime);
+    Vue.component(MLogin.name, MLogin);
 
     Vue.use(Auth);
     Vue.use(MDirectives);
