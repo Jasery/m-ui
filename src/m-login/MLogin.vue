@@ -11,7 +11,12 @@
       <template #append>
         <el-form-item v-if="captchaSrc" prop="captcha">
           <div class="captcha-container">
-            <el-input v-model="model.captcha" placeholder="验证码"> </el-input>
+            <el-input
+              v-model="model.captcha"
+              placeholder="验证码"
+              auto-complete="off"
+            >
+            </el-input>
             <img
               :src="captchaSrc"
               class="cur-p"
@@ -80,7 +85,8 @@ export default {
           component: "el-input",
           componentProps: {
             prefixIcon: "el-icon-user",
-            placeholder: "请输入账号"
+            placeholder: "请输入账号",
+            autoComplete: "off"
           }
         },
         {
@@ -90,7 +96,8 @@ export default {
           componentProps: {
             type: "password",
             prefixIcon: "el-icon-lock",
-            placeholder: "请输入密码"
+            placeholder: "请输入密码",
+            autoComplete: "off"
           }
         }
       ],
