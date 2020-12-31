@@ -3,44 +3,61 @@
     <h3 class="title">{{ title }}</h3>
     <m-form
       :model="model"
-      :fields="fields"
       label-width="0"
       ref="form"
       size="large"
+      :rules="rules"
     >
-      <template #append>
-        <el-form-item v-if="captchaSrc" prop="captcha">
-          <div class="captcha-container">
-            <el-input
-              v-model="model.captcha"
-              placeholder="验证码"
-              auto-complete="off"
-            >
-            </el-input>
-            <img
-              :src="captchaSrc"
-              class="cur-p"
-              alt="验证码"
-              title="点击刷新验证码"
-              @click="setCaptcha"
-            />
-          </div>
-        </el-form-item>
-        <el-form-item prop="remember">
-          <el-checkbox v-model="model.remember" @change="onRememberChange"
-            >记住密码</el-checkbox
+      <el-form-item prop="username">
+        <el-input
+          v-model="model.username"
+          placeholder="请输入用户名"
+          prefix-icon="el-icon-user"
+          auto-complete="off"
+        ></el-input>
+      </el-form-item>
+      <el-form-item prop="password">
+        <el-input
+          type="password"
+          v-model="model.password"
+          placeholder="请输入密码"
+          prefix-icon="el-icon-user"
+          auto-complete="off"
+          @keydown.native.enter="onLogin"
+        ></el-input>
+      </el-form-item>
+      <el-form-item v-if="captchaSrc" prop="captcha">
+        <div class="captcha-container">
+          <el-input
+            v-model="model.captcha"
+            placeholder="验证码"
+            auto-complete="off"
+            @keyup.native.enter="onLogin"
           >
-        </el-form-item>
-        <el-form-item>
-          <el-button
-            type="primary"
-            :loading="loading"
-            style="width: 100%"
-            @click="onLogin"
-            >登 录</el-button
-          >
-        </el-form-item>
-      </template>
+          </el-input>
+          <img
+            :src="captchaSrc"
+            class="cur-p"
+            alt="验证码"
+            title="点击刷新验证码"
+            @click="setCaptcha"
+          />
+        </div>
+      </el-form-item>
+      <el-form-item prop="remember">
+        <el-checkbox v-model="model.remember" @change="onRememberChange"
+          >记住密码</el-checkbox
+        >
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          type="primary"
+          :loading="loading"
+          style="width: 100%"
+          @click="onLogin"
+          >登 录</el-button
+        >
+      </el-form-item>
     </m-form>
   </div>
 </template>
@@ -75,34 +92,23 @@ export default {
   },
 
   data() {
+    const captchaValidator = (rule, value, callback) => {
+      if (this.captchaSrc && !this.model.captcha) {
+        callback(new Error("请输入验证码"));
+      } else {
+        callback();
+      }
+    };
     return {
       model: {},
       captchaSrc: "",
-      fields: [
-        {
-          prop: "username",
-          rules: [{ required: true, message: "请输入账号" }],
-          component: "el-input",
-          componentProps: {
-            prefixIcon: "el-icon-user",
-            placeholder: "请输入账号",
-            autoComplete: "off"
-          }
-        },
-        {
-          prop: "password",
-          rules: [{ required: true, message: "请输入密码" }],
-          component: "el-input",
-          componentProps: {
-            type: "password",
-            prefixIcon: "el-icon-lock",
-            placeholder: "请输入密码",
-            autoComplete: "off"
-          }
-        }
-      ],
       loading: false,
-      captchaError: ""
+      captchaError: "",
+      rules: {
+        username: [{ required: true, message: "请输入用户名" }],
+        password: [{ required: true, message: "请输入密码" }],
+        captcha: [{ validator: captchaValidator }]
+      }
     };
   },
 
