@@ -167,7 +167,7 @@ export default {
 | columns | 同m-table的columns | Array | --- | --- |
 | pageType | 分页类型 | string | pagination/scroll | pagination |
 | height | m-table的height | number | --- | --- |
-| fixBottom | m-table的fixBottom | number | --- | --- |
+| fixedBottom | m-table的fixedBottom | number | --- | --- |
 | showSelection | 表格是否显示勾选列 | boolean | --- | true |
 | tableProps | m-table的props透传 | Object | --- | --- |
 | queryFields | m-query-form的fields，参考[m-query-form](#/Components/m-query-form) | Array | --- | --- |
