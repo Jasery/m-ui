@@ -27,6 +27,7 @@ import MConfirmButton from "./m-confirm-button/MConfirmButton.vue";
 import MStatus from "./m-status/MStatus.vue";
 import MTime from "./m-time/MTime.vue";
 import MLogin from "./m-login/MLogin.vue";
+import MContextMenu from "./m-context-menu/MContextMenu.vue";
 
 import "./style/util.scss";
 
@@ -60,7 +61,8 @@ export {
   MConfirmButton,
   MStatus,
   MTime,
-  MLogin
+  MLogin,
+  MContextMenu
 };
 
 export default {
@@ -87,6 +89,7 @@ export default {
     Vue.component(MStatus.name, MStatus);
     Vue.component(MTime.name, MTime);
     Vue.component(MLogin.name, MLogin);
+    Vue.component(MContextMenu.name, MContextMenu);
 
     Vue.use(Auth);
     Vue.use(MDirectives);
