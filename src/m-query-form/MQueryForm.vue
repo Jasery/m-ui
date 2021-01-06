@@ -42,10 +42,15 @@
               }"
             ></i>
           </el-button>
-          <el-button @click="onReset">重置</el-button>
-          <el-button :loading="submitLoading" type="primary" @click="onSumit"
+          <el-button v-if="showReset" @click="onReset">重置</el-button>
+          <el-button
+            v-if="showSubmit"
+            :loading="submitLoading"
+            type="primary"
+            @click="onSumit"
             >查询</el-button
           >
+          <slot name="tools"></slot>
         </el-form-item>
       </el-col>
     </el-row>
@@ -77,6 +82,14 @@ export default {
       default() {
         return [];
       }
+    },
+    showSubmit: {
+      type: Boolean,
+      default: true
+    },
+    showReset: {
+      type: Boolean,
+      default: true
     }
   },
   components: {

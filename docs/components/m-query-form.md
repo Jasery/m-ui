@@ -219,15 +219,21 @@ export default {
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
-| collapseable | 是否可折叠 | boolean | --- | true |
-| defaultCollapse | 默认是否折叠 | boolean | --- | true |
-| submitLoading | 提交按钮的loading | boolean | --- | fasle |
+| collapseable | 是否可折叠 | Boolean | --- | true |
+| defaultCollapse | 默认是否折叠 | Boolean | --- | true |
+| submitLoading | 提交按钮的loading | Boolean | --- | fasle |
 | fields | 表单的字段列表，参考 [m-form](#/Components/m-form) | Array | --- | --- |
+| show-submit | 是否显示提交按钮 | Boolean | --- | true |
+| show-reset | 是否显示重置按钮 | Boolean | --- | true |
 
 ---
 
 ### Slots
-请使用`el-form-item`作为slot，此组件会自动布局和折叠
+
+| 名称 | 说明 |
+| :---- | :---- |
+| default | 请使用`el-form-item`作为slot，此组件会自动布局和折叠|
+| tools | 按钮区域的slot |
 
 ---
 
