@@ -56,6 +56,7 @@ export default {
 | :---- | :---- |
 | size | small |
 | clearable | true |
+| filterable | true |
 
 ---
 

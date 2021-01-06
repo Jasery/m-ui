@@ -3,6 +3,7 @@
     :value="value"
     :size="size"
     :clearable="clearable"
+    :filterable="filterable"
     ref="select"
     v-bind="$attrs"
     v-on="$listeners"
@@ -49,6 +50,10 @@ export default {
       default: "small"
     },
     clearable: {
+      type: Boolean,
+      default: true
+    },
+    filterable: {
       type: Boolean,
       default: true
     }
