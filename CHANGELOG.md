@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.7...v0.1.8) (2021-01-06)
+
+
+### Features
+
+* **m-query-form:** 添加按钮显示控制及按钮区域slot ([ed653aa](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/ed653aaac14fda92e3bf2f8b00fe770cdb94f047))
+* 添加m-context-menu组件 ([e1a9239](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e1a92392e36cff828847d30826d99119878afcdb))
+* 添加m-login组件 ([18f46ec](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/18f46ecfccbfaf423582f64edce89edbcd61e2ea))
+
+
+### Bug Fixes
+
+* **m-login:** 优化交互 ([e4bb79c](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e4bb79cd80f633bef53deffb76fbfe88aa318330))
+* **m-login:** 输入框移除自动补全 ([6c3ca05](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/6c3ca0572e466e68cb990dab549ecd939d452649))
+* **m-time:** 移除设置dayjs语言逻辑，交由外部控制 ([b0f8e84](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/b0f8e84001786f3458d52760db9ca4d0f43d0f1e))
+
 ### [0.1.7](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.6...v0.1.7) (2020-12-18)
 
 
