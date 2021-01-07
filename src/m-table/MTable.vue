@@ -1,6 +1,7 @@
 <template>
   <div class="m-table">
     <el-table
+      :class="'size-' + size"
       ref="table"
       v-el-table-infinite-scroll="load"
       :height="tableHeight"
@@ -114,6 +115,13 @@ export default {
     headerRowClassName: {
       type: String,
       default: ""
+    },
+    size: {
+      type: String,
+      default: "default",
+      validator(val) {
+        return ["default", "middle", "small"].includes(val);
+      }
     }
   },
   components: {
@@ -236,14 +244,31 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.m-table-header th {
-  background-color: #fafafa !important;
-  color: #000;
-}
-.empty-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+<style lang="scss" scoped>
+.m-table {
+  ::v-deep .el-table {
+    .m-table-header th {
+      background-color: #fafafa !important;
+      color: #000;
+    }
+    .empty-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &.size-middle {
+      td {
+        padding: 8px 0;
+      }
+    }
+    &.size-small {
+      td {
+        padding: 8px 0;
+        .cell {
+          line-height: 1.2;
+        }
+      }
+    }
+  }
 }
 </style>

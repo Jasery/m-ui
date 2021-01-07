@@ -223,28 +223,29 @@ export default {
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
 | pagination | 是否启用分页 | Boolean | --- | false |
-| currentPage | 传递给m-pagination，支持sync | number | --- | --- |
-| pageSize | 传递给m-pagination，支持sync | number | --- | --- |
-| total | 传递给m-pagination | number | --- | --- |
-| tableLoading | 表格区域loading | boolean | --- | false |
-| infiniteScroll | 开启滚动加载，可以监听scroll-load事件 | boolean | --- | false |
-| infiniteScrollDistance | 触发滚动加载距离 | number | --- | 150 |
-| scrollLoading | 滚动加载loading | boolean | --- | false |
-| noMore | 滚动加载的完毕标识为 | boolean | --- | false |
-| fixedBottom | 固定底部距离 | number | --- | --- |
-| columns | 表格的列，详细见以下表格 | array | --- | --- |
+| currentPage | 传递给m-pagination，支持sync | Mumber | --- | --- |
+| pageSize | 传递给m-pagination，支持sync | Mumber | --- | --- |
+| total | 传递给m-pagination | Mumber | --- | --- |
+| tableLoading | 表格区域loading | Boolean | --- | false |
+| infiniteScroll | 开启滚动加载，可以监听scroll-load事件 | Boolean | --- | false |
+| infiniteScrollDistance | 触发滚动加载距离 | Mumber | --- | 150 |
+| scrollLoading | 滚动加载loading | Boolean | --- | false |
+| noMore | 滚动加载的完毕标识为 | Boolean | --- | false |
+| fixedBottom | 固定底部距离 | Mumber | --- | --- |
+| columns | 表格的列，详细见以下表格 | Array | --- | --- |
+| size | 表格间隔大小 | String | default/middle/small | default |
 
 #### columns
 columns 里面的元素数据格式兼容`el-table-column`的props，并新增以下字段
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
-| headerSlotName | 用作这一列的header slot的名字 | string | --- | --- |
-| slotName | 用作这一列的默认 slot的名字 | string | --- | --- |
-| compnent | 用于此列的组件，会把相应的属性传递 | string \| object | --- | --- |
-| emptyText | 空值占位符，没有slotName，component,并且指定prop时才生效 | string  | --- | --- |
-| formatEmpty | 是否启用空值占位符 | boolean  | --- | true |
-| headerTips | 字段提示 | string  | --- | --- |
+| headerSlotName | 用作这一列的header slot的名字 | String | --- | --- |
+| slotName | 用作这一列的默认 slot的名字 | String | --- | --- |
+| compnent | 用于此列的组件，会把相应的属性传递 | String \| object | --- | --- |
+| emptyText | 空值占位符，没有slotName，component,并且指定prop时才生效 | String  | --- | --- |
+| formatEmpty | 是否启用空值占位符 | Boolean  | --- | true |
+| headerTips | 字段提示 | String  | --- | --- |
 
 ---
 
