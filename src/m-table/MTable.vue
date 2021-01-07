@@ -58,7 +58,7 @@
       </template>
       <template #empty>
         <div class="empty-container">
-          <img :src="emptySvg" alt="no data" />
+          <img :src="emptySvg" alt="no data" width="250" />
           <span>{{ $attrs["empty-text"] || "暂无数据" }}</span>
         </div>
       </template>
@@ -244,5 +244,6 @@ export default {
 .empty-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 </style>
