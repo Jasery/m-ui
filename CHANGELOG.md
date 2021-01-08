@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.8...v0.1.9) (2021-01-08)
+
+
+### Features
+
+* **m-pro-table:** 添加尺寸切换 ([420ceca](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/420cecabfb964e76edbac97b50ed0fe9e2206241))
+* **m-select:** 添加filterable默认值 ([cd9e75f](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/cd9e75fc7050cc50c57475d0741668d5849cac4b))
+* **m-table:** 添加size属性 ([e2b8c46](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e2b8c46e2bda60127844de5dbd0f5e3fd0389940))
+
+
+### Bug Fixes
+
+* **m-table:** 修复样式 ([f9731d6](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/f9731d61e71e3526f39821559223034ea8e7caa8))
+
 ### [0.1.8](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.7...v0.1.8) (2021-01-06)
 
 
