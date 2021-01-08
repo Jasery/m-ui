@@ -87,6 +87,12 @@ import ElTableInfiniteScroll from "el-table-infinite-scroll";
 import MPagination from "../m-pagination/MPagination";
 import padding from "../directives/padding";
 import { isNumber, isFunction, removeKeys } from "../utils";
+import PerfectScrollbar from "perfect-scrollbar";
+import "perfect-scrollbar/css/perfect-scrollbar.css";
+import {
+  addResizeListener,
+  removeResizeListener
+} from "element-ui/lib/utils/resize-event";
 
 import emptySvg from "../assets/image/empty.svg";
 
@@ -122,6 +128,11 @@ export default {
       validator(val) {
         return ["default", "middle", "small"].includes(val);
       }
+    },
+    perfectScroll: Boolean,
+    scrollContainer: {
+      type: String,
+      default: ".main-container"
     }
   },
   components: {
@@ -151,25 +162,17 @@ export default {
     height() {
       this.tableHeight = this.height;
     },
-    fixedBottom() {
-      this.$nextTick(() => {
-        this.setTableHeight();
-      });
-    },
-    "$attrs.data": function() {
-      this.$nextTick(() => {
-        this.setTableHeight();
-      });
-    }
+    fixedBottom: "setTableHeight",
+    "$attrs.data": "setTableHeight",
+    columns: "setTableHeight"
   },
   mounted() {
+    this.bodyWrapper = this.$el.querySelector(".el-table__body-wrapper");
     if (this.isFixedBottom) {
-      let onResize = _.throttle(this.setTableHeight.bind(this));
-      window.addEventListener("resize", onResize);
-      this.$once("hook:beforeDestroy", () => {
-        window.removeEventListener("resize", onResize);
-      });
-      this.$nextTick(onResize);
+      this.initFixedBottom();
+    }
+    if (this.perfectScroll) {
+      this.initPerfectScrollBar();
     }
   },
   methods: {
@@ -181,9 +184,7 @@ export default {
 
     // fix v-el-table-infinite-scroll bug
     updateInfiniteScrollAttr() {
-      let wrapper = this.$refs?.table.$el.querySelector(
-        ".el-table__body-wrapper"
-      );
+      let wrapper = this.bodyWrapper;
       if (wrapper) {
         wrapper.setAttribute(
           "infinite-scroll-disabled",
@@ -202,12 +203,14 @@ export default {
 
     setTableHeight() {
       if (!this.isFixedBottom) {
-        this.tableHeight = this.height;
+        this.tableHe = this.height;
         return;
       }
-      let { top } = this.$refs.table.$el.getBoundingClientRect();
-      this.tableHeight =
-        window.innerHeight - top - this.fixedBottom + Math.random();
+      this.$nextTick(() => {
+        let { top } = this.$refs.table.$el.getBoundingClientRect();
+        this.tableHeight =
+          window.innerHeight - top - this.fixedBottom + Math.random();
+      });
     },
 
     getColumnProps(col) {
@@ -239,6 +242,52 @@ export default {
         ]),
         formatter
       };
+    },
+
+    initPerfectScrollBar() {
+      this.bodyWrapper.style.overflow = "hidden";
+      let ps = new PerfectScrollbar(this.bodyWrapper);
+      let scrollContainer = document.querySelector(this.scrollContainer);
+      let handler = () => {
+        const railX = this.$el.querySelector(".ps__rail-x");
+        const railXHeight = railX.clientHeight;
+        const tBodyRect = this.bodyWrapper.getBoundingClientRect();
+        const windowBottomTop =
+          window.innerHeight -
+          tBodyRect.top -
+          railXHeight +
+          this.bodyWrapper.scrollTop;
+        const tBodyBottomTop =
+          this.bodyWrapper.scrollTop + tBodyRect.height - railXHeight;
+        let top = _.min([tBodyBottomTop, windowBottomTop]);
+        railX.style.top = `${top}px`;
+      };
+      handler = _.throttle(handler, 10);
+      if (scrollContainer) {
+        scrollContainer.addEventListener("scroll", handler);
+      }
+      this.bodyWrapper.addEventListener("scroll", handler);
+      addResizeListener(this.$el, handler);
+      this.$on("hook:updated", () => {
+        ps.update();
+      });
+      this.$on("hook:beforeDestroy", () => {
+        removeResizeListener(this.$el, handler);
+        if (scrollContainer) {
+          scrollContainer.removeEventListener("scroll", handler);
+        }
+        ps.destroy();
+        ps = null;
+      });
+    },
+
+    initFixedBottom() {
+      let onResize = _.throttle(this.setTableHeight.bind(this), 10);
+      window.addEventListener("resize", onResize);
+      this.$once("hook:beforeDestroy", () => {
+        window.removeEventListener("resize", onResize);
+      });
+      this.$nextTick(onResize);
     }
   }
 };
@@ -268,6 +317,10 @@ export default {
           line-height: 20px;
         }
       }
+    }
+    .ps__rail-x,
+    .ps__rail-y {
+      opacity: 0.6 !important;
     }
   }
 }

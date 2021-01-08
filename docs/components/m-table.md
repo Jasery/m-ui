@@ -234,6 +234,8 @@ export default {
 | fixedBottom | 固定底部距离 | Mumber | --- | --- |
 | columns | 表格的列，详细见以下表格 | Array | --- | --- |
 | size | 表格间隔大小 | String | default/middle/small | default |
+| perfectScroll | 优化滚动条 | Boolean | --- | --- |
+| scrollContainer | 整体滚动的容器的选择器 | String | --- | .main-container |
 
 #### columns
 columns 里面的元素数据格式兼容`el-table-column`的props，并新增以下字段
