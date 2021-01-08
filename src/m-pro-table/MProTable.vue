@@ -26,6 +26,19 @@
               @click="fetchData"
             ></i>
           </el-tooltip>
+          <el-dropdown trigger="click" @command="size => (tableSize = size)">
+            <el-tooltip v-if="showSize" content="密度" placement="top">
+              <i class="el-icon-d-caret fs-22 mg-l-8 cur-p"></i>
+            </el-tooltip>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item
+                v-for="item in sizes"
+                :key="item.size"
+                :command="item.size"
+                >{{ item.label }}</el-dropdown-item
+              >
+            </el-dropdown-menu>
+          </el-dropdown>
           <table-column-setting
             v-if="columnSetting"
             :columns="columns"
@@ -54,6 +67,7 @@
         :current-page="pageNum"
         :table-loading="loading"
         :total="total"
+        :size="tableSize"
         @page-change="onPageChange"
         @scroll-load="onScrollLoad"
         @selection-change="onSelectionChange"
@@ -76,7 +90,7 @@
 import MTable from "../m-table/MTable";
 import MQueryForm from "../m-query-form/MQueryForm";
 import { isUndefined, isNumber } from "../utils";
-import TableColumnSetting from "m-ui/src/m-pro-table/TableColumnSetting.vue";
+import TableColumnSetting from "./TableColumnSetting.vue";
 import _ from "lodash";
 
 const defaultFieldConfig = {
@@ -137,7 +151,8 @@ export default {
     showRefresh: Boolean,
     columnSetting: Boolean,
     columnCacheKey: String,
-    showFullscreen: Boolean
+    showFullscreen: Boolean,
+    showSize: Boolean
   },
   data() {
     return {
@@ -152,7 +167,19 @@ export default {
       order: _.get(this.tableProps, "default-sort.order"),
       fieldDic: Object.assign({}, defaultFieldConfig, this.fieldConfig),
       displayColumns: this.columns,
-      isFullscreen: false
+      isFullscreen: false,
+      tableSize: _.get(this.tableProps, "size", "default"),
+      sizes: [
+        { label: "默认", size: "default" },
+        {
+          label: "中等",
+          size: "middle"
+        },
+        {
+          label: "紧凑",
+          size: "small"
+        }
+      ]
     };
   },
   computed: {

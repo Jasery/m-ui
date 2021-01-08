@@ -8,6 +8,7 @@
       :query-model="query"
       :query-fields="queryFields"
       show-refresh
+      show-size
       column-setting
       column-cache-key="table-columnn-key"
       show-fullscreen

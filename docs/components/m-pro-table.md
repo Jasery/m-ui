@@ -15,6 +15,7 @@
       title="我的表格"
       show-refresh
       show-fullscreen
+      show-size
       column-setting
       :field-config="{
         pageNum: 'pageNum',
@@ -88,7 +89,7 @@ export default {
         prop: 'age',
         component: 'el-input',
         componentProps: {
-          type: "number"
+          type: "Number"
         }
       }]
     }
@@ -163,12 +164,12 @@ export default {
 | :---- | :---- | :---- | :---- | :---- | 
 | fetch | 查询方法， | Function | --- | --- |
 | queryModel | 查询的数据，用于查询表单构建及查询方法参数传递 | Object | --- | --- |
-| title | 标题 | string | --- | --- |
+| title | 标题 | String | --- | --- |
 | columns | 同m-table的columns | Array | --- | --- |
-| pageType | 分页类型 | string | pagination/scroll | pagination |
-| height | m-table的height | number | --- | --- |
-| fixedBottom | m-table的fixedBottom | number | --- | --- |
-| showSelection | 表格是否显示勾选列 | boolean | --- | true |
+| pageType | 分页类型 | String | pagination/scroll | pagination |
+| height | m-table的height | Number | --- | --- |
+| fixedBottom | m-table的fixedBottom | Number | --- | --- |
+| showSelection | 表格是否显示勾选列 | Boolean | --- | true |
 | tableProps | m-table的props透传 | Object | --- | --- |
 | queryFields | m-query-form的fields，参考[m-query-form](#/Components/m-query-form) | Array | --- | --- |
 | fieldConfig | 约定的字段配置 | Object | --- | --- |
@@ -177,6 +178,7 @@ export default {
 | columnSetting | 是否列设置 | Boolean | --- | false |
 | columnCacheKey | 列设置缓存key | String | --- | --- |
 | showFullscreen | 是否显示全屏按钮 | Boolean | --- | false |
+| showSize | 是否切换尺寸按钮 | Boolean | --- | false |
 
 
 ---

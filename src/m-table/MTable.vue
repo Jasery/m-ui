@@ -263,9 +263,9 @@ export default {
     }
     &.size-small {
       td {
-        padding: 8px 0;
+        padding: 4px 0;
         .cell {
-          line-height: 1.2;
+          line-height: 20px;
         }
       }
     }
