@@ -75,7 +75,7 @@ export default {
 ### 拦截路由
 使用
 ```ts
-import {routeAuth} from 'm-ui';
+import {routerAuth} from 'm-ui';
 
 const routes = [
   {
@@ -92,7 +92,7 @@ const routes = [
 
 new VueRouter({
   // 后面的参数表示没有权限时的重定向
-  routes: routeAuth(routes, '/403')
+  routes: routerAuth(routes, '/403')
 });
 ```
 > 注意：这里子路由的权限路径也要写全路径，不是相对路径

@@ -40,7 +40,6 @@ export default function handleRouteConfigs(routeConfigs, redirect) {
           checkAuth();
         } else {
           $auth.subscribe(routeConfig, checkAuth);
-          callOldBeforeEnter(to, from, next);
         }
       };
     }

@@ -282,6 +282,9 @@ export function initMicroApp(render, hooks) {
       return isFunction(hooks?.mount) ? hooks?.mount(props) : null;
     },
     unmount: async props => {
+      if (microApp.$auth) {
+        microApp.$auth.destroy();
+      }
       microApp && microApp.$destroy();
       return isFunction(hooks?.unmount) ? hooks?.unmount(props) : null;
     },

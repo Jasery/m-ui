@@ -90,7 +90,7 @@ export default class AuthObserver {
   destroy() {
     this.__options = null;
     this.__authData = null;
-    this.__listeners.clear();
+    this.__listeners?.clear();
     this.__listeners = null;
   }
 }
