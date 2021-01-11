@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.9...v0.1.10) (2021-01-11)
+
+
+### Features
+
+* 添加download组件 ([ba55211](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/ba55211c3505f545abd6edc0d547861014be9b88))
+* **m-table:** 添加prefect-scroll支持 ([7208bf9](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/7208bf9e8e8cb4928c9f501498c06556f3163628))
+
+
+### Bug Fixes
+
+* **auth:** 优化细节逻辑及文档 ([a16b9fd](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/a16b9fdc6d0db5c45e096c3a874e0972025608b0))
+
 ### [0.1.9](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.8...v0.1.9) (2021-01-08)
 
 
