@@ -28,6 +28,7 @@ import MStatus from "./m-status/MStatus.vue";
 import MTime from "./m-time/MTime.vue";
 import MLogin from "./m-login/MLogin.vue";
 import MContextMenu from "./m-context-menu/MContextMenu.vue";
+import Download from "./download/download";
 
 import "./style/util.scss";
 
@@ -62,7 +63,8 @@ export {
   MStatus,
   MTime,
   MLogin,
-  MContextMenu
+  MContextMenu,
+  Download
 };
 
 export default {
@@ -94,5 +96,6 @@ export default {
     Vue.use(Auth);
     Vue.use(MDirectives);
     Vue.use(Clipboard);
+    Vue.use(Download);
   }
 };
