@@ -18,6 +18,10 @@ const sections = [
     content: path.resolve("./docs/guide.md")
   },
   {
+    name: "ChangeLog",
+    content: path.resolve("./CHANGELOG.md")
+  },
+  {
     name: "Components",
     sectionDepth: 2,
     sections: components
@@ -31,10 +35,6 @@ const sections = [
     name: "Tools",
     sectionDepth: 2,
     sections: tools
-  },
-  {
-    name: "ChangeLog",
-    content: path.resolve("./CHANGELOG.md")
   }
 ];
 
