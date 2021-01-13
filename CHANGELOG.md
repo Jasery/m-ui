@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.10...v0.1.11) (2021-01-13)
+
+
+### Bug Fixes
+
+* **m-pro-table:** 修复报错问题 ([277e6b2](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/277e6b22b2e47386b90d7868b52cbd9faf8fb95f))
+
 ### [0.1.10](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.9...v0.1.10) (2021-01-11)
 
 
