@@ -77,6 +77,7 @@
         @selection-change="onSelectionChange"
         @sort-change="onSortChange"
         v-bind="tableProps"
+        v-on="tableListeners"
       >
         <template v-if="showSelection">
           <el-table-column type="selection"></el-table-column>
@@ -141,6 +142,7 @@ export default {
       default: true
     },
     tableProps: Object,
+    tableListeners: Object,
     queryFields: Array,
     fieldConfig: {
       type: Object,
