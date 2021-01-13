@@ -26,8 +26,12 @@
               @click="fetchData"
             ></i>
           </el-tooltip>
-          <el-dropdown trigger="click" @command="size => (tableSize = size)">
-            <el-tooltip v-if="showSize" content="密度" placement="top">
+          <el-dropdown
+            v-if="showSize"
+            trigger="click"
+            @command="size => (tableSize = size)"
+          >
+            <el-tooltip content="密度" placement="top">
               <i class="el-icon-d-caret fs-22 mg-l-8 cur-p"></i>
             </el-tooltip>
             <el-dropdown-menu slot="dropdown">
