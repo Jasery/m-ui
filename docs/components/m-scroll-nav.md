@@ -64,7 +64,11 @@ export default {
 ---
 
 ### Slots
-default, 内容
+
+| slot名称 | 说明 |
+| :---- | :---- | 
+| default | 内容 |
+| nav | nav位置内容 |
 
 ---
 

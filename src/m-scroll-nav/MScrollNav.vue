@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div :style="navMenuStyle" :class="navClass">
+  <div class="m-scroll-nav">
+    <div class="nav-conatiner" :style="navMenuStyle" :class="navClass">
       <el-menu
         :default-active="menuActive.toString()"
         :mode="navMode"
@@ -13,6 +13,7 @@
           >{{ nav.title }}</el-menu-item
         >
       </el-menu>
+      <slot name="nav"></slot>
     </div>
     <slot></slot>
   </div>
