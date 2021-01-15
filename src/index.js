@@ -29,6 +29,7 @@ import MTime from "./m-time/MTime.vue";
 import MLogin from "./m-login/MLogin.vue";
 import MContextMenu from "./m-context-menu/MContextMenu.vue";
 import Download from "./download/download";
+import MScrollNav from "./m-scroll-nav/MScrollNav.vue";
 
 import "./style/util.scss";
 
@@ -64,7 +65,8 @@ export {
   MTime,
   MLogin,
   MContextMenu,
-  Download
+  Download,
+  MScrollNav
 };
 
 export default {
@@ -92,6 +94,7 @@ export default {
     Vue.component(MTime.name, MTime);
     Vue.component(MLogin.name, MLogin);
     Vue.component(MContextMenu.name, MContextMenu);
+    Vue.component(MScrollNav.name, MScrollNav);
 
     Vue.use(Auth);
     Vue.use(MDirectives);
