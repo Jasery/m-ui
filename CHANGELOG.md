@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.13...v0.1.14) (2021-01-16)
+
+
+### Features
+
+* **m-scroll-nav:** 添加nav slot ([435eebe](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/435eebe4a6c72603c56f8451a180cc43e38490e2))
+
 ### [0.1.13](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.12...v0.1.13) (2021-01-15)
 
 
