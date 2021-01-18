@@ -1,4 +1,4 @@
-import fixBottom from "./fix-bottom";
+import fixedBottom from "./fixed-bottom";
 import margin from "./margin";
 import padding from "./padding";
 import color from "./color";
@@ -8,7 +8,7 @@ import width from "./width";
 
 export default {
   install(Vue) {
-    Vue.directive("fix-bottom", fixBottom);
+    Vue.directive("fixed-bottom", fixedBottom);
     Vue.directive("margin", margin);
     Vue.directive("padding", padding);
     Vue.directive("color", color);

@@ -6,7 +6,7 @@
 ```html
 <template>
   <div>
-    <div v-fix-bottom="20" class="fix-item">
+    <div v-fixed-bottom="20" class="fixed-item">
       content
     </div>
     <p>尝试调节浏览器大小</p>
@@ -17,7 +17,7 @@ export default {
 }
 </script>
 <style scope>
-.fix-item {
+.fixed-item {
   position: fixed;
   top: 10px;
   right: 0;
