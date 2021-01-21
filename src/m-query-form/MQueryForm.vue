@@ -171,7 +171,7 @@ export default {
         this.col = 1;
       } else if (width < 950) {
         this.col = 2;
-      } else if (width < 1500) {
+      } else if (width < 1400) {
         this.col = 3;
       } else {
         this.col = 4;
