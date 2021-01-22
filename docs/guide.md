@@ -49,5 +49,5 @@ export default {
 
 
 ### 注意：
-1. 使用前请先引入element-ui
+1. 使用前请先引入element-ui，依赖2.13.2版本以上的element-ui
 2. m-ui当前不输出构建版本，依赖本地构建，请确保本地安装好sass，lodash
