@@ -284,10 +284,12 @@ export default {
       }
       if (this.isMax) {
         document.removeEventListener("keyup", this.escKeyupHandle);
-      } else if (this.isMin && this.$attrs.visible) {
+      } else if (this.isMin) {
         this.$el.style.top = this.$el.style.left = 0;
         this.$el.style.width = this.$el.style.height = "";
-        this.showModal();
+        if (this.$attrs.visible) {
+          this.showModal();
+        }
       }
       this.isMax = false;
       this.isMin = false;
