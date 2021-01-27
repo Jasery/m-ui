@@ -99,14 +99,14 @@ export default {
 ---
 
 ### Props
-兼容`el-form`，并新增以下prop
+兼容[el-form](https://element.eleme.cn/#/zh-CN/component/form)，并新增以下prop
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- |
 | fields | 表格的列，详细见以下表格 | array | --- | --- |
 
 #### fields
-fields 里面的元素数据格式兼容`el-form-item`的props，并新增以下字段
+fields 里面的元素数据格式兼容[el-form-item](https://element.eleme.cn/#/zh-CN/component/form)的props，并新增以下字段
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
@@ -119,7 +119,7 @@ fields 里面的元素数据格式兼容`el-form-item`的props，并新增以下
 ---
 
 ### Events
-同`el-form`
+同[el-form](https://element.eleme.cn/#/zh-CN/component/form)
 
 ---
 
@@ -132,7 +132,7 @@ fields 里面的元素数据格式兼容`el-form-item`的props，并新增以下
 ---
 
 ### Methods
-同`el-form`，新增以下
+同[el-form](https://element.eleme.cn/#/zh-CN/component/form)，新增以下
 
 | 方法名 | 说明 | 参数 |
 | :---- | :---- | :---- |

@@ -158,7 +158,7 @@ export default {
 ---
 
 ### Props
-只保留了部分`m-table`的props，定制内容太多的话请直接用`m-table`
+只保留了部分[m-table](#/Components/m-table)的props，定制内容太多的话请直接用[m-table](#/Components/m-table)
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
@@ -206,7 +206,7 @@ export default {
 ---
 
 ### Events
-同`el-table`，包含`m-pagination`的事件，并新增以下
+同[m-table](#/Components/m-table)，并新增以下
 
 | 事件名称 | 说明 | 参数 |
 | :---- | :---- | :---- |
@@ -217,8 +217,8 @@ export default {
 ### Slots
 | slot名称 | 说明 |
 | :---- | :---- |
-| query | 查询表单，规则参考`m-query-form` |
-| table | `m-table` 的default slot |
+| query | 查询表单，规则参考[m-query-form](#/Components/m-query-form) |
+| table | [m-table](#/Components/m-table) 的default slot |
 | tools | 标题右侧的操作按钮位置 |
 
 ---

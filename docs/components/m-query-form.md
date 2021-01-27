@@ -214,7 +214,7 @@ export default {
 
 ### Props
 
-兼容 `el-form` 的props，部分已设置不需要再次设置，新增以下props
+兼容 [el-form](https://element.eleme.cn/#/zh-CN/component/form) 的props，部分已设置不需要再次设置，新增以下props
 
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |

@@ -218,7 +218,7 @@ export default {
 
 
 ### Props
-兼容`el-table`，并新增以下prop
+兼容[el-table](https://element.eleme.cn/#/zh-CN/component/table)，并新增以下prop
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
@@ -238,7 +238,7 @@ export default {
 | scrollContainer | 整体滚动的容器的选择器 | String | --- | .main-container |
 
 #### columns
-columns 里面的元素数据格式兼容`el-table-column`的props，并新增以下字段
+columns 里面的元素数据格式兼容[el-table-column](https://element.eleme.cn/#/zh-CN/component/table)的props，并新增以下字段
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
@@ -252,7 +252,7 @@ columns 里面的元素数据格式兼容`el-table-column`的props，并新增�
 ---
 
 ### Events
-同`el-table`，包含`m-pagination`的事件，并新增以下
+同[el-table](https://element.eleme.cn/#/zh-CN/component/table)，包含`m-pagination`的事件，并新增以下
 
 | 事件名称 | 说明 | 参数 |
 | :---- | :---- | :---- |

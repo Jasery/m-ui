@@ -48,7 +48,7 @@ export default {
 ---
 
 ### Events
-同`m-form`，并新增以下
+同[m-form](#/Components/m-form)，并新增以下
 
 | 事件名称 | 说明 | 参数 |
 | :---- | :---- | :---- |

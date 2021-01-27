@@ -79,14 +79,14 @@ export default {
 ```
 
 ### Props
-保留`m-dialog`的props，新增以下
+保留[m-dialog](#/Components/m-dialog)的props，新增以下
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
-| fields | 表单字段 | Array | 参考`m-dialog` | --- |
+| fields | 表单字段 | Array | 参考[m-dialog](#/Components/m-dialog) | --- |
 | defaultModel | 新增时的默认model | Object | --- | --- |
 | modelValue | 编辑的model | Object | --- | --- |
-| formProps | `m-form`的props | Object | --- | --- |
+| formProps | [m-form](#/Components/m-form)的props | Object | --- | --- |
 | createFn | 创建方法,model作为参数，返回Promise | Function | --- | --- |
 | updateFn | 更新方法,model作为参数，返回Promise | Function | --- | --- |
 
@@ -94,12 +94,12 @@ export default {
 ---
 
 ### Slots
-同`m-form`
+同[m-form](#/Components/m-form)
 
 ---
 
 ### Events
-同`el-dialog`，并新增以下
+同[m-dialog](#/Components/m-dialog)，并新增以下
 
 | 事件名称 | 说明 | 参数 |
 | :---- | :---- | :---- |

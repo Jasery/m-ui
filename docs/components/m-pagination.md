@@ -36,17 +36,17 @@ export default {
 ---
 
 ### Props
-同`el-pagination`
+同[el-pagination](https://element.eleme.cn/#/zh-CN/component/pagination)
 
 ---
 
 ### Slots
-同`el-pagination`
+同[el-pagination](https://element.eleme.cn/#/zh-CN/component/pagination)
 
 ---
 
 ### Events
-同`el-pagination`
+同[el-pagination](https://element.eleme.cn/#/zh-CN/component/pagination)
 新增以下事件
 
 | 事件名称 | 说明 | 参数 |

@@ -71,7 +71,7 @@ export default {
 ---
 
 ### Props
-兼容`el-checkbox-group`，新增以下prop
+兼容[el-checkbox-group](https://element.eleme.cn/#/zh-CN/component/checkbox)，新增以下prop
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
@@ -91,12 +91,12 @@ export default {
 ---
 
 ### Slots
-同`el-checkbox-group`或`el-radio-group`
+同[el-checkbox-group](https://element.eleme.cn/#/zh-CN/component/checkbox)或[el-checkbox-radio](https://element.eleme.cn/#/zh-CN/component/radio)
 
 ---
 
 ### Events
-同`el-checkbox-group`或`el-radio-group`
+同[el-checkbox-group](https://element.eleme.cn/#/zh-CN/component/checkbox)或[el-checkbox-radio](https://element.eleme.cn/#/zh-CN/component/radio)
 
 ---
 

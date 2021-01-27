@@ -41,7 +41,7 @@ export default {
 ---
 
 ### Props
-兼容`el-select`，并新增以下prop
+兼容[el-select](https://element.eleme.cn/#/zh-CN/component/select)，并新增以下prop
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | : ---- | 
@@ -61,14 +61,14 @@ export default {
 ---
 
 ### Events
-同`el-select`
+同[el-select](https://element.eleme.cn/#/zh-CN/component/select)
 
 ---
 
 ### Slots
-同`el-select`，default slot 跟options同时存在的话，default solt的选项会在最前面
+同[el-select](https://element.eleme.cn/#/zh-CN/component/select)，default slot 跟options同时存在的话，default solt的选项会在最前面
 
 ---
 
 ### Methods
-同`el-select`
+同[el-select](https://element.eleme.cn/#/zh-CN/component/select)

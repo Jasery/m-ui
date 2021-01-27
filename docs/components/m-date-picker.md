@@ -41,20 +41,20 @@ export default {
 ---
 
 ### Props
-同`el-date-picker`，不过由于转换了绑定值，`value-format`属性会失效
+同[el-date-picker](https://element.eleme.cn/#/zh-CN/component/date-picker)，不过由于转换了绑定值，`value-format`属性会失效
 
 ---
 
 ### Slots
-同`el-date-picker`
+同[el-date-picker](https://element.eleme.cn/#/zh-CN/component/date-picker)
 
 ---
 
 ### Events
-同`el-date-picker`
+同[el-date-picker](https://element.eleme.cn/#/zh-CN/component/date-picker)
 
 ---
 
 ### Methods
 
-同`el-date-picker`
+同[el-date-picker](https://element.eleme.cn/#/zh-CN/component/date-picker)

@@ -56,7 +56,7 @@ export default {
 ```
 
 ### Props
-保留`el-dialog`的props，新增以下
+保留[el-dialog](https://element.eleme.cn/#/zh-CN/component/dialog)的props，新增以下
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
@@ -71,12 +71,12 @@ export default {
 ---
 
 ### Slots
-同`el-dialog`
+同[el-dialog](https://element.eleme.cn/#/zh-CN/component/dialog)
 
 ---
 
 ### Events
-同`el-dialog`，并新增以下
+同[el-dialog](https://element.eleme.cn/#/zh-CN/component/dialog)，并新增以下
 
 | 事件名称 | 说明 | 参数 |
 | :---- | :---- | :---- |
@@ -88,4 +88,4 @@ export default {
 
 ### Methods
 
-同`el-dialog`
+同[el-dialog](https://element.eleme.cn/#/zh-CN/component/dialog)

@@ -41,7 +41,7 @@ export default {
 ```
 
 ### Props
-兼容`el-button`，新增以下
+兼容[el-button](https://element.eleme.cn/#/zh-CN/component/button)，新增以下
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
@@ -54,7 +54,7 @@ export default {
 ---
 
 ### Slots
-同`el-button`
+同[el-button](https://element.eleme.cn/#/zh-CN/component/button)
 
 ---
 
