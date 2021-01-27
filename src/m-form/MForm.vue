@@ -68,9 +68,11 @@
 
 <script>
 import { removeKeys, isFunction } from "../utils";
+import ValidMixins from "../utils/valid-mixins";
 
 export default {
   name: "MForm",
+  mixins: [ValidMixins],
   props: {
     size: {
       type: String,
@@ -145,6 +147,15 @@ export default {
   },
 
   computed: {},
+
+  watch: {
+    model: {
+      handler(value) {
+        this.$emit("input", value);
+      },
+      deep: true
+    }
+  },
 
   mounted() {},
   methods: {

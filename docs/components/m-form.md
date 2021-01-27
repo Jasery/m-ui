@@ -9,6 +9,7 @@
       :model="model"
       :fields="fields"
       ref="form"
+      @input="onChange"
     >
       <template #gender>
         <m-checkbox-group
@@ -89,6 +90,9 @@ export default {
   methods: {
     onValid() {
       this.$refs.form.validate();
+    }, 
+    onChange() {
+      console.log('m-form input event')
     }
   }
 }
@@ -119,7 +123,11 @@ fields 里面的元素数据格式兼容[el-form-item](https://element.eleme.cn/
 ---
 
 ### Events
-同[el-form](https://element.eleme.cn/#/zh-CN/component/form)
+同[el-form](https://element.eleme.cn/#/zh-CN/component/form)，新增以下
+
+| 事件名称 | 说明 | 参数 |
+| :---- | :---- | :---- |
+| input | 有输入变化 | model值 |
 
 ---
 
