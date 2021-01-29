@@ -6,38 +6,8 @@
     labelWidth="0"
     :model="value"
     :fields="fields"
-    ref="form"
+    ref="mForm"
   >
-    <template v-slot:field="{ index }">
-      <div class="field-item">
-        <div class="content">
-          <slot :index="index" :value="value[index]">
-            <component
-              :is="component"
-              v-bind="componentProps"
-              v-on="componentEvents"
-              v-model="value[index]"
-            ></component>
-          </slot>
-        </div>
-        <div class="btn">
-          <el-button
-            v-if="index === 0"
-            type="primary"
-            icon="el-icon-plus"
-            circle
-            @click="addItem"
-          ></el-button>
-          <el-button
-            v-else
-            type="danger"
-            icon="el-icon-minus"
-            circle
-            @click="removeItem(index)"
-          ></el-button>
-        </div>
-      </div>
-    </template>
   </m-form>
 </template>
 
@@ -45,12 +15,15 @@
 import MForm from "../m-form/MForm.vue";
 import _ from "lodash";
 import { isUndefined } from "../utils";
+import ValidMixins from "../utils/valid-mixins";
+import MArrayFormItem from "./MArrayFormItem.vue";
 
 const cd = val => (isUndefined(val) ? null : _.cloneDeep(val));
 
 export default {
   name: "MArrayForm",
   components: { MForm },
+  mixins: [ValidMixins],
   props: {
     value: {
       type: Array,
@@ -61,18 +34,35 @@ export default {
     component: [String, Object],
     componentProps: Object,
     componentEvents: Object,
-    itemDefaultValue: [String, Number, Object],
-    rules: Array
+    itemDefaultValue: [String, Number, Object, Array],
+    rules: Array,
+    emptiable: Boolean
   },
   computed: {
     currentVal() {
+      if (this.emptiable) {
+        return this.value;
+      }
       return this.value.length ? this.value : [cd(this.itemDefaultValue)];
     },
     fields() {
-      return this.currentVal.map((item, index) => ({
+      return this.currentVal.map((value, index) => ({
         prop: index.toString(),
         label: "",
-        slotName: "field",
+        component: MArrayFormItem,
+        componentProps: {
+          component: this.component,
+          componentProps: this.componentProps,
+          componentEvents: this.componentEvents,
+          index,
+          arrayValue: this.currentVal,
+          emptiable: this.emptiable
+        },
+        componentEvents: {
+          add: this.addItem,
+          remove: this.removeItem,
+          update: this.onUpdate
+        },
         rules: this.rules
       }));
     }
@@ -88,20 +78,24 @@ export default {
       this.$emit("input", this.value);
     },
 
-    validator(rule, value, callback) {
-      return this.validate()
-        .then(valid => {
-          if (valid) {
-            callback();
-          } else {
-            callback(new Error(valid));
-          }
-        })
-        .catch(err => callback(err));
+    validate() {
+      return this.$refs.mForm.validate();
     },
 
-    validate() {
-      this.$refs.validate();
+    onUpdate(value, index) {
+      this.$set(this.value, index, value);
+    },
+
+    getFieldComponents() {
+      return Array(this.fields.length)
+        .fill(0)
+        .map((_, index) => {
+          let comp = this.$refs.mForm.$refs[index];
+          if (Array.isArray(comp)) {
+            comp = comp[0];
+          }
+          return comp.getFieldComponent();
+        });
     }
   }
 };

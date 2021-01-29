@@ -50,6 +50,7 @@
             :index="index"
             :prop="field.prop"
             :value="model[field.prop]"
+            :ref="fieldItem.prop"
           ></slot>
           <component
             v-else-if="fieldItem.component"
@@ -67,6 +68,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { removeKeys, isFunction } from "../utils";
 import ValidMixins from "../utils/valid-mixins";
 
@@ -126,11 +128,17 @@ export default {
           "group"
         ]);
 
-        if (!formItemProps.rules) {
+        if (!field.rules) {
           const validator = (rule, value, callback) => {
-            let comp = this.$refs[formItemProps.prop];
+            let comp = this.$refs[field.prop];
+            if (!comp && field.slotName) {
+              comp = this.$slots[field.slotName];
+            }
             if (Array.isArray(comp)) {
               comp = comp[0];
+            }
+            if (comp?.context && comp.context instanceof Vue) {
+              comp = comp.context;
             }
             if (comp && isFunction(comp.validator)) {
               comp.validator(rule, value, callback);
