@@ -141,9 +141,9 @@ export default {
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
 | value | 值 | Array | --- | --- |
-| itemDefaultValue | 数组元素的默认值 | any | --- | --- |
+| itemDefaultValue | 数组元素的默认值 | Any | --- | --- |
 | rules | 校验 | Array | --- | --- |
-| component | 元素的表单组件 | string/object | --- | --- |
+| component | 元素的表单组件 | String/Object | --- | --- |
 | componentProps | 组件props | Object | --- | --- |
 | componentEvents | 组件事件 | Object | --- | --- |
 
