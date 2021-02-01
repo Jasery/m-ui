@@ -55,6 +55,37 @@ export default {
 </script>
 ```
 
+### 自定义footer
+```vue
+<template>
+  <div>
+    <el-button type="text" @click="dialogVisible = true">
+      点击打开 Dialog
+    </el-button>
+    <m-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+    >
+      <span>
+        何时使用：需要用户处理事务，又不希望跳转页面以致打断龚总流程时，可以使用modal在当前页面正中打开一个浮层，承载相应操作。
+      </span>
+      <template v-slot:footer>
+        <el-button type="success" size="small">自定义按钮</el-button>
+      </template>
+    </m-dialog>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      dialogVisible: false,
+    }
+  },
+  methods: {}
+}
+</script>
+```
 ### Props
 保留[el-dialog](https://element.eleme.cn/#/zh-CN/component/dialog)的props，新增以下
 
