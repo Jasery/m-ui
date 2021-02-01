@@ -5,11 +5,21 @@
 ```vue
 <template>
   <div>  
+    <m-checkbox-group
+      class="mg-b-12"
+      v-model="props"
+      :options="options"
+    ></m-checkbox-group>
     <m-query-form
       :model="form"
       :fields="fields"
+      :show-submit="props.includes('submit')"
+      :show-reset="props.includes('reset')"
       @submit="onSubmit"
     >
+      <template v-if="props.includes('tools')" v-slot:tools>
+        <el-button type="success" size="small">自定义</el-button>
+      </template>
     </m-query-form>
   </div>
 </template>
@@ -17,6 +27,17 @@
 export default {
   data() {
     return {
+      props: ["reset", "submit", "tools"],
+      options: [{
+        label: '重置按钮',
+        value: 'reset'
+      }, {
+        label: '查询按钮',
+        value: 'submit'
+      }, {
+        label: '自定义',
+        value: 'tools'
+      }],
       form: {
         name: '',
         region: '',
