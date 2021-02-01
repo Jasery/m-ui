@@ -21,7 +21,7 @@
           type="password"
           v-model="model.password"
           placeholder="请输入密码"
-          prefix-icon="el-icon-user"
+          prefix-icon="el-icon-unlock"
           auto-complete="off"
           @keydown.native.enter="onLogin"
         ></el-input>
