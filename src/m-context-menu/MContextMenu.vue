@@ -29,31 +29,7 @@ export default {
     menus: {
       type: Array,
       default() {
-        return [
-          {
-            title: "menu1",
-            command: "menu1"
-          },
-          {
-            title: "menu2",
-            menus: [
-              {
-                title: "menu3",
-                command: "menu3"
-              },
-              {
-                title: "menu4",
-                command: "menu4",
-                line: true
-              },
-              {
-                title: "menu5",
-                command: "menu5",
-                disabled: true
-              }
-            ]
-          }
-        ];
+        return [];
       }
     }
   },
