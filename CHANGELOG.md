@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.14...v0.2.0) (2021-02-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **fix-bottom:** v-fix-bottom重命名为v-fixed-bottom
+
+### Features
+
+* **fix-bottom:** 重命名为fixed-bottom ([b7afe73](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/b7afe733ce2811851d868ab3ed2c1e5f10af80f0))
+* **m-array-form:** 添加嵌套表单支持 ([43e6069](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/43e60696e4e4a2c524938669164cb95704a88861))
+* **m-form:** 新增input事件 ([2251843](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/2251843477df7644c8cc2eacc25719217ee7c062))
+
+
+### Bug Fixes
+
+* **m-context-menu:** 移除测试代码 ([e37c9d2](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e37c9d2698add1f6404dbcefa059ffe5b78ed0f4))
+* **m-draggable-dialog:** 修复最小化直接关闭后无法打开bug ([6bbc4cc](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/6bbc4ccce7bc9f56c22804efd762175ef9389963))
+* **m-login:** 修复icon错误 ([fb2cb88](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/fb2cb8820efeb9475a3f942ff64c2ef2baea01db))
+* **m-query-form:** 优化细节 ([e8c7133](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e8c71330d44f6ccfbdcd5632d70720159cb1f885))
+
 ### [0.1.14](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.13...v0.1.14) (2021-01-16)
 
 
