@@ -9,6 +9,12 @@
   >
     <m-form :fields="fields" :model="model" v-bind="formProps" ref="form">
       <slot></slot>
+      <slot
+        v-for="slot in slots"
+        :name="slot"
+        :slot="slot"
+        :model="model"
+      ></slot>
       <slot name="append" slot="append"></slot>
     </m-form>
   </m-dialog>
@@ -42,6 +48,13 @@ export default {
       model: {},
       loading: false
     };
+  },
+  computed: {
+    slots() {
+      return this.fields
+        .map(f => _.compact([f.slotName, f.labelSlotName]))
+        .flat();
+    }
   },
   methods: {
     onConfirm() {

@@ -15,7 +15,11 @@
       :model-value="editItem"
       :create-fn="createFn"
       :update-fn="updateFn"
-    ></m-dialog-form>
+    >
+      <template v-slot:field2="{ model }">
+        <el-input v-model="model.field2" placeholder="input from slot "></el-input>
+      </template>
+    </m-dialog-form>
   </div>
 </template>
 <script>
@@ -31,16 +35,16 @@ export default {
       }, {
         label: 'field2',
         prop: 'field2',
-        component: 'el-input'
+        slotName: 'field2'
       }, {
         label: 'field3',
         prop: 'field3',
         component: 'el-input'
       }],
       defaultModel: {
-        field1: '',
-        field2: '',
-        field3: ''
+        field1: '1',
+        field2: '2',
+        field3: '3'
       }
     }
   },
