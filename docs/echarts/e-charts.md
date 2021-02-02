@@ -9,6 +9,10 @@ import Echarts from "m-ui/src/echarts";
 Vue.use(Echarts);
 ```
 
+> 注意：echarts需要自己本地安装，且版本需为5.0以上
+
+## 基本用法
+
 ```vue
 <template>
   <div>
@@ -30,7 +34,6 @@ Vue.use(Echarts);
   </div>
 </template>
 <script>
-import ECharts from "m-ui/src/echarts/ECharts"
 export default {
   components: {
     ECharts
@@ -71,3 +74,29 @@ export default {
 
 </script>
 ```
+
+### Props
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :---- | :---- | :---- | :---- | :---- | 
+| options | echart配置，参考[echarts](https://echarts.apache.org/zh/option.html) | Object | --- | --- |
+| loading | loading | Boolean | --- | --- | --- | 
+| theme | 主题 | String/Object | --- | --- |
+| initOptions | 初始化选项 | Object | --- | --- |
+| autoresize | 自动resize | Boolean | --- | --- |
+| watchShallow | 浅监听 | Boolean | --- | --- |
+---
+
+### Slots
+无
+
+---
+
+### Events
+参考[事件](https://echarts.apache.org/zh/api.html#events)
+
+
+---
+
+### Methods
+参考[echartsInstance](https://echarts.apache.org/zh/api.html#echartsInstance)

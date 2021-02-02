@@ -221,6 +221,9 @@ export default {
         this.destroy();
         this.init();
       }
+    },
+    getInstance() {
+      return this.chart;
     }
   },
   created() {
