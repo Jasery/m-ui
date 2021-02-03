@@ -32,8 +32,12 @@ export default {
      *  toolbox: ["saveAsImage", "restore", "dataView", "dataZoom"],
      *  tooltip: true,  // Boolean
      *  xAxisKey: 'type', // String
-     *  yAxisConfig: ['value'], // Array or String,
-     *  axisPointer: 'cross'
+     *  xAxisConfig: [], // Array or Object
+     *  yAxisConfig: [{}], // Array or Object,
+     *  axisPointer: 'cross',
+     *  seriesConfig: {},
+     *  dataZoomX: false,
+     *  dataZoomY: false
      * }
      */
     config: Object
@@ -76,12 +80,7 @@ export default {
       }
 
       // xAxis
-      let xAxis = {
-        type: "category",
-        data: Array.isArray(this.data)
-          ? this.data.map(item => item[config.xAxisKey])
-          : Object.keys(this.data)
-      };
+      let xAxis = this.getXAxis(config, this.data);
       options.xAxis = xAxis;
 
       // yAxis
@@ -133,14 +132,19 @@ export default {
       let barKeys = config.barKeys || [];
       let yAxisConfig = config.yAxisConfig;
       let legends = config.legendMap ? Object.keys(config.legendMap) : [""];
-      return legends.map(legend => ({
-        name: config.legendMap && config.legendMap[legend],
-        type: barKeys.includes(legend) ? "bar" : "line",
-        data: this.getSeriesData(data, legend),
-        yAxisIndex: yAxisConfig?.length
-          ? yAxisConfig.findIndex(c => c.key === legend)
-          : 0
-      }));
+      return legends.map(legend =>
+        Object.assign(
+          {
+            name: config.legendMap && config.legendMap[legend],
+            type: barKeys.includes(legend) ? "bar" : "line",
+            data: this.getSeriesData(data, legend),
+            yAxisIndex: yAxisConfig?.length
+              ? yAxisConfig.findIndex(c => c.key === legend)
+              : 0
+          },
+          config.seriesConfig
+        )
+      );
     },
 
     getSeriesData(data, key) {
@@ -148,11 +152,24 @@ export default {
         return data.map(item => item[key]);
       }
       return Object.values(data).map(item => {
-        if (typeof item !== "object") {
+        if (!_.isPlainObject(item)) {
           return item;
         }
         return item[key];
       });
+    },
+
+    getXAxis(config, data) {
+      let xAxis = {
+        type: "category",
+        data: Array.isArray(data)
+          ? data.map(item => item[config.xAxisKey])
+          : Object.keys(data)
+      };
+      if (config.xAxisConfig) {
+        xAxis = Object.assign(xAxis, config.xAxisConfig);
+      }
+      return xAxis;
     },
 
     getYAxis(config) {

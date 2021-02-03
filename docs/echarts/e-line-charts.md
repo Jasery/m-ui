@@ -7,7 +7,6 @@
   <div>
     <e-line-charts 
       style="height: 500px;"
-      title="我的图表"
       :data="chartData"
       :config="config"
     ></e-line-charts>
@@ -65,7 +64,6 @@ export default {
   <div>
     <e-line-charts 
       style="height: 500px;"
-      title="我的图表"
       :data="chartData"
       :config="config"
     ></e-line-charts>
@@ -129,7 +127,6 @@ export default {
   <div>
     <e-line-charts 
       style="height: 500px;"
-      title="我的图表"
       :data="chartData"
       :config="config"
     ></e-line-charts>
@@ -179,6 +176,49 @@ export default {
 </script>
 ```
 
+### 时间轴
+```vue
+<template>
+  <div>
+    <e-line-charts 
+      style="height: 500px;"
+      :data="chartData"
+      :config="config"
+    ></e-line-charts>
+  </div>
+</template>
+<script>
+let base = +new Date(1988, 9, 3);
+let oneDay = 24 * 3600 * 1000;
+let value = Math.round(Math.random() * 300);
+let data = {[base]: [[base, value]]};
+for (let i = 1; i < 2000; i++) {
+    let now = +new Date(base += oneDay);
+    value = Math.round((Math.random() - 0.5) * 20 + value);
+    data[now] = [now,value];
+}
+
+export default {
+  data() {
+    return {
+      config: {
+        title: '时间轴',
+        xAxisConfig: {
+          type: 'time',
+          boundaryGap: false
+        },
+        seriesConfig: {
+          symbol: 'none'
+        },
+        dataZoomX: true
+      },
+      chartData: data
+    }
+  }
+}
+</script>
+```
+
 ### Props
 继承自`e-charts`，并新增以下
 
@@ -210,6 +250,7 @@ export default {
 | 字段 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
 | xAxisKey | 横坐标key | String | --- | --- |
+| xAxisConfig | 横坐标配置| Object | --- | --- |
 | yAxisConfig | 纵坐标配置,key、name、formatter | Array/Object | --- | --- |
 | toolbox | 工具箱， | Array | ["saveAsImage", "restore", "dataView", "dataZoom"] | --- |
 | tooltip | 提示 | Boolean | --- | true |
@@ -217,3 +258,4 @@ export default {
 | dataZoomX | 缩放组件x轴 | Boolean | --- | --- |
 | dataZoomY | 缩放组件y轴 | Boolean | --- | --- |
 | barKeys  | 显示为柱状图的key | Array | --- | --- |
+| seriesConfig  | series配置 | Object | --- | --- |
