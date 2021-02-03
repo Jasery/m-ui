@@ -8,6 +8,7 @@
 
 <script>
 import ECharts from "./ECharts.vue";
+import _ from "lodash";
 
 const defaultConfig = {
   tooltip: true,
@@ -58,6 +59,10 @@ export default {
       let series = this.getSeries(config, this.data);
       options.series = series;
 
+      if (this.options) {
+        _.merge(options, this.options);
+      }
+
       return options;
     }
   },
@@ -88,7 +93,7 @@ export default {
         return data;
       }
       return Object.keys(data).map(key => ({
-        name: legendMap[key] ? legendMap[key] : key,
+        name: legendMap[key] || key,
         value: data[key]
       }));
     }
