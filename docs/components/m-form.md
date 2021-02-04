@@ -8,9 +8,61 @@
     <m-form
       :model="model"
       :fields="fields"
-      ref="form"
       @input="onChange"
     >
+    </m-form>
+    <div>{{model}}</div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      model: {
+        name: '',
+        age: 0,
+      },
+      fields: [{
+        label: "姓名",
+        prop: "name",
+        rules: [{required: true, message: '姓名不能为空'}],
+        component: 'el-input',
+        componentProps: {
+          placeholder: '请输入姓名',
+          clearable: true
+        }
+      }, {
+        label: "年龄",
+        prop: "age",
+        component: 'el-slider',
+        componentProps: {
+          showInput: true
+        }
+      }]
+    }
+  },
+  methods: {}
+}
+</script>
+```
+
+
+### 字段用slot传递
+```vue
+<template>
+  <div>
+    <m-form
+      :model="model"
+      :fields="fields"
+    >
+      <template #genderLabel>
+        <span>
+          <el-tooltip content="这是提示" placement="top">
+            <i class="el-icon-info cur-p"></i>
+          </el-tooltip>
+          性别
+        </span>
+      </template>
       <template #gender>
         <m-checkbox-group
           single
@@ -25,7 +77,6 @@
         ></m-checkbox-group>
       </template>
     </m-form>
-    <div><el-button type="primary" @click="onValid">校验</el-button></div>
     <div>{{model}}</div>
   </div>
 </template>
@@ -36,9 +87,6 @@ export default {
       model: {
         name: '',
         gender: null,
-        born: null,
-        group1: null,
-        group2: null
       },
       fields: [{
         label: "姓名",
@@ -50,56 +98,134 @@ export default {
           clearable: true
         }
       }, {
-        label: "性别",
         prop: "gender",
         rules: [{required: true, message: '请选择性别'}],
-        slotName: "gender"
-      }, {
-        label: "出生日期",
-        prop: "born",
-        component: 'm-date-picker'
-      }, {
-        group: [{
-          label: 'group1',
-          prop: 'gropu1',
-          component: {
-            methods: {
-              validator(rule, value, callback) {
-                if(value && value.length > 20) {
-                  callback()
-                } else {
-                  callback(new Error("长度必须大于20"))
-                }
-              }
-            },
-            render(h) {
-              return h('el-input', {
-                props: this.$attrs,
-                on: this.$listeners
-              })
-            }
-          }
-        }, {
-          label: 'group2',
-          prop: 'group2',
-          component: 'el-input'
-        }]
+        slotName: "gender",
+        labelSlotName: 'genderLabel'
       }]
     }
   },
+  methods: {}
+}
+</script>
+```
+
+
+### 自定义组件
+```vue
+<template>
+  <div>
+    <m-form
+      :model="model"
+      :fields="fields"
+    >
+    </m-form>
+    <div>{{model}}</div>
+  </div>
+</template>
+<script>
+const CustomInput = {
+  template: `
+<template>
+  <el-input v-bind="$attrs" v-on="$listeners" placeholder="自定义input" />
+</template>
+  `,
   methods: {
-    onValid() {
-      this.$refs.form.validate();
-    }, 
-    onChange() {
-      console.log('m-form input event')
+    validator(rule, value, callback) {
+      if(value && value.length > 20) {
+        callback()
+      } else {
+        callback(new Error("长度必须大于20"))
+      }
     }
   }
+}
+export default {
+  data() {
+    return {
+      model: {
+        name: '',
+        other: '',
+      },
+      fields: [{
+        label: "姓名",
+        prop: "name",
+        rules: [{required: true, message: '姓名不能为空'}],
+        component: 'el-input',
+        componentProps: {
+          placeholder: '请输入姓名',
+          clearable: true
+        }
+      }, {
+        prop: "other",
+        label: '其他',
+        component: CustomInput
+      }]
+    }
+  },
+  methods: {}
+}
+</script>
+```
+> 提示：在自定义组件里面如果定义了`validator`方法会被作为校验方法
+
+
+
+### 多列布局
+```vue
+<template>
+  <div>
+    <m-form
+      :model="model"
+      :fields="fields"
+    >
+    </m-form>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      model: {
+        name: '',
+        email: '',
+        bio: '',
+        tag: ''
+      },
+      fields: [
+        { 
+          group: [{
+            label: '姓名',
+            prop: 'name',
+            component: 'el-input'
+          }, {
+            label: '邮箱',
+            prop: 'email',
+            component: 'el-input'
+          }]
+        },
+        {
+          group: [{
+            label: '简介',
+            prop: 'bio',
+            component: 'el-input'
+          }, {
+            label: '标签',
+            prop: 'tag',
+            component: 'el-input'
+          }]
+        }
+      ]
+    }
+  },
+  methods: {}
 }
 </script>
 <style>
 </style>
 ```
+
+
 ---
 
 ### Props

@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     onCommand(command) {
-      console.log('onCommand', command)
+      this.$message.success('点击了 ' + command);
     }
   }
 }
