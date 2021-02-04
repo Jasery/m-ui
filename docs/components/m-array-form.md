@@ -27,7 +27,60 @@ export default {
 }
 </script>
 ```
-### 复杂场景
+
+### 作为字段
+```vue
+<template>
+  <m-form :model="formModel" :fields="fields">
+    <template v-slot:keywords>
+      <m-array-form
+        v-model="formModel.keywords"
+        component="el-input"
+        :componentProps="{ placeholder: '请输入关键字' }"
+        item-default-value=""
+      ></m-array-form>
+    </template>
+  </m-form>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      formModel: {
+        name: '',
+        keywords: [],
+        other: ''
+      },
+      fields: [
+        {
+          prop: 'name',
+          label: '姓名',
+          component: 'el-input',
+          componentProps: {
+            placeholder: '请输入姓名'
+          }
+        },
+        {
+          prop: 'keywords',
+          label: '关键字',
+          slotName: 'keywords'
+        },
+        {
+          prop: 'other',
+          label: '其他',
+          component: 'el-input'
+        }
+      ]
+    }
+  },
+  methods: {
+  }
+}
+</script>
+```
+
+
+### 嵌套表单
 ```vue
 <template>
   <div>
