@@ -188,6 +188,7 @@ export default {
 
 <style lang="scss" scoped>
 .item-group {
+  margin-bottom: 0;
   ::v-deep & > .el-form-item__content {
     margin-left: 0 !important;
     display: flex;
