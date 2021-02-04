@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.2.0...v0.2.1) (2021-02-04)
+
+
+### Features
+
+* 添加e-pie-charts组件 ([eae015e](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/eae015ef8b2a7bcba49104f9e149c5eaeb9f0fed))
+* **e-line-charts:** 添加时间轴支持 ([714e097](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/714e097708a568e0cb09bdca34311d666c842641))
+* **m-dialog-form:** 添加m-form的slot透传 ([8a78fd9](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/8a78fd9f6bfccdb63b467d141be604f23ca27c7e))
+* 添加e-line-charts组件 ([d258b64](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/d258b646b139ade20c2203e0e8980d37f43f9280))
+* 添加echarts封装 ([26b0222](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/26b0222e45a49cffb4e27663287d6d2ac59dde71))
+
+
+### Bug Fixes
+
+* **e-pie-charts:** 添加options合并 ([e86dc42](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e86dc42a21dbcc230e01a89bda1b83213b5a02eb))
+
 ## [0.2.0](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.1.14...v0.2.0) (2021-02-01)
 
 
