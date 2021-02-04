@@ -49,6 +49,8 @@ module.exports = {
   pagePerSection: true,
   sections,
   require: ["./styleguide"],
+  jsxInComponents: false,
+  jsxInExamples: false,
   webpackConfig: {
     module: {
       rules: [
