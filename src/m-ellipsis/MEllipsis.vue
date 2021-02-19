@@ -1,58 +1,115 @@
 <template>
-  <span
-    class="m-ellipsis"
-    :class="isMultiLine ? 'multi-ellipsis' : 'ellipsis'"
-    :style="{ '-webkit-line-clamp': lines }"
-  >
-    <el-tooltip v-if="tooltip" effect="dark" placement="top">
-      <template #content>
-        <div class="tooltip" :style="{ maxWidth: getElWidth() }">
-          <slot></slot>
-        </div>
-      </template>
-      <span><slot></slot></span>
-    </el-tooltip>
-    <slot v-else></slot>
-  </span>
+  <div class="m-ellipsis">
+    <span>
+      <span :key="keyIndex" ref="content">{{ text }}</span>
+      <span v-show="collapse">
+        {{ ellipsisText
+        }}<el-link v-show="showCollapse" @click="toggle">
+          展开
+          <i class="el-icon-caret-bottom"></i>
+        </el-link>
+      </span>
+    </span>
+    <el-link v-show="showCollapse && !collapse" @click="toggle">
+      收起
+      <i class="el-icon-caret-top"></i>
+    </el-link>
+  </div>
 </template>
-
 <script>
+import {
+  addResizeListener,
+  removeResizeListener
+} from "element-ui/lib/utils/resize-event";
 export default {
   name: "MEllipsis",
   props: {
-    tooltip: Boolean,
-    lines: {
+    text: String,
+    maxHeight: {
       type: Number,
-      default: 1
+      default: 50
+    },
+    ellipsisText: {
+      type: String,
+      default: "..."
+    },
+    collapseable: {
+      type: Boolean,
+      default: true
+    },
+    defaultCollaspe: {
+      type: Boolean,
+      default: true
     }
+  },
+  data() {
+    return {
+      keyIndex: 0,
+      oversize: false,
+      collapse: this.defaultCollaspe
+    };
   },
   computed: {
-    isMultiLine() {
-      return this.lines > 1;
+    showCollapse() {
+      return this.collapseable && this.oversize;
     }
   },
+  watch: {
+    text: "init",
+    maxHeight: "init"
+  },
+  mounted() {
+    this.init();
+    addResizeListener(this.$el, this.resizeHandle);
+  },
+  beforeDestroy() {
+    removeResizeListener(this.$el, this.resizeHandle);
+  },
   methods: {
-    getElWidth() {
-      if (this.$el) {
-        return this.$el.getBoundingClientRect().width + "px";
+    init() {
+      this.oversize = !this.isFits();
+      if (this.oversize && this.collapse) {
+        this.truncate();
       }
-      return "0";
+    },
+    truncate() {
+      this.$nextTick(() => {
+        const $content = this.$refs.content;
+        let text = this.text;
+        while (!this.isFits()) {
+          let endIndex = text.length - 1;
+          if (this.$el.offsetHeight > this.maxHeight * 3) {
+            endIndex = Math.floor(text.length / 2);
+          }
+          $content.innerText = text = text.substring(0, endIndex);
+        }
+      });
+    },
+    isFits() {
+      return this.$el.offsetHeight <= this.maxHeight;
+    },
+    toggle() {
+      this.collapse = !this.collapse;
+      if (this.collapse) {
+        this.truncate();
+      } else {
+        this.keyIndex++;
+      }
+    },
+    resizeHandle() {
+      if (this.oversize && this.collapse) {
+        this.truncate();
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.multi-ellipsis {
-  -webkit-box-orient: vertical;
-  position: relative;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.ellipsis {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.m-ellipsis {
+  word-break: break-all;
+  .el-link {
+    font-size: 0.6em;
+  }
 }
 </style>

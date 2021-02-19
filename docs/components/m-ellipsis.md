@@ -4,19 +4,15 @@
 ### 基本用法
 ```vue
 <template>
-  <div>  
-    <m-ellipsis
-      tooltip
-      :lines="2"
-    >
-      这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本
-    </m-ellipsis>
-  </div>
+  <m-ellipsis :text="text" :max-height="50" :collapseable="true" :default-collaspe="true">
+  </m-ellipsis>
 </template>
 <script>
 export default {
   data() {
-    return {}
+    return {
+      text: '富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善、'.repeat(10)
+    }
   }
 }
 </script>
@@ -26,13 +22,16 @@ export default {
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
-| tooltip | 是否在tooltip显示全部文本 | boolean | --- | false |
-| lines | 行数 | number | --- | 1 |
+| text | 文本内容 | String | --- | --- |
+| maxHeight | 最大高度，超出则折叠 | Number | --- | 50 |
+| ellipsisText | 省略文本 | String | --- | ... |
+| collapseable | 是否可以折叠展开 | Boolean | --- | true |
+| defaultCollaspe | 默认折叠 | Boolean | --- | true |
 
 ---
 
 ### Slots
-default，文本内容
+无
 
 ---
 
