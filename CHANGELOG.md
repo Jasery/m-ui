@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.2.1...v0.3.0) (2021-02-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **m-ellipsis:** 组件重写，api已修改，注意
+
+### Features
+
+* **m-ellipsis:** 重写m-ellipsis组件 ([12d2f70](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/12d2f70f08360ad3e3fa60671c980bc3f6e79e9b))
+
+
+### Bug Fixes
+
+* **m-form:** 修复样式问题 ([352a274](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/352a274447547d49864098b07277520d5e48f149))
+
 ### [0.2.1](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.2.0...v0.2.1) (2021-02-04)
 
 
