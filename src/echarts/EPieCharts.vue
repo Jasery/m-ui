@@ -3,6 +3,7 @@
     v-bind="$attrs"
     v-on="$listeners"
     :options="echartOptions"
+    ref="eCharts"
   ></e-charts>
 </template>
 
@@ -96,6 +97,10 @@ export default {
         name: legendMap[key] || key,
         value: data[key]
       }));
+    },
+
+    getInstance() {
+      return this.$refs.eCharts?.getInstance();
     }
   }
 };

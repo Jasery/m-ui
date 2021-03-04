@@ -1,11 +1,9 @@
 <template>
   <e-charts
-    :loading="loading"
-    :theme="theme"
     :options="echartOptions"
-    ref="eCharts"
     v-bind="$attrs"
     v-on="$listeners"
+    ref="eCharts"
   ></e-charts>
 </template>
 
