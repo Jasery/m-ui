@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.0...v0.3.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* **e-charts:** 优化图表组件 ([9817898](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/98178985b754671610d69f79bcea39c504190efd))
+
 ## [0.3.0](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.2.1...v0.3.0) (2021-02-19)
 
 
