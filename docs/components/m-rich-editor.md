@@ -11,7 +11,7 @@
   <div>
     <m-rich-editor 
       v-model="text"
-      upload-url="http://192.168.5.122:8088/upload"
+      server-host="http://common-server.com"
     ></m-rich-editor>
   </div>
 </template>
@@ -32,12 +32,15 @@ export default {
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- | 
-| value | 内容 | string | --- | --- |
-| height | 编辑器高度 | number | --- | 500 |
-| disabled | 是否禁用 | boolean | --- | fasle |
-| uploadPath |  文件上传url | string | --- | --- |
+| value | 内容 | String | --- | --- |
+| height | 编辑器高度 | Number | --- | 500 |
+| disabled | 是否禁用 | Boolean | --- | fasle |
+| uploadPath |  文件上传url | String | --- | --- |
 | memus | 菜单列表 | Array | 参考官方文档 | --- |
 | editorOptions | editor其他配置 | Object | 参考官方文档 | --- |
+| wordConvertUrl | word文档转换地址 | String | --- | --- |
+| serverHost | 外部服务地址 | String | --- | --- |
+| ext | 自定义参数 | Object | --- | --- |
 
 ---
 
