@@ -63,6 +63,7 @@ export default {
       :total="total"
       :table-loading="loading"
       :height="400"
+      show-summary
       @page-change="fetch"
     ></m-table>
   </div>
@@ -236,6 +237,7 @@ export default {
 | size | 表格间隔大小 | String | default/middle/small | default |
 | perfectScroll | 优化滚动条 | Boolean | --- | --- |
 | scrollContainer | 整体滚动的容器的选择器 | String | --- | .main-container |
+| topSummary | 置顶合计行 | Boolean | --- | true |
 
 #### columns
 columns 里面的元素数据格式兼容[el-table-column](https://element.eleme.cn/#/zh-CN/component/table)的props，并新增以下字段

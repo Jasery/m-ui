@@ -1,7 +1,7 @@
 <template>
   <div class="m-table">
     <el-table
-      :class="'size-' + size"
+      :class="elTableClass"
       ref="table"
       v-el-table-infinite-scroll="load"
       :height="tableHeight"
@@ -133,6 +133,10 @@ export default {
     scrollContainer: {
       type: String,
       default: ".main-container"
+    },
+    topSummary: {
+      type: Boolean,
+      default: true
     }
   },
   components: {
@@ -154,6 +158,14 @@ export default {
     },
     isFixedBottom() {
       return isNumber(this.fixedBottom);
+    },
+    elTableClass() {
+      let tableClass = ["size-" + this.size];
+      console.log("this.$attrs", this.$attrs);
+      if (this.$attrs["show-summary"] !== false && this.topSummary) {
+        tableClass.push(["top-summary"]);
+      }
+      return tableClass;
     }
   },
   watch: {
@@ -321,6 +333,18 @@ export default {
     .ps__rail-x,
     .ps__rail-y {
       opacity: 0.6 !important;
+    }
+    &.top-summary {
+      display: flex;
+      flex-direction: column;
+      .el-table__body-wrapper {
+        order: 1;
+      }
+      .el-table__footer-wrapper {
+        th.gutter {
+          background-color: #f1f1f1;
+        }
+      }
     }
   }
 }
