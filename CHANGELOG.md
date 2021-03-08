@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.1...v0.3.2) (2021-03-08)
+
+
+### Features
+
+* **m-table:** 新增合计行置顶配置 ([82a7d66](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/82a7d669df929047d4537c4f1dd384902bcc8a71))
+
 ### [0.3.1](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.0...v0.3.1) (2021-03-04)
 
 
