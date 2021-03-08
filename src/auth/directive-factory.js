@@ -25,12 +25,20 @@ function getAuthKeys(el, value) {
 function checkAuth(el, authKeys, $auth) {
   let hasPermission = authKeys.some(key => $auth.checkAuth(key));
   if (hasPermission) {
-    return;
+    if (el.commentNode) {
+      let parent = el.commentNode.parentNode;
+      parent.insertBefore(el, el.commentNode);
+      parent.removeChild(el.commentNode);
+      delete el.commentNode;
+    }
+  } else {
+    if (!el.commentNode) {
+      let commentNode = document.createComment("v-auth");
+      el.commentNode = commentNode;
+      el.parentNode.insertBefore(commentNode, el);
+      el.parentNode.removeChild(el);
+    }
   }
-  if (el.__vue__) {
-    el.__vue__.$destroy();
-  }
-  el.parentNode && el.parentNode.removeChild(el);
 }
 
 function handleAuthDirective(el, binding, $auth) {

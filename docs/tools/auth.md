@@ -18,17 +18,48 @@
 ```vue
 <template>
   <div class="container">
-    <div class="module">
-      <el-button type="success" v-auth="['module1.permission1']">Button1</el-button>
-      <el-button type="primary" v-auth="['module1.permission2']">Button2</el-button>
-      <el-button type="warning" v-auth="['module1.permission3']">Button3</el-button>
-      <el-button type="danger" v-auth="['module1.permission4']">Button4</el-button>
+    <el-tree
+      :props="props"
+      :data="authInfo"
+      node-key="name"
+      show-checkbox
+      default-expand-all
+      :default-checked-keys="['btn1', 'btn2', 'btn3', 'btn4']"
+      ref="tree"
+      @check-change="handleCheckChange"
+    >
+    </el-tree>
+    <div class="module" v-auth="['module1']">
+      <h2>module1</h2>
+      <div class="btn-container">
+        <el-button 
+          size="small" 
+          type="primary"
+          v-auth="['module1.btn1']"
+        >btn1</el-button>
+        <el-button 
+          size="small" 
+          type="danger"
+          v-auth="['module1.btn2']"
+        >btn2</el-button>
+      </div>
     </div>
     <div class="module" v-auth:scope="'module2'">
-      <el-button type="success" v-auth:scope v-auth="['permission1']">Button1</el-button>
-      <el-button type="primary" v-auth:scope v-auth="['permission2']">Button2</el-button>
-      <el-button type="warning" v-auth:scope v-auth="['permission3']">Button3</el-button>
-      <el-button type="danger" v-auth:scope v-auth="['permission4']">Button4</el-button>
+      <h2>module2</h2>
+      <div class="btn-container">
+        <el-button 
+          size="small" 
+          type="success"
+          v-auth:scope
+          v-auth="'btn3'"
+        >btn3</el-button>
+        <el-button 
+          size="small" 
+          type="warning"
+          v-auth:scope
+          v-auth="'btn4'"
+        >btn4</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -37,26 +68,51 @@
 export default {
   data() {
     return {
-      value: null,
-      authData: {
-        module1: {
-          permission1: true,
-          permission2: true,
-          permission3: false,
-          permission4: true
-        },
-        module2: {
-          permission1: true,
-          permission3: true,
-          permission4: false
-        }
-      }
+      props: {
+        label: "name",
+        children: "children"
+      },
+      authInfo: [{
+        name: 'module1',
+        checked: true,
+        children: [
+          { name: 'btn1', checked: true }, 
+          { name: 'btn2', checked: true }
+        ]
+      }, {
+        name: 'module2',
+        checked: true,
+        children: [
+          { name: 'btn3', checked: true }, 
+          { name: 'btn4', checked: true }
+        ]
+      }]
     }
   },
   mounted() {
     this.$auth.setAuth(this.authData);
   },
-  methods: {}
+  methods: {
+    handleCheckChange(node, checked, childChecked) {
+      node.checked = checked || childChecked;
+      let authData = this.getAuth(this.authInfo);
+      console.log(authData);
+      this.$auth.setAuth(authData);
+    },
+
+    getAuth(nodes) {
+      return nodes.reduce((acc, cur) => {
+        if(!cur.checked) {
+          acc[cur.name] = false
+        } else if (cur.children) {
+          acc[cur.name] = this.getAuth(cur.children);
+        } else {
+          acc[cur.name] = true;
+        }
+        return acc;
+      }, {});
+    }
+  }
 }
 </script>
 <style scope>
@@ -65,8 +121,9 @@ export default {
   flex-direction: column;
 }
 .container .module {
-  display: flex;
-  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
 }
 </style>
 ```
@@ -145,14 +202,13 @@ new VueRouter({
 ```
 
 
-### $auth服务接口
-1. setAuth(authData: Object): void
-设置权限信息，
-2. checkAuth(authKey: string): boolean
-检查权限，返回true表示有权限
-3. subscribe(context: any, func: Function): void
-订阅，权限信息有更新会触发方法，把$auth作为参数传入，如果设置过权限信息则会立即调用一次
-4. unsubscribe(context: any, func: Function): void
-取消订阅，不传func则取消掉context上所有的订阅
-5. hasSetAuth(): boolean
-检查是否已经设置过权限信息
+### $auth方法
+
+| 方法名称 | 说明 | 参数 |
+| :---- | :---- | :---- |
+| setAuth | 设置权限信息 | authData：权限树 |
+| checkAuth | 检查权限，返回true表示有权限 | authKey：权限值 |
+| subscribe | 订阅，权限信息有更新会触发方法，把$auth作为参数传入，如果设置过权限信息则会立即调用一次 | context: 当前上下文， func:方法 |
+| unsubscribe | 取消订阅，不传func则取消掉context上所有的订阅 | context: 当前上下文， func:方法 |
+| hasSetAuth | 检查是否已经设置过权限信息 | --- |
+
