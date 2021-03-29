@@ -5,6 +5,7 @@
         :model="queryModel"
         :submitLoading="loading"
         :fields="queryFields"
+        v-bind="queryFormProps"
         @submit="fetchData"
         @collapse="onQueryFormCollapse"
       >
@@ -101,7 +102,7 @@ import _ from "lodash";
 const defaultFieldConfig = {
   data: "data",
   pageSize: "pageSize",
-  pageNum: "pageNum",
+  pageNum: "page",
   total: "total",
   order: "order",
   orderBy: "orderBy"
@@ -158,7 +159,8 @@ export default {
     columnSetting: Boolean,
     columnCacheKey: String,
     showFullscreen: Boolean,
-    showSize: Boolean
+    showSize: Boolean,
+    queryFormProps: Object
   },
   data() {
     return {
@@ -344,7 +346,6 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped>
 .m-pro-table {
   &.fullscreen {
@@ -356,9 +357,9 @@ export default {
     background-color: #eee;
   }
   .query-form-wrapper {
-    padding: 24px;
+    padding: 16px;
     background-color: #fff;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
   .table-wrapper {
     background-color: #fff;
@@ -371,7 +372,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-      padding: 24px;
+      padding: 16px;
       .tools {
         display: flex;
         align-items: center;
