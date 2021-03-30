@@ -161,7 +161,6 @@ export default {
     },
     elTableClass() {
       let tableClass = ["size-" + this.size];
-      console.log("this.$attrs", this.$attrs);
       if (this.$attrs["show-summary"] !== false && this.topSummary) {
         tableClass.push(["top-summary"]);
       }
