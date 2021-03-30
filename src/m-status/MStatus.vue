@@ -12,7 +12,9 @@ export default {
       type: String,
       default: "primary",
       validator(val) {
-        return ["success", "info", "warning", "error", "primary"].includes(val);
+        return ["success", "info", "warning", "danger", "primary"].includes(
+          val
+        );
       }
     }
   }

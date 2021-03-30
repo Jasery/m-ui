@@ -5,7 +5,8 @@
     :size="size"
     v-bind="{
       ...$attrs,
-      'value-format': undefined
+      'value-format': undefined,
+      'default-time': defaultTime
     }"
     v-on="{
       ...$listeners,
@@ -38,7 +39,15 @@ export default {
       dateVal: null
     };
   },
-  computed: {},
+  computed: {
+    defaultTime() {
+      let type = this.$attrs.type;
+      if (type && type.endsWith("range")) {
+        return ["00:00:00", "23:59:59"];
+      }
+      return undefined;
+    }
+  },
   watch: {
     value: {
       handler(val) {
