@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.2...v0.3.3) (2021-03-30)
+
+
+### Features
+
+* 添加m-chat-record组件 ([98978e1](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/98978e1298eb165dbe1e36cb99843fc4748be9f1))
+* **auth:** 支持鉴权元素恢复 ([e3f85ca](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/e3f85ca942d25da2e65c2a36ac14479809e35a0c))
+* **m-pro-table:** 添加queryFormProps，调整样式 ([d396b34](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/d396b346e3290a224d1dc5c3c959b393d3322353))
+
 ### [0.3.2](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.1...v0.3.2) (2021-03-08)
 
 
