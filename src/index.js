@@ -30,6 +30,7 @@ import MLogin from "./m-login/MLogin.vue";
 import MContextMenu from "./m-context-menu/MContextMenu.vue";
 import Download from "./download/download";
 import MScrollNav from "./m-scroll-nav/MScrollNav.vue";
+import MChatRecord from "./m-chat-record/MChatRecord.vue";
 
 import "./style/util.scss";
 
@@ -95,6 +96,7 @@ export default {
     Vue.component(MLogin.name, MLogin);
     Vue.component(MContextMenu.name, MContextMenu);
     Vue.component(MScrollNav.name, MScrollNav);
+    Vue.component(MChatRecord.name, MChatRecord);
 
     Vue.use(Auth);
     Vue.use(MDirectives);
