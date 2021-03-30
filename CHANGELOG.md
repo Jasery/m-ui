@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.3...v0.3.4) (2021-03-30)
+
+
+### Features
+
+* **m-date-picker:** 添加range类型指定defautTime ([91d25d3](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/91d25d3aee5742c17ac238b1f312b8ecc9212ea3))
+
 ### [0.3.3](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.2...v0.3.3) (2021-03-30)
 
 
