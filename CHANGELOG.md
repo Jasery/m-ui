@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.5](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.4...v0.3.5) (2021-03-31)
+
+
+### Bug Fixes
+
+* **m-status:** 修复被圆点被压缩问题 ([a9bacc5](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/a9bacc5124849e330fad75ca6f8df6359dfd93da))
+
 ### [0.3.4](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.3...v0.3.4) (2021-03-30)
 
 
