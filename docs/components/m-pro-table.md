@@ -166,11 +166,13 @@ export default {
 | queryModel | 查询的数据，用于查询表单构建及查询方法参数传递 | Object | --- | --- |
 | title | 标题 | String | --- | --- |
 | columns | 同m-table的columns | Array | --- | --- |
-| pageType | 分页类型 | String | pagination/scroll | pagination |
+| pageType | 分页类型 | String | pagination/scroll/none | pagination |
 | height | m-table的height | Number | --- | --- |
 | fixedBottom | m-table的fixedBottom | Number | --- | --- |
 | showSelection | 表格是否显示勾选列 | Boolean | --- | true |
 | tableProps | m-table的props透传 | Object | --- | --- |
+| tableListeners | m-table的事件透传 | Object | --- | --- |
+| queryFormProps | m-query-form的props透传 | Object | --- | --- |
 | queryFields | m-query-form的fields，参考[m-query-form](#/Components/m-query-form) | Array | --- | --- |
 | fieldConfig | 约定的字段配置 | Object | --- | --- |
 | pageSize | 分页大小 | Number | --- | 30 |
@@ -184,11 +186,11 @@ export default {
 ---
 
 ### 一些约定
-- props里面的fetch方法，约定公共参如下，其他字段则由fetchModel定义，约定字段可由`fieldConfig`配置
+- props里面的fetch方法，约定公共参如下，其他字段则由queryModel定义，约定字段可由`fieldConfig`配置
 ```json
 {
   "pageNum": 1,
-  "pageSize": 30,
+  "page": 30,
   "orderBy": "name",
   "order": "descending" // "ascending"
 }
@@ -220,6 +222,7 @@ export default {
 | query | 查询表单，规则参考[m-query-form](#/Components/m-query-form) |
 | table | [m-table](#/Components/m-table) 的default slot |
 | tools | 标题右侧的操作按钮位置 |
+| query-tools | 查询栏的按钮位置 |
 
 ---
 

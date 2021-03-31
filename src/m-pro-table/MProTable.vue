@@ -10,6 +10,9 @@
         @collapse="onQueryFormCollapse"
       >
         <slot name="query"></slot>
+        <template v-slot:tools>
+          <slot name="query-tools"></slot>
+        </template>
       </m-query-form>
     </div>
     <div class="table-wrapper">
@@ -62,7 +65,7 @@
         ref="mTable"
         :data="tableData"
         :pagination="isPagination"
-        :infinite-scroll="isScroll"
+        :infinite-scroll="isScrollPagination"
         :scroll-loading="scrollLoading"
         :noMore="noMore"
         :fixed-bottom="tableFixedBottom"
@@ -133,7 +136,7 @@ export default {
       type: String,
       default: "pagination",
       validate(val) {
-        return val === "pagination" || val === "scroll";
+        return ["pagination", "scroll", "none"].includes(val);
       }
     },
     height: [Number, String],
@@ -179,14 +182,8 @@ export default {
       tableSize: _.get(this.tableProps, "size", "default"),
       sizes: [
         { label: "默认", size: "default" },
-        {
-          label: "中等",
-          size: "middle"
-        },
-        {
-          label: "紧凑",
-          size: "small"
-        }
+        { label: "中等", size: "middle" },
+        { label: "紧凑", size: "small" }
       ]
     };
   },
@@ -194,8 +191,11 @@ export default {
     isPagination() {
       return this.pageType === "pagination";
     },
-    isScroll() {
+    isScrollPagination() {
       return this.pageType === "scroll";
+    },
+    isNoPagination() {
+      return this.pageType === "none";
     },
     tableSlots() {
       return this.columns.reduce((acc, cur) => {
@@ -242,13 +242,17 @@ export default {
         pageNum = 1;
       }
 
-      return this.getData({
+      let query = {
         ...this.queryModel,
-        [this.fieldDic.pageNum]: pageNum,
-        [this.fieldDic.pageSize]: this.pageSize,
         [this.fieldDic.order]: this.order,
         [this.fieldDic.orderBy]: this.orderBy
-      })
+      };
+      if (!this.isNoPagination) {
+        query[this.fieldDic.pageNum] = pageNum;
+        query[this.fieldDic.pageSize] = this.pageSize;
+      }
+
+      return this.getData(query)
         .then(data => {
           this.total = data[this.fieldDic.total];
           this.tableData = data[this.fieldDic.data];
@@ -330,7 +334,7 @@ export default {
         this.orderBy = prop;
         this.order = order;
       }
-      this.fetchData(this.isScroll);
+      this.fetchData(this.isScrollPagination);
     },
 
     onColumnChange(columns) {
