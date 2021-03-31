@@ -34,6 +34,7 @@ export default {
   }
   &::before {
     content: "";
+    flex-shrink: 0;
     display: block;
     width: 0.5em;
     height: 0.5em;
