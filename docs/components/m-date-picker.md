@@ -13,6 +13,7 @@
     <m-date-picker
       v-model="value2"
       type="datetimerange"
+      picker-options
       @change="onChange2"
     ></m-date-picker>
   </div>
@@ -42,6 +43,10 @@ export default {
 
 ### Props
 同[el-date-picker](https://element.eleme.cn/#/zh-CN/component/date-picker)，不过由于转换了绑定值，`value-format`属性会失效
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :---- | :---- | :---- | :---- | :---- | 
+| pickerOptions |当前时间日期选择器特有的选项参考下表, 同`el-date-picker`, 传true设置内置选项 | Object/Boolean | --- | --- |
 
 ---
 
