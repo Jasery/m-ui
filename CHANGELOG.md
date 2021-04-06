@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.6](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.5...v0.3.6) (2021-04-06)
+
+
+### Features
+
+* **download:** 支持qiankun环境 ([2b5e0e0](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/2b5e0e02b12d405113dc5cd86e592bb58249bcba))
+* **m-date-picker:** 添加内置picker-options ([bac99b2](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/bac99b246caa0f6b7bd2dc682921704f88109c27))
+
+
+### Bug Fixes
+
+* **m-pro-table:** 添加无分页支持，添加query-tools slot ([cc53a5f](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/cc53a5ff0b96c5bc79a01b511922309e7def9e05))
+
 ### [0.3.5](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.4...v0.3.5) (2021-03-31)
 
 
