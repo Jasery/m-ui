@@ -7,9 +7,7 @@ export default {
   methods: {
     onClick() {
       // url
-      this.$download({
-        url: "path/to/your/file"
-      })
+      this.$download("path/to/your/file")
 
       // content
       this.$download({

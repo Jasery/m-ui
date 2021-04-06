@@ -10,11 +10,31 @@ const defaultOptions = {
   content: null
 };
 
+function getUrlString(url = "", data = {}) {
+  if (!url.startsWith("http")) {
+    let base = window.__POWERED_BY_QIANKUN__
+      ? window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
+      : window.location.origin;
+    url = base + url;
+  }
+  let urlObject = new URL(url);
+  Object.keys(data || {}).forEach(key => {
+    urlObject.searchParams.set(key, data[key]);
+  });
+  console.log(urlObject.toString());
+  return urlObject.toString();
+}
+
 /**
  * 下载文件
  * @param {Object}} options 下载配置
  */
 function download(options) {
+  if (isString(options)) {
+    options = {
+      url: options
+    };
+  }
   options = Object.assign({}, defaultOptions, options);
   if (options.content) {
     if (!options.filename) {
@@ -25,38 +45,38 @@ function download(options) {
       file = options.content;
     } else if (isString(options.content)) {
       file = new File([options.content], { type: "text/plain;charset=utf-8" });
-    }
-    if (!file) {
+    } else {
       throw new Error("[m-ui] download.js: content not support.");
     }
     FileSaver.saveAs(file, options.filename);
-  } else if (options.method.toLowerCase() !== "post") {
+  } else {
     if (!options.url) {
       throw new Error("[m-ui] download.js: url is required.");
     }
-    let url = new URL(options.url);
-    Object.keys(options.data || {}).forEach(key => {
-      url.searchParams.set(key, options.data[key]);
-    });
-    FileSaver.saveAs(url.toString(), options.filename);
-  } else {
-    let form = document.createElement("form");
-    form.style.display = "none";
-    form.enctype = "multipart/form-data";
-    form.target = "_blank";
-    form.method = "post";
-    form.action = options.url;
-    Object.keys(options.data || {}).forEach(key => {
-      let value = options.data[key];
-      let input = document.createElement("input");
-      input.type = "hidden";
-      input.name = key;
-      input.value = isString(value) ? value : JSON.stringify(value);
-      form.appendChild(input);
-    });
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
+    if (options.method.toLowerCase() === "get") {
+      FileSaver.saveAs(
+        getUrlString(options.url, options.data),
+        options.filename
+      );
+    } else {
+      let form = document.createElement("form");
+      form.style.display = "none";
+      form.enctype = "multipart/form-data";
+      form.target = "_blank";
+      form.method = "post";
+      form.action = getUrlString(options.url);
+      Object.keys(options.data || {}).forEach(key => {
+        let value = options.data[key];
+        let input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = isString(value) ? value : JSON.stringify(value);
+        form.appendChild(input);
+      });
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+    }
   }
 }
 
