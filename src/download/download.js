@@ -12,6 +12,13 @@ const defaultOptions = {
 
 function getUrlString(url = "", data = {}) {
   if (!url.startsWith("http")) {
+    if (!url.startsWith("/")) {
+      let pathname = location.pathname;
+      if (!pathname.endsWith("/")) {
+        pathname = pathname + "/";
+      }
+      url = pathname + url;
+    }
     let base = window.__POWERED_BY_QIANKUN__
       ? window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
       : window.location.origin;
