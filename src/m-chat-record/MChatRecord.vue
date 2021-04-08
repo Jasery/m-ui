@@ -64,9 +64,7 @@ export default {
       return Object.freeze(chunks);
     }
   },
-  mounted() {
-    console.log("this.chatChunk", this.chatChunk);
-  },
+  mounted() {},
   methods: {
     getComp(item) {
       if (!this.customComponent || !this.customComponent[item.type]) {

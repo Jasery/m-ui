@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       records: [{
-        content: '今天天气怎么样？',
+        content: '今天天气怎么样？\n今天心情怎么样？',
         type: 'text',
         time: Date.now(),
         position: 'left',
