@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.6...v0.3.7) (2021-04-30)
+
+
+### Features
+
+* **m-layout:** 支持无限级菜单 ([270b829](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/270b829e436a1b35a21d1b753e44e35c5ff0d31a))
+
+
+### Bug Fixes
+
+* **download:** 修复相对路径问题 ([bba8f88](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/bba8f8873625a19e5ed05120c265a86b1d469343))
+* **m-chat-record:** 文本消息支持换行 ([f3d0bde](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/f3d0bde24aa8c43a4ea72020041a46983c59ba3c))
+* **m-layout:** 修复自定义slot不完全生效问题 ([c2b1d56](https://git.mingchao.com/mcwebfe-deps/m-ui/commit/c2b1d569706f79958e54b3488f906264cf2f1c5c))
+
 ### [0.3.6](https://git.mingchao.com/mcwebfe-deps/m-ui/compare/v0.3.5...v0.3.6) (2021-04-06)
 
 
