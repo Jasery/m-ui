@@ -46,7 +46,11 @@
           @select="(index, indexPath) => $emit('menu-select', index, indexPath)"
         >
           <template v-for="menu in menus">
-            <m-submenu :menu="menu" :key="menu.index"></m-submenu>
+            <m-submenu :menu="menu" :key="menu.index">
+              <template #menu-item="menuItemConfig">
+                <slot name="menu-item" v-bind="menuItemConfig"></slot>
+              </template>
+            </m-submenu>
           </template>
         </el-menu>
       </div>
