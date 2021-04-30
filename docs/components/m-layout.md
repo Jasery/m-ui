@@ -33,6 +33,10 @@ const menus = [{
   submenus: [{
     title: '子菜单1',
     index: 'sub1',
+    submenus: [{
+      title: '子菜单1',
+      index: 'sub1',
+    }] 
   }, {
     title: '子菜单2',
     index: 'sub2'

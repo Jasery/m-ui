@@ -46,28 +46,7 @@
           @select="(index, indexPath) => $emit('menu-select', index, indexPath)"
         >
           <template v-for="menu in menus">
-            <el-submenu v-if="menu.submenus" :key="menu.index" v-bind="menu">
-              <template slot="title">
-                <i v-if="menu.icon" :class="menu.icon"></i>
-                <span slot="title">{{ menu.title }}</span>
-              </template>
-              <el-menu-item
-                v-for="submenu in menu.submenus"
-                :key="submenu.index"
-                v-bind="submenu"
-              >
-                <slot name="menu-item" v-bind="submenu">
-                  <i v-if="submenu.icon" :class="submenu.icon"></i>
-                  <span slot="title">{{ submenu.title }}</span>
-                </slot>
-              </el-menu-item>
-            </el-submenu>
-            <el-menu-item v-else :key="menu.index" v-bind="menu">
-              <slot name="menu-item" v-bind="menu">
-                <i v-if="menu.icon" :class="menu.icon"></i>
-                <span slot="title">{{ menu.title }}</span>
-              </slot>
-            </el-menu-item>
+            <m-submenu :menu="menu" :key="menu.index"></m-submenu>
           </template>
         </el-menu>
       </div>
@@ -99,9 +78,11 @@
 import { isNumber, resolveResource } from "../utils";
 
 import defaultLogo from "../assets/image/logo.png";
+import MSubmenu from "./MSubmenu";
 
 export default {
   name: "MLayout",
+  components: { MSubmenu },
   props: {
     height: {
       type: [Number, String],
